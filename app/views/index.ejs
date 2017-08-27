@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title><%= title%></title>
+</head>
+<body>
+<h1><%=title%></h1>
+<section ng-view>	
+</section>
+
+
+
+<script type="text/javascript">
+	
+	window.huaso = "hola";	
+
+
+</script>
+
+
+<!--angular y modulos externos -->
+<script type="text/javascript" src="/lib/angular/angular.min.js"></script>
+<script type="text/javascript" src="/lib/angular-route/angular-route.min.js"></script>
+
+<!-- modulos, rutas y controladores propios  -->
+<script type="text/javascript" src="/example/example.client.module.js"></script>
+<script type="text/javascript" src="/example/controllers/example.client.controller.js"></script>
+<script type="text/javascript" src="/example/config/example.client.routes.js"></script>
+
+<!--service-example-->
+<script type="text/javascript" src="service-example/service-example.client.module.js"></script>
+<script type="text/javascript" src="service-example/service/prueba.client.service.js"></script>
+
+
+
+<!-- aplicacion que enlaza todos los modulos -->
+<script type="text/javascript" src="application.js"></script>
+
+
+
+</body>
+</html>

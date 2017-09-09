@@ -1,0 +1,13 @@
+angular.module('example').config(['$routeProvider',function($routeProvider){
+	$routeProvider.
+		when('/dashboard',{
+			templateUrl:'dashboard/views/index.html'
+		}).
+		when('/hora',{
+			templateUrl:'dashboard/views/pedirhora.html'
+		}).
+		otherwise({
+			redirectTo:'/'
+		});
+	}
+]);

@@ -67,11 +67,11 @@ input[type="date"]::-webkit-calendar-picker-indicator::after {
   background: #00ad84;
 }
 
-.btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {
+/*.btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {
     color: #fff;
     background-color: #00ad84;
     border-color: #ccc;
-}
+}*/
 
 .facturaButtons{
   width: 100%;
@@ -162,7 +162,7 @@ hr {
 	padding:5px;
 }	
 
-.btn-primary {
+./*btn-primary {
     padding: 6px 20px;
     background: #00ad84;
     color: #fff;
@@ -170,7 +170,7 @@ hr {
     border: none;
     margin-top: 10px;
 	border: 1px solid #0a6d4d;
-}
+}*/
 
 .titulo_noticia {
   color: #000;
@@ -180,7 +180,7 @@ hr {
 .titulo_noticia:focus{
   color: #357ebd;
 }
-.btn-primary:hover, 
+/*.btn-primary:hover, 
 .btn-primary:focus{
   background: #0a6d4d;
   outline: none;
@@ -191,7 +191,7 @@ hr {
   background: #0a6d4d;
   outline: none;
   box-shadow: none;
-} 
+} */
 
 .btn-transparent {
   border: 3px solid #fff;
@@ -2613,7 +2613,7 @@ ul.sidebar-gallery {
  404 page css
  ******************/
 
-#error .btn-success:hover, 
+/*#error .btn-success:hover, 
 .btn-success:focus, 
 .btn-success:active, 
 .btn-success.active, 
@@ -2621,7 +2621,7 @@ ul.sidebar-gallery {
   background-color: #EBEBEB;
   border-color: #EBEBEB;
   color: #4E4E4E;
-}
+}*/
 
 #error h1{
   color: #4e4e4e;

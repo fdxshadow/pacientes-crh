@@ -1,0 +1,11 @@
+#opcion1,#opcion2{
+	color:green;
+
+}
+
+#opcion1:hover{
+	color:black;
+}
+#opcion2:hover{
+	color:black;
+}

@@ -5,7 +5,8 @@
 
 	<link rel="stylesheet" type="text/css" href="/lib/bootstrap/dist/css/bootstrap.css" />
 	<link rel="stylesheet" href="/assets/css/main.css">
-	<link rel="stylesheet" href="/assets/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="/assets/css/opciones.css">
 </head>
 <body>
 
@@ -28,7 +29,8 @@
 	    </header><!--/header-->
 
 
-<section ng-view>	
+<section ng-view>
+
 </section>
 
 
@@ -69,6 +71,14 @@
 <script type="text/javascript" src="/example/example.client.module.js"></script>
 <script type="text/javascript" src="/example/controllers/example.client.controller.js"></script>
 <script type="text/javascript" src="/example/config/example.client.routes.js"></script>
+
+<!-- modulo dashboard , ruta, controlador y service -->
+
+<script type="text/javascript" src="/dashboard/dashboard.client.module.js"></script>
+<script type="text/javascript" src="/dashboard/controllers/hora.client.controller.js"></script>
+<script type="text/javascript" src="/dashboard/config/dashboard.client.routes.js"></script>
+<script type="text/javascript" src="/dashboard/service/service-paciente.client.module.js"></script>
+
 
 <!--service-example-->
 <script type="text/javascript" src="service-example/service-example.client.module.js"></script>

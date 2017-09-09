@@ -1,6 +1,6 @@
 // Invocar modo JavaScript 'strict'
 'use strict';
-
+// cambio ejemplo git
 // Configurar la variable 'NODE_ENV'
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 // Cargar las dependencias de módulos

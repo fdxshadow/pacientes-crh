@@ -1,0 +1,40 @@
+<section>
+<script src="tipoexamen.client.controller.js"></script>
+<hr>
+<div class="col-md-5">
+                <div class="input-group">
+                    <!-- USE TWITTER TYPEAHEAD JSON WITH API TO SEARCH -->
+                    <input class="form-control" ng-model="buscarexamen.nombre" placeholder="Buscar por nombre">
+                    <span class="input-group-btn">
+                     <button class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
+                    </span>
+             </div>
+</div>
+<hr>
+
+<table border=10 class="table table-bordered table-responsive table-striped">
+
+	<thead>
+		<tr>
+			<th>Nombre</th>
+			<th>Horario</th>
+			
+		</tr>
+	</thead>
+	<tbody ng-controller="tipoexamen">
+		<tr ng-repeat="examen in examenes | filter:buscarexamen">
+			<td>{{examen.nombre}}</td>
+			<td>{{examen.horario}}</td>
+			<td>
+				<button href="#!/tipohora class="btn btn-success"  >Seleccionar</button>
+				<!--<button style="background-color:#007da7;color:white;" class="btn btn-default">Actualizar telefono</button>-->
+				<!--button class="btn btn-primary">Actualizar telefono</button-->
+			</td>
+		</tr>
+	</tbody>
+
+
+</table>
+
+<hr>
+</section>

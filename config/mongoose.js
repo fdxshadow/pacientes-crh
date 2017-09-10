@@ -1,14 +1,15 @@
-var config = require('./config'),
+// Carga las dependencias del módulo
+var	config = require('./config'),
 	mongoose = require('mongoose');
 
-module.exports = function(){
-	// Conectar a mongo db
+// Definir el método de configuración de Mongoose
+module.exports = function() {
+	// Usar Mongoose para conectar a MongoDB
+	var db = mongoose.connection.openUri(config.DBuri);
 
-	var db = mongoose.connect(config.DBuri);
-	// Cargar modelos de base de datos
-	require('../app/models/server.model.user');
-	//retornar instancia de mongoose
+	// Cargar el modelo 'User' 
+	require('../app/models/user.server.model');
+	
+	// Devolver la instancia de conexión a Mongoose
 	return db;
-}
-
-
+};

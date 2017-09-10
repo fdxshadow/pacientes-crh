@@ -1,4 +1,4 @@
 module.exports = {
-	sessionSecret: 'developmentSessionSecret',
-	DBuri: 'mongodb://localhost/pacientes-crh'
+  sessionSecret: 'developmentSessionSecret',
+  DBuri: 'mongodb://localhost/mean'
 };

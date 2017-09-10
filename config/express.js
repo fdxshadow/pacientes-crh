@@ -1,46 +1,48 @@
- var session = require('express-session'),
-	express = require('express'),
-	morgan = require('morgan'),
-	compress = require('compression'),
-	bodyParser = require('body-parser'),
-	config = require('./config'),
-	methodOverride = require('method-override'),
-	flash = require('connect-flash'),
-	passport = require('passport');
+// Invocar el modo 'strict' de JavaScript mode
+'use strict';
 
-module.exports = function(){
-	var app = express();
+// Cargar las dependencias del módulo express
+var config = require('./config'),
+  	express = require('express'),
+  	morgan = require('morgan'),
+  	compress = require('compression'),
+  	bodyParser = require('body-parser'),
+  	methodOverride = require('method-override'),
+  	session = require('express-session'),
+    flash = require('connect-flash'),
+    passport = require('passport');
 
-	if(process.env.NODE_ENV === 'development'){
-		app.use(morgan('dev'));
-	}else if(process.env.NODE_ENV === 'production'){
-		app.use(compress());
-	}
-	app.use(bodyParser.urlencoded({ // arregla error con req.body vacio en peticiones post
-		extended: true
-	}));
-	app.use(bodyParser.json());
-	app.use(methodOverride());
-	app.use(session({
-		saveUninitialized: true,
-		resave: true,
-		secret: config.sessionSecret
-	}));
-	// configurar motor de las views
-	app.set('views', './app/views');
-	app.set('view engine', 'ejs');
+module.exports = function() {
+  var app = express();
+  if (process.env.NODE_ENV === 'development') {
+    app.use(morgan('dev'));
+  } else if (process.env.NODE_ENV === 'production') {
+    app.use(compress());
+  }
 
-	app.use(flash());
-	app.use(passport.initialize());
-	app.use(passport.session());
+  app.use(bodyParser.urlencoded({
+    extended: true
+  }));
+  app.use(bodyParser.json());
+  app.use(methodOverride());
 
+  app.use(session({
+    saveUninitialized: true,
+    resave: true,
+    secret: config.sessionSecret
+  }));
+  
+  app.set('views', './app/views');
+  app.set('view engine', 'ejs');
 
-	// configurar archivos de enrutamiento
-	require('../app/routes/server.routes.index.js')(app);
-	require('../app/routes/server.routes.users.js')(app);
+  app.use(flash()); 
 
-	
-	// configurar el servidor de archivos estáticos
-	app.use(express.static('./public'));
-	return app;
-}
+  app.use(passport.initialize());
+  app.use(passport.session());
+
+  require('../app/routes/index.server.routes.js')(app);
+  require('../app/routes/users.server.routes.js')(app);
+
+  app.use(express.static('./public')); //tiene q ir abajo del require para la ruta
+  return app;
+};

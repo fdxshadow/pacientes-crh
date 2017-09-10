@@ -29,30 +29,10 @@
           </div><!--/.container-->
       </header><!--/header-->
 
-     <section style="background: #fff;">
-      <div class="container" id="containerPpal" style="padding: 10px 0px 80px 0px" >
-        <% if ( !user ) { %>
-          <div class="pull-right single-profile-top" style="margin: 0;">
-              <a class="btn btn-default pull-right" href="/signin"><i class="fa fa-lock"></i> Identificarse</a>
-              <a class="btn btn-default pull-right" href="/signup"><i class="fa fa-user-plus"></i> Crear Cuenta</a>
-          </div>
-        <% } else { %>
-          <div class="pull-right single-profile-top" style="margin: 0;" ng-controller="ExampleController" ng-show="user.nombre">
-            <!--Saludo al usuario autentificado-->
-            <p style="margin: 0px"><i class="fa fa-user-circle"></i> {{user.nombre}} {{user.apellido}}
-            <a class="btn btn-default pull-right" href="/signout" alt="cerrar sesion" style="margin-left: 30px;padding: 0px 6px;"><i class="fa fa-sign-out"></i> Cerrar Sesión</a></p>
-            <p style="margin: 0px"><i class="fa fa-cogs"></i> {{user.tipoUsuario}}</p>
-            <!--p style="margin: 0px"><i class="fa fa-envelope"></i> {{user.email}}</p-->
-          </div>
-        <% } %>
-
-        <div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12">
-          <ng-view>         
-            <!-- CONTENIDO renderizado por angular-->
-             </ng-view>
-        </div>
-      </div>
-      </section>
+        <section ng-view></section>
+        <script type="text/javascript">
+          window.user = <%- user || 'null' %>;
+        </script>
 
 
 
@@ -75,15 +55,15 @@
 
 
 
-     <section ng-view></section>
-  <script type="text/javascript">
-    window.user = <%- user || 'null' %>;
-    </script>
+  
 
       <!-- modulos angular -->
       <script type="text/javascript" src="/lib/angular/angular.js"></script>
       <script type="text/javascript" src="/lib/angular-locale_es-cl.js"></script>
       <script type="text/javascript" src="/lib/angular-route/angular-route.js"></script>
+            <script type="text/javascript" src="/lib/angular-resource/angular-resource.js"></script>
+
+
       <script type="text/javascript" src="/lib/jquery/dist/jquery.js"></script>
       <script type="text/javascript" src="/lib/bootstrap/dist/js/bootstrap.js"></script>
       <script type="text/javascript" src="/lib/angular-resource/angular-resource.js"></script>

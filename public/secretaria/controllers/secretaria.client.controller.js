@@ -1,11 +1,9 @@
-angular.module('secretaria').controller('ExampleController', ['$scope',
-  function($scope) {
-    $scope.name = 'Usuario';
-  }
-]);
+// Invocar modo JavaScript 'strict'
+'use strict';
 
+// Crear el controller 'articles'
 angular.module('secretaria').controller('ExampleController', ['$scope', 'Authentication',
   function($scope, Authentication) {
-    $scope.name = Authentication.user ? Authentication.user.fullName : 'Usuario';
+    $scope.authentication = Authentication;
   }
 ]);

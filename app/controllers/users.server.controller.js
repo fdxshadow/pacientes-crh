@@ -151,3 +151,15 @@ exports.signout = function(req, res) {
   res.redirect('/');
 };
 
+// Crear un nuevo middleware controller que es usado para autorizar operaciones de autentificación 
+exports.requiresLogin = function(req, res, next) {
+  // Si un usuario no está autentificado envía el mensaje de error apropiado
+  if (!req.isAuthenticated()) {
+    return res.status(401).send({
+      message: 'Usuario no está identificado'
+    });
+  }
+
+  // Llamar al siguiente middleware
+  next();
+};

@@ -1,0 +1,30 @@
+{
+  "name": "angular-rut",
+  "version": "1.0.2",
+  "authors": [
+    "Jaime Bunzli <jpbunzli@gmail.com>",
+    "Ignacio Baixas <ignacio@platan.us>",
+    "René Morales <rene.morales.sanchez@gmail.com>"
+  ],
+  "description": "Chilean RUT module for angular",
+  "license": "MIT",
+  "homepage": "https://github.com/angular-platanus/rut",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/angular-platanus/rut.git"
+  },
+  "main": "./dist/angular-rut.min.js",
+  "ignore": [
+    "**/.*",
+    "Gruntfile.js",
+    "karma.conf.js",
+    "package.json",
+    "test",
+    "src",
+    ".travis.yml"
+  ],
+  "devDependencies": {
+    "angular": "~1.2.27",
+    "angular-mocks": "~1.2.27"
+  }
+}

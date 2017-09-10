@@ -2,17 +2,11 @@
 <html>
 <head>
 	<title><%= title%></title>
-
 	<link rel="stylesheet" type="text/css" href="/lib/bootstrap/dist/css/bootstrap.css" />
 	<link rel="stylesheet" href="/assets/css/main.css">
 	<link rel="stylesheet" href="/assets/css/font-awesome.min.css">
 </head>
 <body>
-
-
-
-
-
 
  <header id="header">
 	        <div class="container">
@@ -28,9 +22,19 @@
 	    </header><!--/header-->
 
 
-<section ng-view>	
-</section>
+<!-- <section ng-view>
+</section> -->
 
+<section style="background: #fff;">
+	<!-- parte de fonts awesome, ventanita de buen espacio-->
+	<div class="container" id="containerPpal" style="padding: 10px 0px 80px 0px" >
+		<div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12">
+			<ng-view>
+				<!-- CONTENIDO renderizado por angular-->
+			</ng-view>
+		</div>
+	</div>
+</section>
 
   <footer id="footer" class="midnight-blue">
 		    <div class="container">
@@ -54,21 +58,35 @@
 
 
 <script type="text/javascript">
-	
-	window.huaso = "hola";	
+
+	window.huaso = "hola";
 
 
 </script>
 
 
 <!--angular y modulos externos -->
-<script type="text/javascript" src="/lib/angular/angular.min.js"></script>
-<script type="text/javascript" src="/lib/angular-route/angular-route.min.js"></script>
-
+<script type="text/javascript" src="/lib/angular/angular.js"></script>
+<script type="text/javascript" src="/lib/angular-locale_es-cl.js"></script>
+<script type="text/javascript" src="/lib/angular-route/angular-route.js"></script>
+<script type="text/javascript" src="/lib/jquery/dist/jquery.js"></script>
+<script type="text/javascript" src="/lib/bootstrap/dist/js/bootstrap.js"></script>
+<script type="text/javascript" src="/lib/angular-resource/angular-resource.js"></script>
+<script type="text/javascript" src="/lib/angular-bootstrap/ui-bootstrap.min.js"></script>
+<script type="text/javascript" src="/lib/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+<script type="text/javascript" src="/lib/ngstorage/ngStorage.min.js"></script>
+<script type="text/javascript" src="/lib/angular-rut/dist/angular-rut.min.js"></script>
+<script type="text/javascript" src="/lib/AngularJsRutValidador/AngularJsRutValidador.js"></script>
 <!-- modulos, rutas y controladores propios  -->
 <script type="text/javascript" src="/example/example.client.module.js"></script>
 <script type="text/javascript" src="/example/controllers/example.client.controller.js"></script>
 <script type="text/javascript" src="/example/config/example.client.routes.js"></script>
+
+<!-- modulo pacientes -->
+<script type="text/javascript" src="/pacientes/client.module.pacientes.js"></script>
+<script type="text/javascript" src="/pacientes/services/client.service.pacientes.js"></script>
+<script type="text/javascript" src="/pacientes/controllers/client.controller.pacientes.js"></script>
+<script type="text/javascript" src="/pacientes/config/client.route.pacientes.js"></script>
 
 <!--service-example-->
 <script type="text/javascript" src="service-example/service-example.client.module.js"></script>

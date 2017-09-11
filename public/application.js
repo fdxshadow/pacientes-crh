@@ -5,10 +5,10 @@ var mainApplicationModule = angular.module(mainApplicationModuleName,[
 	'ui.bootstrap',
 	'ngStorage',
 	'example',
-	'service-example',
 	'pacientes',
 	'platanus.rut',
-	'RutValidador'
+	'RutValidador',
+	'service-example'
 
 ]);
 

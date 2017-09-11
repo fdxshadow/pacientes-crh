@@ -142,10 +142,10 @@ app.directive('rut', function($timeout, $interpolate, validarRut) {
         replace: true,
         require: '?ngModel',
         link: function(scope, elm, attrs, ngModel) {
-            scope.rutValido = '';
+            scope.PacienteData.rut = '';
             ngModel.$render = function() {
                 //console.log(scope.rutValido);
-                var tmp = $interpolate(scope.rutValido)(scope);
+                var tmp = $interpolate(scope.PacienteData.rut)(scope);
                 elm.find('code').html(validarRut(tmp));
             }
         }

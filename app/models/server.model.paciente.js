@@ -11,12 +11,13 @@ var PacienteSchema = new Schema({
     type: String,
     trim: true,
     default: '',
-    required: 'Debe ingresar RUN del paciente'
+    required: 'Debe ingresar RUN del paciente',
+    unique: true
   },
   fono: {
     type: String,
     trim: true,
-  
+
     default: ''
   }
 });

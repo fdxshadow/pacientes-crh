@@ -2,18 +2,12 @@
 <html>
 <head>
 	<title><%= title%></title>
-
 	<link rel="stylesheet" type="text/css" href="/lib/bootstrap/dist/css/bootstrap.css" />
 	<link rel="stylesheet" href="/assets/css/main.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="/assets/css/opciones.css">
 </head>
 <body>
-
-
-
-
-
 
  <header id="header">
 	        <div class="container">
@@ -27,12 +21,9 @@
 	          </div>
 	        </div><!--/.container-->
 	    </header><!--/header-->
-
-
 <section ng-view>
 
 </section>
-
 
   <footer id="footer" class="midnight-blue">
 		    <div class="container">
@@ -56,19 +47,38 @@
 
 
 <script type="text/javascript">
-	
-	window.huaso = "hola";	
+
+	window.huaso = "hola";
 
 
 </script>
 
 
-<!--angular y modulos externos -->
-<script type="text/javascript" src="/lib/angular/angular.min.js"></script>
-<script type="text/javascript" src="/lib/angular-route/angular-route.min.js"></script>
-
 <!-- modulo dashboard , ruta, controlador y service -->
+<script type="text/javascript" src="/lib/angular/angular.js"></script>
+<script type="text/javascript" src="/lib/angular-locale_es-cl.js"></script>
+<script type="text/javascript" src="/lib/angular-route/angular-route.js"></script>
+<script type="text/javascript" src="/lib/jquery/dist/jquery.js"></script>
+<script type="text/javascript" src="/lib/bootstrap/dist/js/bootstrap.js"></script>
+<script type="text/javascript" src="/lib/angular-resource/angular-resource.js"></script>
+<script type="text/javascript" src="/lib/angular-bootstrap/ui-bootstrap.min.js"></script>
+<script type="text/javascript" src="/lib/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+<script type="text/javascript" src="/lib/ngstorage/ngStorage.min.js"></script>
+<script type="text/javascript" src="/lib/angular-rut/dist/angular-rut.min.js"></script>
+<script type="text/javascript" src="/lib/AngularJsRutValidador/AngularJsRutValidador.js"></script>
 
+<!-- modulo pacientes -->
+<script type="text/javascript" src="/pacientes/client.module.pacientes.js"></script>
+<script type="text/javascript" src="/pacientes/services/client.service.pacientes.js"></script>
+<script type="text/javascript" src="/pacientes/controllers/client.controller.pacientes.js"></script>
+<script type="text/javascript" src="/pacientes/config/client.route.pacientes.js"></script>
+
+<!--service-example-->
+<script type="text/javascript" src="service-example/service-example.client.module.js"></script>
+<script type="text/javascript" src="service-example/service/prueba.client.service.js"></script>
+
+
+<!--modulo dashboard-->
 <script type="text/javascript" src="/dashboard/dashboard.client.module.js"></script>
 <script type="text/javascript" src="/dashboard/controllers/hora.client.controller.js"></script>
 <script type="text/javascript" src="/dashboard/config/dashboard.client.routes.js"></script>

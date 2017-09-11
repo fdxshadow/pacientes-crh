@@ -37,9 +37,10 @@ module.exports = function(){
 
 	// configurar archivos de enrutamiento
 	require('../app/routes/server.routes.index.js')(app);
+  require('../app/routes/server.routes.paciente.js')(app);
 	require('../app/routes/server.routes.users.js')(app);
 
-	
+
 	// configurar el servidor de archivos estáticos
 	app.use(express.static('./public'));
 	return app;

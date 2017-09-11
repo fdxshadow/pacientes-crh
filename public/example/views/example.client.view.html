@@ -1,0 +1,48 @@
+	
+ <section ng-controller="ExampleController">
+
+
+<table>
+<tr><td><p>fecha: <datepicker date-format="yyyy-MM-dd" >
+    <input type="text" class="form-control" datepicker-popup="dd.MM.yyyy"
+ng-model="date" is-open="opened" min-date="minDate" max-date="'2042-04-02'"
+datepicker-options="dateOptions" date-disabled="disabled(date, mode)" 
+ng-required="true" 
+current-text="Tonight" clear-text="Reset" close-text="Exit" />
+</datepicker>
+
+</p>
+
+
+
+</td><td>
+        <select name="seleccionarmedico" ng-model="copiarmedicoseleccionado" ng-options="copiarmedico.nombreMedico for copiarmedico in medico track by copiarmedico.Id">
+            <option value="">-- Seleccionar Médico tratante --</option>
+        </select>
+
+</table>
+
+</td></tr>
+
+</table>
+
+
+<button ng-click="buscar()">buscar</button>
+
+
+<table>
+<tr ng-repeat="p in disponibilidad2">
+<td>{{p.hora}}</td><td> <button
+ ng-click="$parent.remove(p)">Reservar</button></td>
+
+</tr>
+</table>
+
+
+<div ui-calendar ng-model="eventSources"></div>
+
+
+
+
+
+</section>	

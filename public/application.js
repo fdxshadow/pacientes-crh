@@ -1,5 +1,5 @@
 var mainApplicationModuleName = 'mean';
-var mainApplicationModule = angular.module(mainApplicationModuleName,['ngRoute','example','service-example','dashboard']);
+var mainApplicationModule = angular.module(mainApplicationModuleName,['ngRoute','dashboard']);
 
 mainApplicationModule.config(['$locationProvider', 
 	function($locationProvider){

@@ -1,4 +1,4 @@
-angular.module('example').config(['$routeProvider',function($routeProvider){
+angular.module('dashboard').config(['$routeProvider',function($routeProvider){
 	$routeProvider.
 		when('/dashboard',{
 			templateUrl:'dashboard/views/index.html'

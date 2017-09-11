@@ -12,6 +12,9 @@ angular.module('example').config(['$routeProvider',function($routeProvider){
 		when('/examen',{
 			templateUrl:'dashboard/views/tipoexamen.html'
 		}).
+		when('/medico',{
+			templateUrl:'dashboard/views/medico.html'
+		}).
 		otherwise({
 			redirectTo:'/'
 		});

@@ -4,7 +4,6 @@ var mainApplicationModule = angular.module(mainApplicationModuleName,[
 	'ngResource',
 	'ui.bootstrap',
 	'ngStorage',
-	'example',
 	'pacientes',
 	'platanus.rut',
 	'RutValidador',

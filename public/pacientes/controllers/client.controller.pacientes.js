@@ -24,7 +24,7 @@ angular.module('pacientes').controller('PacientesController', ['$scope','SharedD
 //                NuevoIngresoService.paciente = response;
                 $scope.$storage.paciente = response;
                 // Si un paciente fue creado de modo correcto, redireccionar al usuario a la página del paciente
-                $location.path('pacientes');
+                $location.path('/');
             }, function(errorResponse) {
                 // En otro caso, presentar al usuario el mensaje de error
                 $scope.error = errorResponse.data.message;

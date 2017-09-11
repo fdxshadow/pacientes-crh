@@ -12,11 +12,4 @@ module.exports = function(app) {
 	  //  .get( paciente.list)
 	   .post( paciente.create);
 
-
-//para llegar al modulo paciente(directo a create)
-			app.route('/testapi')
-				.get( function(req, res) {
-							res.redirect('/#!/pacientes/create');
-				});
-
  };

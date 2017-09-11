@@ -10,17 +10,7 @@ angular.module('pacientes').controller('PacientesController', ['$scope','SharedD
         $scope.buttonVisibility = false;
 
         $scope.PacienteData = SharedDataService;
-        // $scope.Product.name = rutValido;
 
-
-//
-//         // metodo para seleccionar uno de los pacientes en el caso de uso agregar nuevo ingreso
-//         $scope.setPaciente = function(index){
-// //            NuevoIngresoService.paciente = $scope.pacientes[index];
-//             $scope.$storage.paciente = $scope.pacientes[index];
-//             $scope.buttonVisibility = true;
-//         };
-//
 //         // Crear un nuevo método controller para crear nuevos pacientes
         $scope.create = function() {
             // Usar los campos form para crear un nuevo objeto $resource paciente

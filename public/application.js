@@ -9,7 +9,9 @@ var mainApplicationModule = angular.module(mainApplicationModuleName,[
 	'platanus.rut',
 	'RutValidador',
 	'service-example',
-	'dashboard'
+	'dashboard',
+	'reservaPaciente',
+	'720kb.datepicker'
 ]);
 
 mainApplicationModule.config(['$locationProvider',

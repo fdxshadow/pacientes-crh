@@ -3,6 +3,9 @@ angular.module('dashboard').config(['$routeProvider',function($routeProvider){
 		when('/dashboard',{
 			templateUrl:'dashboard/views/index.html'
 		}).
+		when('/hoy',{
+			templateUrl:'dashboard/views/hoy.html'
+		}).
 		when('/hora',{
 			templateUrl:'dashboard/views/pedirhora.html'
 		}).

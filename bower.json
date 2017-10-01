@@ -9,6 +9,7 @@
     "angular-bootstrap": "^2.5.0",
     "ngstorage": "^0.3.11",
     "angular-rut": "^1.0.2",
-    "AngularJsRutValidador": "*"
+    "AngularJsRutValidador": "*",
+    "angular-ui-calendar": "^1.0.2"
   }
 }

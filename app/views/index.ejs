@@ -8,6 +8,17 @@
 	<link rel="stylesheet" type="text/css" href="/assets/css/opciones.css">
 	<link rel="stylesheet" type="text/css" href="/lib/angular-date-picker/angular-date-picker.css" />
 	<link href="/lib/angularjs-datepicker/src/css/angular-datepicker.css" rel="stylesheet" type="text/css" />
+
+
+	<!--css full calendar-->
+
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.5.1/fullcalendar.min.css">
+
+
+
+
+
+
 </head>
 <body>
 
@@ -57,10 +68,22 @@
 
 
 <!-- modulo dashboard , ruta, controlador y service -->
+
+<script type="text/javascript" src="/lib/jquery/dist/jquery.js"></script>
+<!-- script para el calendario ui-calendar-->
+<script type="text/javascript" src="/lib/moment/min/moment.min.js"></script>
+<script type="text/javascript" src="/lib/fullcalendar/dist/fullcalendar.min.js"></script>
+<script type="text/javascript" src="/lib/fullcalendar/dist/gcal.js"></script>
 <script type="text/javascript" src="/lib/angular/angular.js"></script>
+<script type="text/javascript" src="/lib/angular-ui-calendar/src/calendar.js"></script>
+
+
+<!-- hasta aqui-->
 <script type="text/javascript" src="/lib/angular-locale_es-cl.js"></script>
 <script type="text/javascript" src="/lib/angular-route/angular-route.js"></script>
-<script type="text/javascript" src="/lib/jquery/dist/jquery.js"></script>
+
+
+
 <script type="text/javascript" src="/lib/bootstrap/dist/js/bootstrap.js"></script>
 <script type="text/javascript" src="/lib/angular-resource/angular-resource.js"></script>
 <script type="text/javascript" src="/lib/angular-bootstrap/ui-bootstrap.min.js"></script>
@@ -93,6 +116,7 @@
 <script type="text/javascript" src="/dashboard/config/dashboard.client.routes.js"></script>
 <script type="text/javascript" src="/dashboard/service/service-paciente.client.module.js"></script>
 <script type="text/javascript" src="/dashboard/controllers/tipoexamen.client.controller.js"></script></s>
+<script type="text/javascript" src="/dashboard/controllers/calendar.client.controller.js"></script>
 
 
 <!--modulo calendario -->

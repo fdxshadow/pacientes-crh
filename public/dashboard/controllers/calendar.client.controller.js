@@ -1,15 +1,18 @@
-angular.module('dashboard').controller('calendar',['$scope',function($scope,$http){
+angular.module('dashboard').controller('calendar',['$scope', '$http', 'uiCalendarConfig',function($scope,$http,uiCalendarConfig){
 
 
   $scope.show=true;
 
 
-  //falta data bindin para poder cambiar el color en vivo
+  
 
   $scope.probar = function(datos){
 
     datos.title = "algo";
+    uiCalendarConfig.calendars.micalendario.fullCalendar('updateEvent',datos);//modifica el calendario al instante , con esto podemos manejar los colores para ver los estados de cada consulta
+
   }
+
 
   
 

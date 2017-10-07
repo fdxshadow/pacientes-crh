@@ -3,6 +3,7 @@ var mainApplicationModuleName = 'mean';
 var mainApplicationModule = angular.module(mainApplicationModuleName,[
 	'ngRoute',
 	'ngResource',
+	'ngAnimate',
 	'ui.bootstrap',
 	'ngStorage',
 	'pacientes',
@@ -10,6 +11,7 @@ var mainApplicationModule = angular.module(mainApplicationModuleName,[
 	'RutValidador',
 	'service-example',
 	'dashboard',
+	'login',
 	'reservaPaciente',
 	'720kb.datepicker'
 ]);

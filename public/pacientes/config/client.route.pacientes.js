@@ -7,7 +7,8 @@ angular.module('pacientes').config(['$routeProvider',
 		$routeProvider.
 		when('/pacientes/create', {
 			templateUrl: 'pacientes/views/client.view.paciente.add.html',
-			controller: 'PacientesController'
+			controller: 'PacientesController',
+			authenticated: true
 		})
 		
 	}

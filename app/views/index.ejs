@@ -2,14 +2,14 @@
 <html>
 <head>
 	<title><%= title%></title>
-	<link rel="stylesheet" type="text/css" href="/lib/bootstrap/dist/css/bootstrap.css" />
+	<link rel="stylesheet" type="text/css" href="/lib/bootstrap/dist/css/bootstrap.css"/>
 	<link rel="stylesheet" href="/assets/css/main.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="/assets/css/opciones.css">
 	<link rel="stylesheet" type="text/css" href="/lib/angular-date-picker/angular-date-picker.css" />
 	<link href="/lib/angularjs-datepicker/src/css/angular-datepicker.css" rel="stylesheet" type="text/css" />
 </head>
-<body>
+<body ng-controller="mainCtrl as main">
 
  <header id="header">
 	        <div class="container">
@@ -23,7 +23,9 @@
 	          </div>
 	        </div><!--/.container-->
 	    </header><!--/header-->
-<section ng-view>
+
+	    
+<section ng-view >
 
 </section>
 
@@ -36,6 +38,7 @@
 		            <li style="margin-top: 15px;"><a>Clínica de Reproducción Humana</a></li></br>
 		            <li><a>Hontaneda 2664, Valparaíso. Chile</a></li></br>
 		            <li><a>Fono: +56 (32) 250 7313</a></li></br>
+		            <li><a href="/" ng-click="main.logout();">Salir</a></li></br>
 		          </ul>
 		        </div>
 		      </div>
@@ -60,6 +63,7 @@
 <script type="text/javascript" src="/lib/angular/angular.js"></script>
 <script type="text/javascript" src="/lib/angular-locale_es-cl.js"></script>
 <script type="text/javascript" src="/lib/angular-route/angular-route.js"></script>
+<script type="text/javascript" src="/lib/angular-animate/angular-animate.js"></script>
 <script type="text/javascript" src="/lib/jquery/dist/jquery.js"></script>
 <script type="text/javascript" src="/lib/bootstrap/dist/js/bootstrap.js"></script>
 <script type="text/javascript" src="/lib/angular-resource/angular-resource.js"></script>
@@ -100,8 +104,13 @@
 <script type="text/javascript" src="/reservaPaciente/controllers/reservaPaciente.client.controller.js"></script>
 <script type="text/javascript" src="/reservaPaciente/config/reservaPaciente.client.routes.js"></script>
 
-
-
+<!--modulo login -->
+ <script type="text/javascript" src="/login/login.client.module.js"></script>
+ <script type="text/javascript" src="/login/config/login.client.routes.js"></script>
+ <script type="text/javascript" src="/login/controllers/login.client.controller.js"></script>
+ <script type="text/javascript" src="/login/controllers/login.client.main.js"></script>
+ <script type="text/javascript" src="/login/service/login.client.service.js"></script>
+ <script type="text/javascript" src="/login/service/login.client.main.js"></script> 
 
 
 

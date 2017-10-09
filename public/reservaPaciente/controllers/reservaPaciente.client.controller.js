@@ -10,6 +10,9 @@ angular.module('reservaPaciente').controller('reservaPacienteController'
 //$scope.visibility= true;
 
 
+
+
+
 $scope.medico = [{
                  nombreMedico: "Agusto perez",
                  Id: 0

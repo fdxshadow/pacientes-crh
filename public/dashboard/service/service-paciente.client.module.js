@@ -1,9 +1,8 @@
 angular.module('dashboard').factory('pacienteinfo',[
 	function(){
 
-		return {
-			datahora:{}
+		var datahora = new Array();
 
-		};
+		return datahora;
 
 		}]);

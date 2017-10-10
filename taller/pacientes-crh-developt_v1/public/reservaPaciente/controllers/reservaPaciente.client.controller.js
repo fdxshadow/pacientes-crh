@@ -1,11 +1,14 @@
 
 angular.module('reservaPaciente').controller('ReservaController'
-,['$scope', 'ReservaServicio', function ($scope, servicio) {
+,['$scope', 'ReservaServicio','pacienteinfo' ,function ($scope, servicio,pacienteinfo) {
+
+$scope.paciente = pacienteinfo.paciente_id;
+
 
 $scope.crearReserva = function(){
     var reserva = {
-        paciente_Id: "100",
-        medico_Id: "800000",
+        paciente_id: "100",
+        medico_id: "800000",
         hora_inicio_reserva: "18",
         hora_fin_reserva: "19",
         fecha_reserva: '12'

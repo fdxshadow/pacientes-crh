@@ -11,8 +11,8 @@ angular.module('dashboard').controller('Hora',['$scope','$location','pacienteinf
 	];		
 
 	$scope.seleccionado = function(paciente){
-		pacienteinfo.datahora.paciente = paciente.rut
-		console.log(pacienteinfo.datahora.paciente);
+		pacienteinfo.paciente_id = paciente.rut
+		console.log(pacienteinfo.paciente_id);
 		$location.url('/tipohora'); //ruta de tu vista alfonso, la de los doctores
 
 	}

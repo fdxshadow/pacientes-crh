@@ -19,18 +19,22 @@ exports.mostrar = function(req, res, next){
 };
 exports.crear = function(req, res, next){
 	//ojo probar sacando lo de abajo
-	var Reserva = require('mongoose').model('Reserva');
+	var reserva = require('mongoose').model('Reserva');
+	
+	var reservas = new reserva(req.body);
 
-	var reserva = new Reserva(req.body);
-	console.info(req.body);
+	console.log(req.body);
+	//console.info(req.body);
 	// usar metodo save para guardar el nuevo usuario
-	reserva.save(function(err){
+	reservas.save(function(err){
 		if (err) {
+			console.log(err)
 			// Si ocurre algún error enviar el mensaje de error
 			return res.next(err);
 		} else {
+			console.log(reservas)
 			// usar objeto response (res) para enviar una respuesta JSON
-			res.json(reserva);
+			res.json(reservas);
 		}
 	});
 };

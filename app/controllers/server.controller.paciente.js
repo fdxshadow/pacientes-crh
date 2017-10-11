@@ -1,3 +1,59 @@
+var Paciente = require('mongoose').model('Paciente');
+
+exports.getPacientes = function (req, res) {
+    Paciente.find({}).exec(function (err, collection) {
+        res.send(collection);
+    })
+}
+
+var ObjectId = require('mongoose').Types.ObjectId;
+
+
+exports.getPacientesById = function (req, res) {
+    Paciente.findOne({"_id":ObjectId(req.params.id)}).exec(function (err, paciente) {
+        res.send(paciente)
+    })
+    //Paciente.findOne({_id:req.params.id}).exec(function (err, paciente) {
+};
+
+
+exports.create = function (req, res, next) {
+    var pacienteData = req.body;
+    console.log(req.body.rut);
+
+    Paciente.find({"rut": req.body.rut}).exec(function(err, collection) {
+        if(collection.length > 0) {
+            err = new Error('RUT ya existe');
+            res.status(400);
+            return res.send({reason:err.toString()})
+        }
+        else {
+            Paciente.create(pacienteData, function(err, paciente){
+                if(err){
+                    if(err.toString().indexOf('E11000') > -1){
+                        err = new Error('Paciente ya existe');
+                    }
+                    res.status(400);
+                    return res.send({reason:err.toString()})
+                }
+                res.send(paciente);
+            })
+		}
+    })
+
+
+
+};
+
+
+
+
+
+
+
+
+
+/*
 // Invocar modo JavaScript 'strict'
 'use strict';
 
@@ -32,4 +88,4 @@ exports.create = function(req, res) {
 			res.json(paciente);
 		}
 	});
-};
+};*/

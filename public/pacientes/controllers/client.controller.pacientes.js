@@ -1,7 +1,32 @@
 // Invocar modo JavaScript 'strict'
 'use strict';
 
-// Crear el controller 'pacientes'
+
+// clAuth saque
+angular.module('pacientes').controller('PacientesController', function($scope, Paciente, Notifier, $location,  PacientesSrv) {
+
+    $scope.agregar = function() {
+        var newPacienteData = {
+            rut: $scope.rut,
+            firstName: $scope.fname,
+            lastName: $scope.lname,
+            telephone: $scope.telephone
+        };
+
+
+        PacientesSrv.createPaciente(newPacienteData).then(function() {
+            Notifier.notify('Paciente Creado Exitosamente!');
+            $location.path('/tipohora');
+            //$location.path('/secretaria/pacientes/crear');
+        }, function(reason) {
+            Notifier.error(reason);
+        });
+    }
+})
+
+
+
+/* Crear el controller 'pacientes'
 angular.module('pacientes').controller('PacientesController', ['$scope','SharedDataService', '$routeParams', '$location', 'PacientesResource', '$localStorage',
     function($scope,SharedDataService, $routeParams, $location, PacientesResource, $localStorage) {
         // Exponer el service Authentication
@@ -32,4 +57,4 @@ angular.module('pacientes').controller('PacientesController', ['$scope','SharedD
         };
 
       }
-]);
+]);*/

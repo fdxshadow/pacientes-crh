@@ -17,7 +17,7 @@ exports.getPacientesById = function (req, res) {
 };
 
 
-exports.create = function (req, res, next) {
+exports.create = function (req, res, next){
     var pacienteData = req.body;
     console.log(req.body.rut);
 

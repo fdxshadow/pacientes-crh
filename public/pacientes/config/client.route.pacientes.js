@@ -6,7 +6,7 @@ angular.module('pacientes').config(['$routeProvider',
 	function($routeProvider) {
 		$routeProvider.
 		when('/pacientes/create', {
-			templateUrl: 'pacientes/views/client.view.paciente.add.html',
+			templateUrl: 'pacientes/views/agregar.html',   //client.view.paciente.add.html'
 			controller: 'PacientesController'
 		})
 		

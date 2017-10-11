@@ -8,8 +8,14 @@
 // Definir el método routes de module
 module.exports = function(app) {
 	// Configurar la rutas base a 'pacientes'
-	app.route('/api/pacientes')
+
+    app.post('/api/pacientes', paciente.create);
+    app.get('/api/pacientes', paciente.getPacientes);
+    app.get('/api/pacientes/:id', paciente.getPacientesById);
+
+    /*
+    app.route('/api/pacientes')
 	  //  .get( paciente.list)
-	   .post( paciente.create);
+	   .post( paciente.create);*/
 
  };

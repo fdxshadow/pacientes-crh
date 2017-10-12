@@ -3,8 +3,8 @@
 var calendario = require('../controllers/calendario'),
     paciente = require('../controllers/paciente'),
     user = require('../controllers/user'),
-    reserva = require('../../app/controllers/server.controller.reservas');
-
+    reserva = require('../controllers/reservas'),
+    medico = require('../controllers/medico');;
 
 module.exports = function (app) {
 
@@ -18,18 +18,15 @@ module.exports = function (app) {
     app.post('/users', user.createUser);
     app.post('/authenticate', user.authenticateUser);
 
-    app.route('/reservas/:fecha').get(reserva.mostrar);
-    app.route('/horario1').get(reserva.getHorario);
-    app.route('/reservas').post(reserva.crear);
-
-    app.route('/api/horas/:buscarFecha/:nombreMedico')
-        .get(reserva.listByFecha_Medico);
+    app.get('/reservas/:fecha', reserva.mostrar);
+    app.get('/horario1', reserva.getHorario);
+    app.post('/reservas', reserva.crear);
+    app.get('/api/horas/:buscarFecha/:nombreMedico', reserva.listByFecha_Medico);
     app.param('buscarFecha', reserva.paramFecha);
     app.param('nombreMedico', reserva.paramMedico);
 
-
-
-
+    app.get('/medicos', medico.getMedicos);
+    app.get( '/api/medicos', medico.list)
 
     app.get('/', function(req, res) {
         if(req.session.lastVisit) {
@@ -45,14 +42,6 @@ module.exports = function (app) {
 /*
 
 
-//console.info('hola');
-module.exports = function (app) {
 
-
-}
-
-
-
-
-* */
+ */
 

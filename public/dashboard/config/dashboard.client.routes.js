@@ -2,23 +2,27 @@ angular.module('dashboard').config(['$routeProvider',function($routeProvider){
 	$routeProvider.
 		when('/dashboard',{
 			templateUrl:'dashboard/views/index.html',
-			authenticated: true
+			//authenticated: true
 		}).
 		when('/hora',{
 			templateUrl:'dashboard/views/pedirhora.html',
-			authenticated: true
+			//authenticated: true
 		}).
 		when('/tipohora',{
 			templateUrl:'dashboard/views/tipohora.html',
-			authenticated: true
+			//authenticated: true
 		}).
 		when('/examen',{
 			templateUrl:'dashboard/views/tipoexamen.html',
-			authenticated: true
+			//authenticated: true
 		}).
 		when('/medico',{
 			templateUrl:'dashboard/views/medico.html',
-			authenticated: true
+			//authenticated: true
+		}).
+		when('/editarfono',{
+			templateUrl:'dashboard/views/editarfono.html',
+			//authenticated: true
 		}).
 		otherwise({
 			redirectTo:'/'

@@ -2,19 +2,35 @@ var Paciente = require('mongoose').model('Paciente');
 
 exports.getPacientes = function (req, res) {
     Paciente.find({}).exec(function (err, collection) {
-        res.send(collection);
+        if(err){
+            console.log(res);
+            res.send("error getPacientes");
+        }
+        else{
+            console.log(collection);
+            return res.send(collection);
+    }
     })
-}
+};
 
 var ObjectId = require('mongoose').Types.ObjectId;
 
 
 exports.getPacientesById = function (req, res) {
     Paciente.findOne({"_id":ObjectId(req.params.id)}).exec(function (err, paciente) {
-        res.send(paciente)
+        return res.send(paciente)
     })
     //Paciente.findOne({_id:req.params.id}).exec(function (err, paciente) {
 };
+
+
+
+exports.update = function(req, res){
+console.log(req.params.rut);
+
+
+};
+
 
 
 exports.create = function (req, res, next){

@@ -22,7 +22,6 @@ var Paciente = mongoose.model('Paciente', PacienteSchema);
 function createDefaultPacientes(){
     Paciente.find({}).exec(function(err, collection) {
 
-        console.log('Holaaaaaaaa');
         if(collection.length === 0) {
             Paciente.create({rut:'1-9',firstName: 'john', lastName: 'doe', telephone:"+56 9 841 000 000"});
             Paciente.create({rut:'15095162-3',firstName: 'claudio', lastName: 'araya', telephone:"+56 9 841 0322 000"});

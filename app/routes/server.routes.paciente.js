@@ -12,6 +12,8 @@ module.exports = function(app) {
     app.post('/api/pacientes', paciente.create);
     app.get('/api/pacientes', paciente.getPacientes);
     app.get('/api/pacientes/:id', paciente.getPacientesById);
+    app.get('/api/pacientenumero/:rut/:telfone', paciente.update);
+
 
     /*
     app.route('/api/pacientes')

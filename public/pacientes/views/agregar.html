@@ -23,7 +23,7 @@
           </div>
         </div>
         <div class="form-group">
-          <label for="telephone" class="col-md-2 control-label">Telefono</label>
+          <label for="telephone" class="col-md-2 control-label">Telefono *</label>
           <div class="col-md-10">
             <input name="telephone" type="text" placeholder="Telefono" ng-model="telephone" required="required" class="form-control" ng-pattern="/^[0-9]{9}$/"/>
           </div>
@@ -36,6 +36,10 @@
           </div>
         </div>
       </fieldset>
+      <small>Rut: Ingresar sin puntos y con guion.</small>
+      <br>
+      <small>Telefono: Ingresar los 9 digitos.</small>
     </form>
+
   </div>
 </div>

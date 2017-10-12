@@ -3,9 +3,10 @@ angular.module('dashboard').controller('calendar',['$scope','uiCalendarConfig','
 
   $scope.show=true;
 
-  /*$scope.confirmar = function(datos){
+/*  $scope.confirmar = function(datos){
 
     datos.color = "blue";
+
     uiCalendarConfig.calendars.micalendario.fullCalendar('updateEvent',datos);//modifica el calendario al instante , con esto podemos manejar los colores para ver los estados de cada consulta
 
   }

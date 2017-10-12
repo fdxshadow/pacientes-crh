@@ -10,7 +10,8 @@ angular.module('dashboard').controller('medico',['$scope','pacienteinfo','servic
 
 
     $scope.seleccionado = function (medico){
-        pacienteinfo.medico_id=medico.id;
+    	console.log(medico._id);
+        pacienteinfo.medico_id=medico._id;
     }
 
 }

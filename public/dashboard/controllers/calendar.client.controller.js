@@ -24,13 +24,15 @@ angular.module('dashboard').controller('calendar',['$scope','uiCalendarConfig','
   var pico = function(){
 
     Eventos.query(function(data){
+      console.log(data);
       angular.forEach(data,function(value,key){
         var colore = (value.estado==='registrado')?'blue':'green';
+        console.log(colore);
 
         var aux = {
           title:value.paciente_id,
-          start:value.fecha+'T'+value.hora_inicio_reserva,
-          end:value.fecha+'T'+value.hora_fin_reserva,
+          start:value.fecha_reserva+'T'+value.hora_inicio_reserva,
+          end:value.fecha_reserva+'T'+value.hora_fin_reserva,
           color:colore
         }
         $scope.events.push(aux);

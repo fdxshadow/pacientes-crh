@@ -14,7 +14,6 @@ var db = mongoose();
 require('./config/express')(app);
 
 // configurar archivos de enrutamiento
-//require('./app/routes/server.routes.users.js')(app);
 require('./app/routes/server.routes.reservas.js')(app);
 require('./app/routes/server.routes.medico.js')(app);
 

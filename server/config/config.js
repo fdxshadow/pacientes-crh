@@ -6,7 +6,7 @@ module.exports = {
         db: 'mongodb://localhost/pacientes-crh',
         rootPath: rootPath,
         sessionSecret: 'developmentSessionSecret',
-        port: process.env.PORT || 3030
+        port: process.env.PORT || 3000
     },
     production: {
         db: 'mongodb://localhost/clinicarhuv',

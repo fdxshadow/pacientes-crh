@@ -11,5 +11,6 @@ module.exports = function(){
     pacienteModel.createDefaultPacientes();
 
     //retornar instancia de mongoose
+	require('../app/models/server.model.reserva');
 	return db;
 }

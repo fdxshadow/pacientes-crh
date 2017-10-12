@@ -1,61 +1,69 @@
-define( [
+define([
 	"../core",
 	"../core/access",
-	"./support",
-	"../selector"
+	"./support"
 ], function( jQuery, access, support ) {
 
+<<<<<<< HEAD
 var rfocusable = /^(?:input|select|textarea|button)$/i,
 	rclickable = /^(?:a|area)$/i;
 
 jQuery.fn.extend( {
+=======
+var rfocusable = /^(?:input|select|textarea|button)$/i;
+
+jQuery.fn.extend({
+>>>>>>> calendario-diario
 	prop: function( name, value ) {
 		return access( this, jQuery.prop, name, value, arguments.length > 1 );
 	},
 
 	removeProp: function( name ) {
-		return this.each( function() {
+		return this.each(function() {
 			delete this[ jQuery.propFix[ name ] || name ];
-		} );
+		});
 	}
-} );
+});
 
-jQuery.extend( {
+jQuery.extend({
+	propFix: {
+		"for": "htmlFor",
+		"class": "className"
+	},
+
 	prop: function( elem, name, value ) {
-		var ret, hooks,
+		var ret, hooks, notxml,
 			nType = elem.nodeType;
 
 		// Don't get/set properties on text, comment and attribute nodes
-		if ( nType === 3 || nType === 8 || nType === 2 ) {
+		if ( !elem || nType === 3 || nType === 8 || nType === 2 ) {
 			return;
 		}
 
-		if ( nType !== 1 || !jQuery.isXMLDoc( elem ) ) {
+		notxml = nType !== 1 || !jQuery.isXMLDoc( elem );
 
+		if ( notxml ) {
 			// Fix name and attach hooks
 			name = jQuery.propFix[ name ] || name;
 			hooks = jQuery.propHooks[ name ];
 		}
 
 		if ( value !== undefined ) {
-			if ( hooks && "set" in hooks &&
-				( ret = hooks.set( elem, value, name ) ) !== undefined ) {
-				return ret;
-			}
+			return hooks && "set" in hooks && (ret = hooks.set( elem, value, name )) !== undefined ?
+				ret :
+				( elem[ name ] = value );
 
-			return ( elem[ name ] = value );
+		} else {
+			return hooks && "get" in hooks && (ret = hooks.get( elem, name )) !== null ?
+				ret :
+				elem[ name ];
 		}
-
-		if ( hooks && "get" in hooks && ( ret = hooks.get( elem, name ) ) !== null ) {
-			return ret;
-		}
-
-		return elem[ name ];
 	},
 
 	propHooks: {
 		tabIndex: {
 			get: function( elem ) {
+<<<<<<< HEAD
 
 				// elem.tabIndex doesn't always return the
 				// correct value when it hasn't been explicitly set
@@ -69,22 +77,25 @@ jQuery.extend( {
 						rclickable.test( elem.nodeName ) && elem.href ?
 							0 :
 							-1;
+=======
+				return elem.hasAttribute( "tabindex" ) || rfocusable.test( elem.nodeName ) || elem.href ?
+					elem.tabIndex :
+					-1;
+>>>>>>> calendario-diario
 			}
 		}
-	},
-
-	propFix: {
-		"for": "htmlFor",
-		"class": "className"
 	}
-} );
+});
 
+<<<<<<< HEAD
 // Support: IE <=11 only
 // Accessing the selectedIndex property
 // forces the browser to respect setting selected
 // on the option
 // The getter ensures a default option is selected
 // when in an optgroup
+=======
+>>>>>>> calendario-diario
 if ( !support.optSelected ) {
 	jQuery.propHooks.selected = {
 		get: function( elem ) {
@@ -93,6 +104,7 @@ if ( !support.optSelected ) {
 				parent.parentNode.selectedIndex;
 			}
 			return null;
+<<<<<<< HEAD
 		},
 		set: function( elem ) {
 			var parent = elem.parentNode;
@@ -103,11 +115,13 @@ if ( !support.optSelected ) {
 					parent.parentNode.selectedIndex;
 				}
 			}
+=======
+>>>>>>> calendario-diario
 		}
 	};
 }
 
-jQuery.each( [
+jQuery.each([
 	"tabIndex",
 	"readOnly",
 	"maxLength",
@@ -120,6 +134,6 @@ jQuery.each( [
 	"contentEditable"
 ], function() {
 	jQuery.propFix[ this.toLowerCase() ] = this;
-} );
+});
 
-} );
+});

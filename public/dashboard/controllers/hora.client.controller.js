@@ -1,7 +1,5 @@
 angular.module('dashboard').controller('Hora',['$scope','$location','pacienteinfo', 'pacienteResource', function ($scope,$location,pacienteinfo, pacienteResource) {
 
-		
-
 	pacienteResource.query(function(data){
 		$scope.pacientes = data;
 		console.log(data);

@@ -1,9 +1,10 @@
-define( [
+define([
 	"./core",
 	"./var/slice",
 	"./callbacks"
 ], function( jQuery, slice ) {
 
+<<<<<<< HEAD
 jQuery.extend( {
 
 	Deferred: function( func ) {
@@ -13,6 +14,16 @@ jQuery.extend( {
 				[ "resolve", "done", jQuery.Callbacks( "once memory" ), "resolved" ],
 				[ "reject", "fail", jQuery.Callbacks( "once memory" ), "rejected" ],
 				[ "notify", "progress", jQuery.Callbacks( "memory" ) ]
+=======
+jQuery.extend({
+
+	Deferred: function( func ) {
+		var tuples = [
+				// action, add listener, listener list, final state
+				[ "resolve", "done", jQuery.Callbacks("once memory"), "resolved" ],
+				[ "reject", "fail", jQuery.Callbacks("once memory"), "rejected" ],
+				[ "notify", "progress", jQuery.Callbacks("memory") ]
+>>>>>>> calendario-diario
 			],
 			state = "pending",
 			promise = {
@@ -25,30 +36,47 @@ jQuery.extend( {
 				},
 				then: function( /* fnDone, fnFail, fnProgress */ ) {
 					var fns = arguments;
+<<<<<<< HEAD
 					return jQuery.Deferred( function( newDefer ) {
 						jQuery.each( tuples, function( i, tuple ) {
 							var fn = jQuery.isFunction( fns[ i ] ) && fns[ i ];
 
 							// deferred[ done | fail | progress ] for forwarding actions to newDefer
 							deferred[ tuple[ 1 ] ]( function() {
+=======
+					return jQuery.Deferred(function( newDefer ) {
+						jQuery.each( tuples, function( i, tuple ) {
+							var fn = jQuery.isFunction( fns[ i ] ) && fns[ i ];
+							// deferred[ done | fail | progress ] for forwarding actions to newDefer
+							deferred[ tuple[1] ](function() {
+>>>>>>> calendario-diario
 								var returned = fn && fn.apply( this, arguments );
 								if ( returned && jQuery.isFunction( returned.promise ) ) {
 									returned.promise()
-										.progress( newDefer.notify )
 										.done( newDefer.resolve )
-										.fail( newDefer.reject );
+										.fail( newDefer.reject )
+										.progress( newDefer.notify );
 								} else {
+<<<<<<< HEAD
 									newDefer[ tuple[ 0 ] + "With" ](
 										this === promise ? newDefer.promise() : this,
 										fn ? [ returned ] : arguments
 									);
+=======
+									newDefer[ tuple[ 0 ] + "With" ]( this === promise ? newDefer.promise() : this, fn ? [ returned ] : arguments );
+>>>>>>> calendario-diario
 								}
-							} );
-						} );
+							});
+						});
 						fns = null;
+<<<<<<< HEAD
 					} ).promise();
 				},
 
+=======
+					}).promise();
+				},
+>>>>>>> calendario-diario
 				// Get a promise for this deferred
 				// If obj is provided, the promise aspect is added to the object
 				promise: function( obj ) {
@@ -66,12 +94,20 @@ jQuery.extend( {
 				stateString = tuple[ 3 ];
 
 			// promise[ done | fail | progress ] = list.add
+<<<<<<< HEAD
 			promise[ tuple[ 1 ] ] = list.add;
 
 			// Handle state
 			if ( stateString ) {
 				list.add( function() {
 
+=======
+			promise[ tuple[1] ] = list.add;
+
+			// Handle state
+			if ( stateString ) {
+				list.add(function() {
+>>>>>>> calendario-diario
 					// state = [ resolved | rejected ]
 					state = stateString;
 
@@ -80,12 +116,21 @@ jQuery.extend( {
 			}
 
 			// deferred[ resolve | reject | notify ]
+<<<<<<< HEAD
 			deferred[ tuple[ 0 ] ] = function() {
 				deferred[ tuple[ 0 ] + "With" ]( this === deferred ? promise : this, arguments );
 				return this;
 			};
 			deferred[ tuple[ 0 ] + "With" ] = list.fireWith;
 		} );
+=======
+			deferred[ tuple[0] ] = function() {
+				deferred[ tuple[0] + "With" ]( this === deferred ? promise : this, arguments );
+				return this;
+			};
+			deferred[ tuple[0] + "With" ] = list.fireWith;
+		});
+>>>>>>> calendario-diario
 
 		// Make the deferred a promise
 		promise.promise( deferred );
@@ -106,11 +151,17 @@ jQuery.extend( {
 			length = resolveValues.length,
 
 			// the count of uncompleted subordinates
+<<<<<<< HEAD
 			remaining = length !== 1 ||
 				( subordinate && jQuery.isFunction( subordinate.promise ) ) ? length : 0,
 
 			// the master Deferred.
 			// If resolveValues consist of only a single Deferred, just use that.
+=======
+			remaining = length !== 1 || ( subordinate && jQuery.isFunction( subordinate.promise ) ) ? length : 0,
+
+			// the master Deferred. If resolveValues consist of only a single Deferred, just use that.
+>>>>>>> calendario-diario
 			deferred = remaining === 1 ? subordinate : jQuery.Deferred(),
 
 			// Update function for both resolve and progress values
@@ -136,9 +187,15 @@ jQuery.extend( {
 			for ( ; i < length; i++ ) {
 				if ( resolveValues[ i ] && jQuery.isFunction( resolveValues[ i ].promise ) ) {
 					resolveValues[ i ].promise()
+<<<<<<< HEAD
 						.progress( updateFunc( i, progressContexts, progressValues ) )
 						.done( updateFunc( i, resolveContexts, resolveValues ) )
 						.fail( deferred.reject );
+=======
+						.done( updateFunc( i, resolveContexts, resolveValues ) )
+						.fail( deferred.reject )
+						.progress( updateFunc( i, progressContexts, progressValues ) );
+>>>>>>> calendario-diario
 				} else {
 					--remaining;
 				}
@@ -152,7 +209,7 @@ jQuery.extend( {
 
 		return deferred.promise();
 	}
-} );
+});
 
 return jQuery;
-} );
+});

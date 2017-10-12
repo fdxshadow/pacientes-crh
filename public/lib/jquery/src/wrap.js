@@ -1,18 +1,28 @@
-define( [
+define([
 	"./core",
 	"./core/init",
 	"./manipulation", // clone
 	"./traversing" // parent, contents
 ], function( jQuery ) {
 
+<<<<<<< HEAD
 jQuery.fn.extend( {
+=======
+jQuery.fn.extend({
+>>>>>>> calendario-diario
 	wrapAll: function( html ) {
 		var wrap;
 
 		if ( jQuery.isFunction( html ) ) {
+<<<<<<< HEAD
 			return this.each( function( i ) {
 				jQuery( this ).wrapAll( html.call( this, i ) );
 			} );
+=======
+			return this.each(function( i ) {
+				jQuery( this ).wrapAll( html.call(this, i) );
+			});
+>>>>>>> calendario-diario
 		}
 
 		if ( this[ 0 ] ) {
@@ -24,7 +34,7 @@ jQuery.fn.extend( {
 				wrap.insertBefore( this[ 0 ] );
 			}
 
-			wrap.map( function() {
+			wrap.map(function() {
 				var elem = this;
 
 				while ( elem.firstElementChild ) {
@@ -32,7 +42,7 @@ jQuery.fn.extend( {
 				}
 
 				return elem;
-			} ).append( this );
+			}).append( this );
 		}
 
 		return this;
@@ -40,12 +50,12 @@ jQuery.fn.extend( {
 
 	wrapInner: function( html ) {
 		if ( jQuery.isFunction( html ) ) {
-			return this.each( function( i ) {
-				jQuery( this ).wrapInner( html.call( this, i ) );
-			} );
+			return this.each(function( i ) {
+				jQuery( this ).wrapInner( html.call(this, i) );
+			});
 		}
 
-		return this.each( function() {
+		return this.each(function() {
 			var self = jQuery( this ),
 				contents = self.contents();
 
@@ -55,25 +65,33 @@ jQuery.fn.extend( {
 			} else {
 				self.append( html );
 			}
-		} );
+		});
 	},
 
 	wrap: function( html ) {
 		var isFunction = jQuery.isFunction( html );
 
-		return this.each( function( i ) {
-			jQuery( this ).wrapAll( isFunction ? html.call( this, i ) : html );
-		} );
+		return this.each(function( i ) {
+			jQuery( this ).wrapAll( isFunction ? html.call(this, i) : html );
+		});
 	},
 
 	unwrap: function() {
+<<<<<<< HEAD
 		return this.parent().each( function() {
 			if ( !jQuery.nodeName( this, "body" ) ) {
 				jQuery( this ).replaceWith( this.childNodes );
 			}
 		} ).end();
+=======
+		return this.parent().each(function() {
+			if ( !jQuery.nodeName( this, "body" ) ) {
+				jQuery( this ).replaceWith( this.childNodes );
+			}
+		}).end();
+>>>>>>> calendario-diario
 	}
-} );
+});
 
 return jQuery;
-} );
+});

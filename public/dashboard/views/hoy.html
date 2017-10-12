@@ -1,0 +1,25 @@
+<section class="container-fluid" ng-controller="calendar">
+<hr>
+<div class="row">
+	<div  class="col-md-8" ui-calendar="uiConfig.calendar" ng-model="eventSources" calendar="micalendario"></div>
+
+
+	<!--Aqui vamos a poner un panel-->
+	<div class="col-md-4" ng-model="datos" ng-hide="show">
+	<div class="panel panel-success">
+			<div class="panel-heading"><h1>Nombre Paciente: {{datos.title}}</h1></div>
+  			<div class="panel-body"><h2>Tipo de visita: {{datos.tipo}}</h2	
+  			> <h2>Numero de telefono:{{datos.celular}}</h2>
+  			<div class="inline">
+  			<button class="btn btn-primary" ng-click="confirmar(datos)">Confirmar</button>
+  			<button class="btn btn-danger" ng-click="rechazar(datos)">Rechazar</button></div>
+  			</div>
+	</div>
+	</div>
+</div>	
+
+
+
+<hr>
+
+</section>

@@ -1,38 +1,47 @@
-define( [
+define([
 	"../core",
+	"../var/rnotwhite",
+	"../var/strundefined",
 	"../core/access",
 	"./support",
+<<<<<<< HEAD
 	"../var/rnotwhite",
 	"../selector"
 ], function( jQuery, access, support, rnotwhite ) {
 
 var boolHook,
+=======
+	"../selector"
+], function( jQuery, rnotwhite, strundefined, access, support ) {
+
+var nodeHook, boolHook,
+>>>>>>> calendario-diario
 	attrHandle = jQuery.expr.attrHandle;
 
-jQuery.fn.extend( {
+jQuery.fn.extend({
 	attr: function( name, value ) {
 		return access( this, jQuery.attr, name, value, arguments.length > 1 );
 	},
 
 	removeAttr: function( name ) {
-		return this.each( function() {
+		return this.each(function() {
 			jQuery.removeAttr( this, name );
-		} );
+		});
 	}
-} );
+});
 
-jQuery.extend( {
+jQuery.extend({
 	attr: function( elem, name, value ) {
-		var ret, hooks,
+		var hooks, ret,
 			nType = elem.nodeType;
 
-		// Don't get/set attributes on text, comment and attribute nodes
-		if ( nType === 3 || nType === 8 || nType === 2 ) {
+		// don't get/set attributes on text, comment and attribute nodes
+		if ( !elem || nType === 3 || nType === 8 || nType === 2 ) {
 			return;
 		}
 
 		// Fallback to prop when attributes are not supported
-		if ( typeof elem.getAttribute === "undefined" ) {
+		if ( typeof elem.getAttribute === strundefined ) {
 			return jQuery.prop( elem, name, value );
 		}
 
@@ -41,32 +50,57 @@ jQuery.extend( {
 		if ( nType !== 1 || !jQuery.isXMLDoc( elem ) ) {
 			name = name.toLowerCase();
 			hooks = jQuery.attrHooks[ name ] ||
+<<<<<<< HEAD
 				( jQuery.expr.match.bool.test( name ) ? boolHook : undefined );
+=======
+				( jQuery.expr.match.bool.test( name ) ? boolHook : nodeHook );
+>>>>>>> calendario-diario
 		}
 
 		if ( value !== undefined ) {
+
 			if ( value === null ) {
 				jQuery.removeAttr( elem, name );
-				return;
-			}
 
-			if ( hooks && "set" in hooks &&
-				( ret = hooks.set( elem, value, name ) ) !== undefined ) {
+			} else if ( hooks && "set" in hooks && (ret = hooks.set( elem, value, name )) !== undefined ) {
 				return ret;
+
+			} else {
+				elem.setAttribute( name, value + "" );
+				return value;
 			}
 
-			elem.setAttribute( name, value + "" );
-			return value;
-		}
-
-		if ( hooks && "get" in hooks && ( ret = hooks.get( elem, name ) ) !== null ) {
+		} else if ( hooks && "get" in hooks && (ret = hooks.get( elem, name )) !== null ) {
 			return ret;
+
+		} else {
+			ret = jQuery.find.attr( elem, name );
+
+			// Non-existent attributes return null, we normalize to undefined
+			return ret == null ?
+				undefined :
+				ret;
 		}
+	},
 
-		ret = jQuery.find.attr( elem, name );
+	removeAttr: function( elem, value ) {
+		var name, propName,
+			i = 0,
+			attrNames = value && value.match( rnotwhite );
 
-		// Non-existent attributes return null, we normalize to undefined
-		return ret == null ? undefined : ret;
+		if ( attrNames && elem.nodeType === 1 ) {
+			while ( (name = attrNames[i++]) ) {
+				propName = jQuery.propFix[ name ] || name;
+
+				// Boolean attributes get special treatment (#10870)
+				if ( jQuery.expr.match.bool.test( name ) ) {
+					// Set corresponding property to false
+					elem[ propName ] = false;
+				}
+
+				elem.removeAttribute( name );
+			}
+		}
 	},
 
 	attrHooks: {
@@ -83,6 +117,7 @@ jQuery.extend( {
 				}
 			}
 		}
+<<<<<<< HEAD
 	},
 
 	removeAttr: function( elem, value ) {
@@ -104,14 +139,15 @@ jQuery.extend( {
 				elem.removeAttribute( name );
 			}
 		}
+=======
+>>>>>>> calendario-diario
 	}
-} );
+});
 
 // Hooks for boolean attributes
 boolHook = {
 	set: function( elem, value, name ) {
 		if ( value === false ) {
-
 			// Remove boolean attributes when set to false
 			jQuery.removeAttr( elem, name );
 		} else {
@@ -126,7 +162,6 @@ jQuery.each( jQuery.expr.match.bool.source.match( /\w+/g ), function( i, name ) 
 	attrHandle[ name ] = function( elem, name, isXML ) {
 		var ret, handle;
 		if ( !isXML ) {
-
 			// Avoid an infinite loop by temporarily removing this function from the getter
 			handle = attrHandle[ name ];
 			attrHandle[ name ] = ret;
@@ -137,6 +172,6 @@ jQuery.each( jQuery.expr.match.bool.source.match( /\w+/g ), function( i, name ) 
 		}
 		return ret;
 	};
-} );
+});
 
-} );
+});

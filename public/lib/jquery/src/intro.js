@@ -5,7 +5,11 @@
  * Includes Sizzle.js
  * http://sizzlejs.com/
  *
+<<<<<<< HEAD
  * Copyright jQuery Foundation and other contributors
+=======
+ * Copyright 2005, 2014 jQuery Foundation, Inc. and other contributors
+>>>>>>> calendario-diario
  * Released under the MIT license
  * http://jquery.org/license
  *

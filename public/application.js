@@ -12,6 +12,7 @@ var mainApplicationModule = angular.module(mainApplicationModuleName,[
 	'service-example',
 	'dashboard',
 	'login',
+	'service-reserva',
 	'reservaPaciente',
 	'720kb.datepicker'
 ]);

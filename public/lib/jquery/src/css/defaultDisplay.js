@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 define( [
 	"../core",
 	"../var/document",
@@ -12,18 +13,41 @@ var iframe,
 		HTML: "block",
 		BODY: "block"
 	};
+=======
+define([
+	"../core",
+	"../manipulation" // appendTo
+], function( jQuery ) {
+
+var iframe,
+	elemdisplay = {};
+>>>>>>> calendario-diario
 
 /**
  * Retrieve the actual display of a element
  * @param {String} name nodeName of the element
  * @param {Object} doc Document object
  */
+<<<<<<< HEAD
 
 // Called only from within defaultDisplay
 function actualDisplay( name, doc ) {
 	var elem = jQuery( doc.createElement( name ) ).appendTo( doc.body ),
 
 		display = jQuery.css( elem[ 0 ], "display" );
+=======
+// Called only from within defaultDisplay
+function actualDisplay( name, doc ) {
+	var style,
+		elem = jQuery( doc.createElement( name ) ).appendTo( doc.body ),
+
+		// getDefaultComputedStyle might be reliably used only on attached element
+		display = window.getDefaultComputedStyle && ( style = window.getDefaultComputedStyle( elem[ 0 ] ) ) ?
+
+			// Use of this method is a temporary fix (more like optimization) until something better comes along,
+			// since it was removed from specification and supported only in FF
+			style.display : jQuery.css( elem[ 0 ], "display" );
+>>>>>>> calendario-diario
 
 	// We don't have any data stored on the element,
 	// so use "detach" method as fast way to get rid of the element
@@ -47,8 +71,12 @@ function defaultDisplay( nodeName ) {
 		if ( display === "none" || !display ) {
 
 			// Use the already-created iframe if possible
+<<<<<<< HEAD
 			iframe = ( iframe || jQuery( "<iframe frameborder='0' width='0' height='0'/>" ) )
 				.appendTo( doc.documentElement );
+=======
+			iframe = (iframe || jQuery( "<iframe frameborder='0' width='0' height='0'/>" )).appendTo( doc.documentElement );
+>>>>>>> calendario-diario
 
 			// Always write a new HTML skeleton so Webkit and Firefox don't choke on reuse
 			doc = iframe[ 0 ].contentDocument;
@@ -69,4 +97,9 @@ function defaultDisplay( nodeName ) {
 }
 
 return defaultDisplay;
+<<<<<<< HEAD
 } );
+=======
+
+});
+>>>>>>> calendario-diario

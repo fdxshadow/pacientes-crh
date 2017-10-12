@@ -9,8 +9,8 @@
 	passport = require('passport')
 	router = express.Router();
 
-module.exports = function(){
-	var app = express();
+module.exports = function(app){
+
 
 	if(process.env.NODE_ENV === 'development'){
 		app.use(morgan('dev'));
@@ -36,15 +36,8 @@ module.exports = function(){
 	app.use(passport.session());
 
 
-	// configurar archivos de enrutamiento
-	require('../app/routes/server.routes.index.js')(app);
-  	require('../app/routes/server.routes.paciente.js')(app);
-	require('../app/routes/server.routes.users.js')(app);
-	require('../app/routes/server.routes.reservas.js')(app);
-	require('../app/routes/server.routes.calendario.js')(app);
-	require('../app/routes/server.routes.medico.js')(app);
+
 
 	// configurar el servidor de archivos estáticos
 	app.use(express.static('./public'));
-	return app;
 }

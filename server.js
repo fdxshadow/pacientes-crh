@@ -1,18 +1,28 @@
-// Invocar modo JavaScript 'strict'
 'use strict';
+var express = require('express');
 
-// Configurar la variable 'NODE_ENV'
-process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+var env = process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+
+var app = express();
+
 // Cargar las dependencias de módulos
-var mongoose = require('./config/mongoose'),
-	express = require('./config/express');
+var mongoose = require('./config/mongoose');
+
 // Crear una nueva instancia conexión Mongoose
 var db = mongoose();
 // Crear una nueva instancia aplicación Express
-var app = express();
-// Usar la instancia de la aplicación Express para que escuche en el puerto '3000'
+require('./config/express')(app);
+
+// configurar archivos de enrutamiento
+//require('./app/routes/server.routes.users.js')(app);
+require('./app/routes/server.routes.reservas.js')(app);
+require('./app/routes/server.routes.medico.js')(app);
+
+
+require('./server/config/routes.js')(app);
+
 app.listen(3000);
 // Hacer Log del status del server a la consola
 console.log('Servidor ejecutándose en http://localhost:3000/');
 // Usar la prpiedad module.exports para exponer nuestra nuestra instancia de la aplicación Express para uso externo
-module.exports = app;
+

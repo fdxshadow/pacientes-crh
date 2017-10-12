@@ -4,9 +4,9 @@ var jwt = require('jsonwebtoken');
 var secret = 'dbz';
 
 
-module.exports = function(router){
+module.exports = function(app){
 
-	router.post('/users', function(req,res){
+	app.post('/users', function(req,res){
 		//Escuchando en http://8000/users
 		var user = new User();
 		user.username = req.body.username;
@@ -29,7 +29,7 @@ module.exports = function(router){
 
 	//Escuchando en http://8000/authenticate
 
-	router.post('/authenticate',function(req,res){
+	app.post('/authenticate',function(req,res){
 		User.findOne({username:req.body.username}).select('email username password').exec(function(err,user){
 			if(err) throw err;
 
@@ -39,20 +39,20 @@ module.exports = function(router){
 				if (req.body.password) {
 				 var validatePassword = user.comparePassword(req.body.password);
 				 if (!validatePassword) {
-				  res.json({success : false, message : 'Ingresó una contraseña incorrecta!'});  
+				  res.json({success : false, message : 'Ingresó una contraseña incorrecta!'});
 				 }
-				 else{ 
+				 else{
 				 	var token = jwt.sign({username:user.username, email:user.email}, secret,{expiresIn: '1m'});
 				 	res.json({success : true, message : 'Usuario Autenticado!',token: token });
 				 }
 				}
 				else{
 				 res.json({success : false, message : 'No ingresó contraseña!'});
-				}﻿
+				};
 			}
 		});
 	});
 
 	
-	return router;
+	return app;
 }

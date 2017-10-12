@@ -20,7 +20,7 @@ angular.module('mainController',['mainServices'])
 				app.loading = false;
 				app.successMsg = data.data.message + '...Redireccionando...';
 				$timeout(function(){
-					$location.path('/');
+					$location.path('/dashboard');
 				},2000);
 			}else{
 				app.loading = false;

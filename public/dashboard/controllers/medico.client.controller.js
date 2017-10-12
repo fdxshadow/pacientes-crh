@@ -1,8 +1,16 @@
-angular.module('dashboard').controller('medico',['$scope','pacienteinfo',function ($scope,pacienteinfo) {
+angular.module('dashboard').controller('medico',['$scope','pacienteinfo','servicemed',function ($scope,pacienteinfo,servicemed) {
 
 
-    $scope.seleccionado = function (numero){
-        pacienteinfo.medico_id=numero;
+	servicemed.query(function(data){
+		$scope.medicos = data;
+
+	});
+
+
+
+
+    $scope.seleccionado = function (medico){
+        pacienteinfo.medico_id=medico.id;
     }
 
 }

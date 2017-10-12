@@ -1,11 +1,10 @@
-
 <div class="container">
   <div class="well">
     <form name="signupForm" class="form-horizontal">
       <fieldset>
         <legend>Informacion Paciente Nuevo</legend>
         <div class="form-group">
-          <label for="rut" class="col-md-2 control-label">RUT</label>
+          <label for="rut" class="col-md-2 control-label">RUT *</label>
           <div class="col-md-10">
             <input name="rut" type="text" placeholder="RUT" ng-model="rut" required="required" class="form-control"/>
           </div>
@@ -36,9 +35,9 @@
           </div>
         </div>
       </fieldset>
-      <small>Rut: Ingresar sin puntos y con guion.</small>
+      <small><strong>Rut:</strong> Ingresar sin puntos y con guion.</small>
       <br>
-      <small>Telefono: Ingresar los 9 digitos.</small>
+      <small><strong>Telefono:</strong> Ingresar los 9 digitos.</small>
     </form>
 
   </div>

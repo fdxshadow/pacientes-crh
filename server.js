@@ -3,22 +3,18 @@ var express = require('express');
 
 var env = process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
+var config = require('./server/config/config')[env];
+
 var app = express();
 
-// Cargar las dependencias de módulos
-var mongoose = require('./config/mongoose');
+require('./server/config/mongoose')(config);
 
-// Crear una nueva instancia conexión Mongoose
-var db = mongoose();
-// Crear una nueva instancia aplicación Express
-require('./config/express')(app);
+require('./server/config/express')(app, config);
 
-// configurar archivos de enrutamiento
+require('./server/config/routes')(app);
 
-require('./server/config/routes.js')(app);
+app.listen(config.port);
 
-app.listen(3000);
-// Hacer Log del status del server a la consola
-console.log('Servidor ejecutándose en http://localhost:3000/');
-// Usar la prpiedad module.exports para exponer nuestra nuestra instancia de la aplicación Express para uso externo
+console.log('Servidor ejecutándose en puerto ' + config.port + '...');
+
 

@@ -8,6 +8,8 @@ module.exports = function(){
 	// Cargar modelos de base de datos
 	require('../app/models/server.model.user');
 	require('../app/models/server.model.paciente');
+	require('../app/models/server.model.reserva');
+	
 	//retornar instancia de mongoose
 	return db;
 }

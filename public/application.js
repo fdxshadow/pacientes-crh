@@ -10,6 +10,7 @@ var mainApplicationModule = angular.module(mainApplicationModuleName,[
 	'RutValidador',
 	'service-example',
 	'dashboard',
+	'service-reserva',
 	'reservaPaciente',
 	'720kb.datepicker'
 ]);

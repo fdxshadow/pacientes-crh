@@ -31,10 +31,6 @@ angular.module('dashboard').controller('calendar',['$scope','uiCalendarConfig','
 
         var aux = {
           title:value.paciente_id.firstName,
-
-          title:value.paciente_id,
-
-          
           start:value.fecha_reserva+'T'+value.hora_inicio_reserva,
           end:value.fecha_reserva+'T'+value.hora_fin_reserva,
           color:colore

@@ -7,7 +7,8 @@
             <div class="col-md-6">
                 <div class="stats-wrapper">
                     <h2 class="md-title">Fecha: </h2>
-                    <datetimepicker data-ng-model="data.embeddedDate" data-datetimepicker-config="{ startView:'day', minView:'day' }" /><datepicker date-format="yyyy-MM-dd" datepicker-show="{{visibility}}">
+                    <datetimepicker data-ng-model="data.embeddedDate" data-datetimepicker-config="{ startView:'day', minView:'day' }" />
+                    <datepicker date-format="yyyy-MM-dd" datepicker-show="{{visibility}}">
                         <input ng-change=buscar() type="text" class="form-control" ng-model="date" is-open="opened" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" current-text="Tonight" clear text="Reset" close-text="Exit"/>
                     </datepicker>
 				</div>

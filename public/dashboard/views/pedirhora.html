@@ -14,28 +14,25 @@
 <table  class="table table-bordered table-responsive">
 	<thead>
 		<tr>
+			<th>Nombre</th>
+			<th>Apellido
 			<th>Rut</th>
 			<th>Telefono</th>
-			<th>Accion</th>
+			<th>Acción</th>
 		</tr>
 	</thead>
 	<tbody>
 		<tr ng-repeat="paciente in pacientes | filter:buscarpaciente">
+			<td>{{paciente.firstName}}</td>
+			<td>{{paciente.lastName}}
 			<td>{{paciente.rut}}</td>
-			<td>{{paciente.telefono}}</td>
+			<td>{{paciente.telephone}}</td>
 			<td>
 				<button class="btn btn-success" ng-click="seleccionado(paciente)">Seleccionar</button>
-				<!--<button style="background-color:#007da7;color:white;" class="btn btn-default">Actualizar telefono</button>-->
-				<button ng-click="actualizar(paciente)" class="btn btn-primary">Editar telefono</button>
+				<!--button class="btn btn-primary" ng-click="cambiofono(paciente)" >Editar teléfono</button-->
 			</td>
 		</tr>
 	</tbody>
-
-
 </table>
 <hr>
-
-
-
-
 </section>

@@ -7,7 +7,7 @@ angular.module('pacientes').config(['$routeProvider',
 		when('/pacientes/create', {
 			templateUrl: 'pacientes/views/agregar.html',   
 			controller: 'PacientesController',
-			authenticated: true
+			//authenticated: true
 		})
 		
 	}

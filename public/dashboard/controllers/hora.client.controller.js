@@ -1,24 +1,43 @@
-angular.module('dashboard').controller('Hora',['$scope','$location','pacienteinfo',function ($scope,$location,pacienteinfo) {
-	$scope.pacientes = [
-		{rut:'18988430',
-		 telefono:'555555'	
-			},
-		{rut:'18988710',
-		 telefono:'555555'},
-		{rut:'18229444',
-		 telefono:'5555555'},
-		{rut:'10813411',
-		telefono:'555555'}
-	];		
+angular.module('dashboard').controller('Hora',['$scope','$location','pacienteinfo', 'pacienteResource', function ($scope,$location,pacienteinfo, pacienteResource) {
 
+	pacienteResource.query(function(data){
+		$scope.pacientes = data;
+		console.log(data);
+		if(data=="error getPacientes"){
+			$scope.pacientes = {};
+		}
+	});
+
+
+	
 	$scope.seleccionado = function(paciente){
-		pacienteinfo.datahora.paciente = paciente.rut
-		console.log(pacienteinfo.datahora.paciente);
+		pacienteinfo.paciente_id = paciente._id;
+		console.log(pacienteinfo.paciente_id);
 		$location.url('/tipohora'); //ruta de tu vista alfonso, la de los doctores
 
 	}
 
+	$scope.cambiofono = function(paciente){
+		pacienteinfo.paciente = paciente.rut
+		console.log(pacienteinfo.paciente);
+		$location.url('/editarfono'); 
+
+	}
+
+/*    $scope.update = function(telephone) {
+    // Usar el método '$update' de paciente para enviar una petición PUT apropiada
+    $scope.paciente.$update(function() {
+        // Si un paciente fue actualizado de modo correcto, redirigir el user a la página del paciente 
+        $location.url('/hora');
+    }, function(errorResponse) {
+        // En otro caso, presenta al user un mensaje de error
+        $scope.error = errorResponse.data.message;
+    });
+    $location.url('/hora');
+};
+*/
 	$scope.actualizar = function(paciente){
 		$scope.paciente = paciente;
 	}	
+	
 }])

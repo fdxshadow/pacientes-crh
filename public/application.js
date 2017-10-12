@@ -12,8 +12,13 @@ var mainApplicationModule = angular.module(mainApplicationModuleName,[
 	'service-example',
 	'dashboard',
 	'login',
+	'service-reserva',
 	'reservaPaciente',
-	'720kb.datepicker'
+	'720kb.datepicker',
+	'medicos',
+	'horas',
+	'agendas',
+	'moment-picker'
 ]);
 
 mainApplicationModule.config(['$locationProvider',

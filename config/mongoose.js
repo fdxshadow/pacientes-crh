@@ -11,5 +11,9 @@ module.exports = function(){
     pacienteModel.createDefaultPacientes();
 
     //retornar instancia de mongoose
+	require('../app/models/server.model.reserva');
+	require('../app/models/server.model.horas');
+	require('../app/models/server.model.medicos');
+	//retornar instancia de mongoose
 	return db;
 }

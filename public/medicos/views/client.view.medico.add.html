@@ -1,0 +1,34 @@
+<div class="row contact-wrap">
+	<div class="center">
+		<h2>Nuevo Medico</h2>
+	</div>
+	<div class="col-lg-6 col-lg-offset-3 col-sm-offset-6 col-sm-3 col-xs-12 contact-form">
+		<form ng-submit="create()" >
+            <!-- El elemento mensaje error -->
+            <div data-ng-show="error" class="alert alert-danger fade in alert-dismissable text-center">
+                <strong data-ng-bind="error"></strong>
+            </div>
+			<p class="lead">Ingrese la información del Medico</p>
+			<div class="form-group">
+                <label>Nombres</label>
+                <input type="text" name="nombre" class="form-control" placeholder="Nombres y Apellidos" data-ng-model="nombre">
+            </div>
+			<div class="form-group">
+                <label>R.U.N.</label>
+                <input type="text" name="run" class="form-control" placeholder="11.222.333-5" data-ng-model="run">
+            </div>
+			<div class="form-group">
+                <label>Especialidad</label>
+                <input type="text" name="fono" class="form-control" placeholder="Fragmentación DNA" data-ng-model="especialidad">
+            </div>
+						<div class="form-group">
+			                <label>Correo electrónico</label>
+			                <input type="text" name="fono" class="form-control" placeholder="correo@gmail.com" data-ng-model="email">
+			            </div>
+		    <div class="form-group center">
+                <button type="submit" class="btn btn-primary" ><span class="fa fa-plus"></span> Agregar </button>
+                <a class="btn btn-default" style="margin-top:20px" href="#!/tipo_paciente"><i class="fa fa-times"></i> Cancelar</a>
+            </div>
+        </form>
+    </div>
+</div>

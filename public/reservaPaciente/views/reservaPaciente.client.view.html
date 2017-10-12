@@ -1,26 +1,48 @@
-    
-<section ng-controller="ReservaController">
+	
+<section ng-controller="reservaPacienteController">
     <div class="container">
-        <h1>Medico</h1>
-        <h1>Paciente</h1>
+        
+        <h1 class="md-title">Medico 1</h1>
         <div class="row">
-                <div class="col-md-6">
-                    <datepicker date-format="yyyy-MM-dd">
-                       <input ng-change="prueba()" ng-model="date">
+            <div class="col-md-6">
+                <div class="stats-wrapper">
+                    <h2 class="md-title">Fecha: </h2>
+                    <datetimepicker data-ng-model="data.embeddedDate" data-datetimepicker-config="{ startView:'day', minView:'day' }" /><datepicker date-format="yyyy-MM-dd" datepicker-show="{{visibility}}">
+                        <input ng-change=buscar() type="text" class="form-control" ng-model="date" is-open="opened" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" current-text="Tonight" clear text="Reset" close-text="Exit"/>
                     </datepicker>
-                </div> 
-
-                <div class="col-md-6">
-                    <h3>Reservas Disponibles</h3>
-                    <div ng-repeat="horario in horarios">
-                        <div>{{horario.hora_ini}}-{{horario.hora_term}}</div>
-                        <button ng-click=reservar(horario) class="btn btn-success" type="button">Reservar</button>
+				</div>
+            </div>
+            <div class="col-md-6">
+                <h2 class="md-title">Reservas disponibles</h2>
+                
+                <div class="stats-wrapper" ng-repeat="p in disponibilidad2">
+                <!--
+                    <p>Seleccione Médico</p>
+                    <select  name="seleccionarmedico" ng-change =buscar() ng-model="copiarmedicoseleccionado" ng-options="copiarmedico.nombreMedico for copiarmedico in medico track by copiarmedico.Id" >
+                            <option value="">-- Seleccionar Médico tratante --</option>
+                    </select>
+                    
+                --> <div class="row">
+                        <div class="col-md-6">
+                            <button class="btn-primary" ng-click="$parent.remove(p)">Reservar</button>
+                        </div>
+                        <div class="col-md-6">
+                            <h3>{{p.hora}}</h3>
+                        </div>
                     </div>
-
-
+                    <!--
+                    <table>
+                        <tr ng-repeat="p in disponibilidad2">
+                            <td>{{p.hora}}</td>
+                            <td>
+                                <button class="btn-primary" ng-click="$parent.remove(p)">Reservar</button>
+                            </td>
+                        </tr>
+                    </table>
+                    -->
                 </div>
-
-                </div>
+            </div>
+        </div>
     </div>
     <br>
-</section>  
+</section>	

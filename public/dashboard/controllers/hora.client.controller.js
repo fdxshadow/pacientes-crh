@@ -1,7 +1,8 @@
 angular.module('dashboard').controller('Hora',['$scope','$location','pacienteinfo',function ($scope,$location,pacienteinfo) {
 	$scope.pacientes = [
 		{rut:'18988430',
-		 telefono:'555555'},
+		 telefono:'555555'	
+			},
 		{rut:'18988710',
 		 telefono:'555555'},
 		{rut:'18229444',
@@ -11,8 +12,8 @@ angular.module('dashboard').controller('Hora',['$scope','$location','pacienteinf
 	];		
 
 	$scope.seleccionado = function(paciente){
-		pacienteinfo.paciente_id = paciente.rut
-		console.log(pacienteinfo.paciente_id);
+		pacienteinfo.datahora.paciente = paciente.rut
+		console.log(pacienteinfo.datahora.paciente);
 		$location.url('/tipohora'); //ruta de tu vista alfonso, la de los doctores
 
 	}

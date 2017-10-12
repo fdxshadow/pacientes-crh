@@ -1,6 +1,8 @@
 angular.module('service-example').service('SharedDataService', function () {
-     var PacienteData = {
-        rut: ''
+     var sharedData = {
+        rut: '',
+        hora:''
     };
-    return PacienteData;
+
+    return sharedData;
 });

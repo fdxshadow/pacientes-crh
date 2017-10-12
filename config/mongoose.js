@@ -7,10 +7,9 @@ module.exports = function(){
 	var db = mongoose.connect(config.DBuri);
 	// Cargar modelos de base de datos
 	require('../app/models/server.model.user');
-	var pacienteModel = require('../app/models/server.model.paciente');
-    pacienteModel.createDefaultPacientes();
-
-    //retornar instancia de mongoose
-	require('../app/models/server.model.reserva');
+	require('../app/models/server.model.paciente');
+	require('../app/models/server.model.medico');
+	require('../app/models/server.model.hora');
+	//retornar instancia de mongoose
 	return db;
 }

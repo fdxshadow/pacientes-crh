@@ -1,59 +1,3 @@
-var Paciente = require('mongoose').model('Paciente');
-
-exports.getPacientes = function (req, res) {
-    Paciente.find({}).exec(function (err, collection) {
-        res.send(collection);
-    })
-}
-
-var ObjectId = require('mongoose').Types.ObjectId;
-
-
-exports.getPacientesById = function (req, res) {
-    Paciente.findOne({"_id":ObjectId(req.params.id)}).exec(function (err, paciente) {
-        res.send(paciente)
-    })
-    //Paciente.findOne({_id:req.params.id}).exec(function (err, paciente) {
-};
-
-
-exports.create = function (req, res, next){
-    var pacienteData = req.body;
-    console.log(req.body.rut);
-
-    Paciente.find({"rut": req.body.rut}).exec(function(err, collection) {
-        if(collection.length > 0) {
-            err = new Error('RUT ya existe');
-            res.status(400);
-            return res.send({reason:err.toString()})
-        }
-        else {
-            Paciente.create(pacienteData, function(err, paciente){
-                if(err){
-                    if(err.toString().indexOf('E11000') > -1){
-                        err = new Error('Paciente ya existe');
-                    }
-                    res.status(400);
-                    return res.send({reason:err.toString()})
-                }
-                res.send(paciente);
-            })
-		}
-    })
-
-
-
-};
-
-
-
-
-
-
-
-
-
-/*
 // Invocar modo JavaScript 'strict'
 'use strict';
 
@@ -88,4 +32,37 @@ exports.create = function(req, res) {
 			res.json(paciente);
 		}
 	});
-};*/
+};
+
+// Crear un nuevo método controller que recupera una lista de pacientes
+exports.list = function(req, res) {
+	// Usar el método model 'find' para obtener una lista de pacientes
+	Paciente.find({}, function(err, pacientes){
+		if(err){
+			// Si un error ocurre enviar un mensaje de error
+			return res.status(400).send({
+				message: getErrorMessage(err)
+			});
+		}else{
+			// usar objeto response (res) para enviar una respuesta JSON
+			res.json(pacientes);
+		}
+	});
+};
+
+exports.read = function(req, res) {
+	res.json(req.paciente);
+};
+
+exports.pacienteByID = function(req, res, next, id){
+	Paciente.findOne({
+		_id: id
+	}, function(err, paciente){
+		if (err) return next(err);
+		if (!paciente) return next(new Error('Fallo al cargar el paciente ' + id));
+		// Si un paciente es encontrado usar el objeto 'request' para pasarlo al siguietne middleware
+		req.paciente = paciente;
+		// Llamar al siguiente middleware
+		next();
+	});
+};

@@ -1,0 +1,44 @@
+<div class="row contact-wrap" data-ng-init="find()">
+	<div class="center">
+		<h2><i class="fa fa-address-book-o"></i> Seleccionar Paciente </h2>
+	</div>
+	<div class="col-lg-12 single-profile-top" >
+		<div class="row">
+			<label class="pull-left" style="padding-left: 20px;"><span class="fa fa-filter"></span> Filtros</label>
+			<div class="col-lg-3 col-md-4 col-sm-4" style="padding: 10px;">
+				<input name="nombre" class="form-control" type="text" placeholder="Ingrese un nombre" ng-model="search.nombre"></input>
+			</div>
+			<div class="col-lg-3 col-md-4 col-sm-4" style="padding: 10px;">
+				<input name="rut" class="form-control" type="text" placeholder="Ingrese un R.U.N." ng-model="search.run"></input>
+			</div>
+		</div>
+	</div>
+    <form class="contact-form">
+		<table class="table table-striped" style='border: 1px solid #DDD' >
+			<thead>
+				<tr>
+					<th>R.U.N.</th>
+					<th>Nombre Paciente</th>
+					<th>Fono</th>
+					<th>Seleccionado</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="p in pacientes | filter:search:strict">
+					<td style="text-align: left;" >{{p.run}}</td>
+					<td style="text-align: left;" >{{p.nombre}}</td>
+					<td style="text-align: left;" >{{p.fono}}</td>
+					<td class="center">
+						<input class="form-control" type="radio" name="pacienteSeleccionado" style="height: 17px; margin:0px;" data-ng-model="paciente" data-ng-value="$index" data-ng-change="setPaciente($index)" />
+					</td>
+				</tr>
+			<tbody>
+		</table>
+		<a class="btn btn-primary pull-right" href="#!/horas/createstep2"  ng-show="buttonVisibility"><span class="fa fa-user"></span> Seleccionar Paciente </a>
+    </form>
+</div><!--/.row-->
+<h3>test:{{pacientenocreo}} </h3>
+<div class="col-lg-12 col-sm-12 col-xs-12 center">
+	<a class="btn btn-default" style="margin-top:20px" href="#!/tipo_paciente"><i class="fa fa-undo"></i> Atrás</a>
+	<a class="btn btn-danger " style="margin-top:20px" href="#!/home_administrativo"><i class="fa fa-times"></i> Cancelar</a>
+</div>

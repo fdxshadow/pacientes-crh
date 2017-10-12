@@ -6,8 +6,7 @@
 	config = require('./config'),
 	methodOverride = require('method-override'),
 	flash = require('connect-flash'),
-	passport = require('passport')
-	router = express.Router();
+	passport = require('passport');
 
 module.exports = function(){
 	var app = express();
@@ -39,8 +38,10 @@ module.exports = function(){
 	// configurar archivos de enrutamiento
 	require('../app/routes/server.routes.index.js')(app);
   require('../app/routes/server.routes.paciente.js')(app);
+  require('../app/routes/server.routes.medico.js')(app);
+    require('../app/routes/server.routes.hora.js')(app);
 	require('../app/routes/server.routes.users.js')(app);
-	require('../app/routes/server.routes.reservas.js')(app);
+
 
 	// configurar el servidor de archivos estáticos
 	app.use(express.static('./public'));

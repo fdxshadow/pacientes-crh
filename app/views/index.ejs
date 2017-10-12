@@ -2,15 +2,17 @@
 <html>
 <head>
 	<title><%= title%></title>
-	<link rel="stylesheet" type="text/css" href="/lib/bootstrap/dist/css/bootstrap.css"/>
+	<link rel="stylesheet" type="text/css" href="/lib/bootstrap/dist/css/bootstrap.css" />
 	<link rel="stylesheet" href="/assets/css/main.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="/lib/angular-date-picker/angular-date-picker.css" />
-	<link rel="stylesheet" type="text/css" href="/lib/toastr/toastr.css" />
-	<link href="/lib/angularjs-datepicker/src/css/angular-datepicker.css" rel="stylesheet" type="text/css" />
 	<link rel="stylesheet" type="text/css" href="/assets/css/opciones.css">
+	<link rel="stylesheet" type="text/css" href="/lib/angular-date-picker/angular-date-picker.css" />
+	<link href="/lib/angularjs-datepicker/src/css/angular-datepicker.css" rel="stylesheet" type="text/css" />
+
+	<link href="lib/angular-moment-picker/dist/angular-moment-picker.min.css" rel="stylesheet" />
+
 </head>
-<body ng-controller="mainCtrl as main">
+<body>
 
  <header id="header">
 	        <div class="container">
@@ -24,9 +26,7 @@
 	          </div>
 	        </div><!--/.container-->
 	    </header><!--/header-->
-
-	    
-<section ng-view >
+<section ng-view>
 
 </section>
 
@@ -39,7 +39,6 @@
 		            <li style="margin-top: 15px;"><a>Clínica de Reproducción Humana</a></li></br>
 		            <li><a>Hontaneda 2664, Valparaíso. Chile</a></li></br>
 		            <li><a>Fono: +56 (32) 250 7313</a></li></br>
-		            <li><a href="/" ng-click="main.logout();">Salir</a></li></br>
 		          </ul>
 		        </div>
 		      </div>
@@ -64,13 +63,11 @@
 <script type="text/javascript" src="/lib/angular/angular.js"></script>
 <script type="text/javascript" src="/lib/angular-locale_es-cl.js"></script>
 <script type="text/javascript" src="/lib/angular-route/angular-route.js"></script>
-<script type="text/javascript" src="/lib/angular-animate/angular-animate.js"></script>
 <script type="text/javascript" src="/lib/jquery/dist/jquery.js"></script>
 <script type="text/javascript" src="/lib/bootstrap/dist/js/bootstrap.js"></script>
 <script type="text/javascript" src="/lib/angular-resource/angular-resource.js"></script>
 <script type="text/javascript" src="/lib/angular-bootstrap/ui-bootstrap.min.js"></script>
 <script type="text/javascript" src="/lib/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
-<script type="text/javascript" src="/lib/toastr/toastr.js"></script>
 <script type="text/javascript" src="/lib/ngstorage/ngStorage.min.js"></script>
 <script type="text/javascript" src="/lib/angular-rut/dist/angular-rut.min.js"></script>
 <script type="text/javascript" src="/lib/AngularJsRutValidador/AngularJsRutValidador.js"></script>
@@ -78,18 +75,49 @@
 
 <!--calendario -->
 <script src="/lib/angular-date-picker/angular-date-picker.js"></script>
-<script src="/lib/angularjs-datepicker/src/js/angular-datepicker.js"></script> 
-<script src="/lib/angularjs-datepicker/src/angular-locale_es-cl.js"></script> 
+<script src="/lib/angularjs-datepicker/src/js/angular-datepicker.js"></script>
+<script src="/lib/angularjs-datepicker/src/angular-locale_es-cl.js"></script>
 
 
 <!-- modulo pacientes -->
 <script type="text/javascript" src="/pacientes/client.module.pacientes.js"></script>
 <script type="text/javascript" src="/pacientes/services/client.service.pacientes.js"></script>
 <script type="text/javascript" src="/pacientes/controllers/client.controller.pacientes.js"></script>
-<script type="text/javascript" src="/pacientes/resources/Paciente.js"></script>
-<script type="text/javascript" src="/common/Notifier.js"></script>
-<script type="text/javascript" src="/common/Rut.js"></script>
 <script type="text/javascript" src="/pacientes/config/client.route.pacientes.js"></script>
+
+<!-- test de PDF -->
+
+<script src="https://cdn.rawgit.com/niklasvh/html2canvas/0.5.0-alpha2/dist/html2canvas.min.js"></script>
+   <script src="lib/jsPDF/dist/jspdf.debug.js"></script>
+   <script src="lib/angular-save-html-to-pdf/dist/saveHtmlToPdf.min.js"></script>
+	 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.22/pdfmake.min.js"></script>
+	 <script src="//kendo.cdn.telerik.com/2016.3.914/js/kendo.all.min.js"></script>
+
+
+
+
+
+<!-- modulo HORAS -->
+<script type="text/javascript" src="/horas/client.module.horas.js"></script>
+<script type="text/javascript" src="/horas/services/client.service.horas.js"></script>
+<script type="text/javascript" src="/horas/controllers/client.controller.horas.js"></script>
+<script type="text/javascript" src="/horas/config/client.route.horas.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment-with-locales.js"></script>
+<script type="text/javascript" src="lib/angular-moment-picker/dist/angular-moment-picker.min.js"></script>
+<link href="lib/angular-moment-picker/dist/angular-moment-picker.min.css" rel="stylesheet" />
+<!-- modulo medico -->
+
+<script type="text/javascript" src="/medicos/client.module.medicos.js"></script>
+<script type="text/javascript" src="/medicos/services/client.service.medicos.js"></script>
+<script type="text/javascript" src="/medicos/controllers/client.controller.medicos.js"></script>
+<script type="text/javascript" src="/medicos/config/client.route.medicos.js"></script>
+
+<!-- modulo agenda -->
+
+<script type="text/javascript" src="/agendas/client.module.agendas.js"></script>
+<script type="text/javascript" src="/agendas/services/client.service.agendas.js"></script>
+<script type="text/javascript" src="/agendas/controllers/client.controller.agendas.js"></script>
+<script type="text/javascript" src="/agendas/config/client.route.agendas.js"></script>
 
 <!--service-example-->
 <script type="text/javascript" src="service-example/service-example.client.module.js"></script>
@@ -101,30 +129,14 @@
 <script type="text/javascript" src="/dashboard/controllers/hora.client.controller.js"></script>
 <script type="text/javascript" src="/dashboard/config/dashboard.client.routes.js"></script>
 <script type="text/javascript" src="/dashboard/service/service-paciente.client.module.js"></script>
-<script type="text/javascript" src="/dashboard/controllers/tipoexamen.client.controller.js"></script>
-<script type="text/javascript" src="/dashboard/controllers/medico.client.controller.js"></script>
+<script type="text/javascript" src="/dashboard/controllers/tipoexamen.client.controller.js"></script></s>
 
 
 <!--modulo calendario -->
-
-
 <script type="text/javascript" src="/reservaPaciente/reservaPaciente.client.module.js"></script>
-
 <script type="text/javascript" src="/reservaPaciente/controllers/reservaPaciente.client.controller.js"></script>
-
 <script type="text/javascript" src="/reservaPaciente/config/reservaPaciente.client.routes.js"></script>
 
-<!--modulo login -->
- <script type="text/javascript" src="/login/login.client.module.js"></script>
- <script type="text/javascript" src="/login/config/login.client.routes.js"></script>
- <script type="text/javascript" src="/login/controllers/login.client.controller.js"></script>
- <script type="text/javascript" src="/login/controllers/login.client.main.js"></script>
- <script type="text/javascript" src="/login/service/login.client.service.js"></script>
- <script type="text/javascript" src="/login/service/login.client.main.js"></script> 
-<script type="text/javascript" src="service-reserva/service-reserva.client.module.js"></script>
-
-
-<script type="text/javascript" src="service-reserva/service/reserva.client.service.js"></script>
 
 
 

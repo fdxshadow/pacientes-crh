@@ -1,19 +1,17 @@
-var session = require('express-session'),
-    express = require('express'),
+var flash = require('connect-flash'),
     morgan = require('morgan'),
+    session = require('express-session'),
+    express = require('express'),
     compress = require('compression'),
+    passport = require('passport'),
     bodyParser = require('body-parser'),
-    config = require('./config'),
     methodOverride = require('method-override'),
-    flash = require('connect-flash'),
-    passport = require('passport')
-router = express.Router();
+    router = express.Router();
 
 module.exports = function(app, config){
 
     app.set('views', config.rootPath + '/server/views');
     app.set('view engine', 'ejs');
-
 
     if(process.env.NODE_ENV === 'development'){
         app.use(morgan('dev'));
@@ -33,42 +31,18 @@ module.exports = function(app, config){
     app.use(passport.initialize());
     app.use(passport.session());
 
-
-
-
-    // configurar el servidor de archivos estáticos
     app.use(express.static(config.rootPath + './public'));
-}
-
+};
 
 /*
-
-var express = require('express'),
-    stylus = require('stylus'),
-    morgan = require('morgan'),
-    cookieParser = require('cookie-parser'),
-    session = require('express-session'),
-    bodyParser = require('body-parser'),
-    passport = require('passport');
-
-
-module.exports = function(app, config){
+    stylus, cookiParser, Jade
+    module.exports = function(app, config){
     function compile(str, path){
         return stylus(str).set('filename', path);
     }
-
-    app.set('view engine', 'jade');
-    app.use(cookieParser());
-
-
     app.use(stylus.middleware(
         {
             src: config.rootPath + '/public',
             compile: compile
         }
-    ));
-}
-
-
-
  */

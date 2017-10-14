@@ -2,7 +2,6 @@ angular.module('dashboard').config(['$routeProvider',function($routeProvider){
 	$routeProvider.
 		when('/dashboard',{
 			templateUrl:'dashboard/views/index.html'
-			//authenticated: true
 		}).
 		when('/hora',{
 			templateUrl:'dashboard/views/pedirhora.html'

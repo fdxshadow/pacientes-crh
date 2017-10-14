@@ -26,17 +26,3 @@ angular.module('pacientes').service('PacientesSrv', function ($q, Paciente, Rut)
         return dfd.promise;
     }
 });
-
-/* Crear el service 'pacientes
-angular.module('pacientes').factory('PacientesResource', ['$resource', function($resource) {
-	// Usar el service '$resource' para devolver un objeto '$resource' paciente
-    return $resource('api/pacientes/:pacienteId', {
-        pacienteId: '@_id'
-    }, {
-        update: {
-            method: 'PUT'
-        }
-    });
-}]);
-
-*/

@@ -1,4 +1,4 @@
-
+'use strict';
 
 var mongoose = require('mongoose'),
     pacienteModel = require('../models/paciente'),

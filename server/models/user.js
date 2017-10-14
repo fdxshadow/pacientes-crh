@@ -1,7 +1,5 @@
-// Invocar al modo JavaScript 'strict'
 'use strict';
 
-// Cargar el módulo Mongoose y el objecto Schema
 var mongoose = require('mongoose'),
 	bcrypt = require('bcrypt-nodejs');
 	
@@ -45,15 +43,33 @@ function createDefaultUsers(){
             User.create({
                 username:'francisco',
                 password: 'francisco',
-                email: 'correoDoctor1@example.com'});
+                email: 'francisco@example.com'
+            });
             User.create({
                 username:'elias',
                 password: 'elias',
-                email: 'correoDoctor2@example.com'});
+                email: 'elias@example.com'
+            });
             User.create({
                 username:'claudio',
                 password: 'claudio',
-                email:'correoDoctor1@example.com'});
+                email:'claudio@example.com'
+            });
+            User.create({
+                username:'juan',
+                password: 'juan',
+                email:'juan@example.com'
+            });
+            User.create({
+                username:'carlos',
+                password: 'carlos',
+                email:'carloss@example.com'
+            });
+            User.create({
+                username:'rodrigo',
+                password: 'rodrigo',
+                email:'rodrigo@example.com'
+            });
         }
     })
 }

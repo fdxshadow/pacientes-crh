@@ -3,17 +3,27 @@
 
 // Cargar el módulo Mongoose y el objecto Schema
 var mongoose = require('mongoose'),
-	bcrypt = require('bcrypt-nodejs'),
-	Schema = mongoose.Schema;
+	bcrypt = require('bcrypt-nodejs');
+	
 
-// Definir un nuevo Schema llamado 'UserSchema'
-var UserSchema = new Schema({
-	username:{type:String,lowercase:true,required:true,unique:true},
-	password:{type:String,required:true},
-	email:{type:String,lowercase:true,required:true,unique:true}
+var UserSchema = mongoose.Schema({
+	username: {
+		type: String,
+		lowercase: true,
+		required: true,
+		unique: true
+	},
+	password: {
+		type: String,
+		required: true},
+	email: {
+		type: String,
+		lowercase: true,
+		required: true,
+		unique: true
+	}
 });
 
-// antes de guardar un nuevo usuario hashear el password del usuario
 UserSchema.pre('save', function(next){
 	var user = this;
 	bcrypt.hash(user.password, null, null, function(err,hash){
@@ -23,11 +33,29 @@ UserSchema.pre('save', function(next){
 	});
 });
 
-// metodo para obtener una representacion hash del password
 UserSchema.methods.comparePassword = function(password){
 	return bcrypt.compareSync(password, this.password);
 };
 
+var User = mongoose.model('User', UserSchema);
 
-// Crear modelo 'User' a partir de 'UserSchema'
-module.exports = mongoose.model('User', UserSchema);
+function createDefaultUsers(){
+    User.find({}).exec(function(err, collection) {
+        if(collection.length === 0) {
+            User.create({
+                username:'francisco',
+                password: 'francisco',
+                email: 'correoDoctor1@example.com'});
+            User.create({
+                username:'elias',
+                password: 'elias',
+                email: 'correoDoctor2@example.com'});
+            User.create({
+                username:'claudio',
+                password: 'claudio',
+                email:'correoDoctor1@example.com'});
+        }
+    })
+}
+
+exports.createDefaultUsers = createDefaultUsers;

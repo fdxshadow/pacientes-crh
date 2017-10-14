@@ -16,5 +16,6 @@ module.exports = function(config){
 
     pacienteModel.createDefaultPacientes();
     medicoModel.createDefaultMedicos();
+    userModel.createDefaultUsers();
 
 };

@@ -15,5 +15,6 @@ module.exports = function(config){
     db.once('open', function callback(){console.log('conectado a db pacientes-crh ')});
 
     pacienteModel.createDefaultPacientes();
+    medicoModel.createDefaultMedicos();
 
 };

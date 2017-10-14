@@ -1,4 +1,5 @@
-var Paciente = require('mongoose').model('Paciente');
+var Paciente = require('mongoose').model('Paciente'),
+    ObjectId = require('mongoose').Types.ObjectId;
 
 exports.getPacientes = function (req, res) {
     Paciente.find({}).exec(function (err, collection) {
@@ -13,31 +14,20 @@ exports.getPacientes = function (req, res) {
     })
 };
 
-var ObjectId = require('mongoose').Types.ObjectId;
-
-
 exports.getPacientesById = function (req, res) {
     Paciente.findOne({"_id":ObjectId(req.params.id)}).exec(function (err, paciente) {
         return res.send(paciente)
     })
-    //Paciente.findOne({_id:req.params.id}).exec(function (err, paciente) {
 };
-
-
 
 exports.update = function(req, res){
-console.log(req.params.rut);
-
-
+    console.log(req.params.rut);
 };
-
-
 
 exports.create = function (req, res, next){
     var pacienteData = req.body;
-    console.log(req.body.rut);
 
-    Paciente.find({"rut": req.body.rut}).exec(function(err, collection) {
+    Paciente.find({"rut": pacienteData.rut}).exec(function(err, collection) {
         if(collection.length > 0) {
             err = new Error('RUT ya existe');
             res.status(400);

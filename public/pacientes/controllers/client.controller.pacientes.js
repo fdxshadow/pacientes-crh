@@ -3,7 +3,7 @@
 
 
 // clAuth saque
-angular.module('pacientes').controller('PacientesController', function($scope, Paciente, Notifier, $location,  PacientesSrv) {
+angular.module('pacientes').controller('PacientesController', function($scope, Paciente, Notifier, $location,  PacientesSrv, pacienteinfo) {
 
     $scope.agregar = function() {
         var newPacienteData = {
@@ -16,6 +16,9 @@ angular.module('pacientes').controller('PacientesController', function($scope, P
 
         PacientesSrv.createPaciente(newPacienteData).then(function() {
             Notifier.notify('Paciente Creado Exitosamente!');
+            pacienteinfo.paciente_id = newPacienteData._id;
+            pacienteinfo.paciente_nombre = newPacienteData.firstName+" "+newPacienteData.lastName
+            pacienteinfo.rut = newPacienteData.rut
             $location.path('/tipohora');
             //$location.path('/secretaria/pacientes/crear');
         }, function(reason) {

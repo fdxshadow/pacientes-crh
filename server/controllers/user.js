@@ -4,11 +4,13 @@ var jwt = require('jsonwebtoken');
 var secret = 'dbz';
 
 exports.createUser = function(req,res){
-    var user = new User();
-    user.username = req.body.username;
-    user.password = req.body.password;
-    user.email = req.body.email;
-    if(req.body.username == null || req.body.username == '' || req.body.password == null || req.body.password == '' || req.body.email == null || req.body.email == ''){
+    var user = new User({
+      username: req.body.username,
+      password: req.body.password,
+      email: req.body.email
+    });
+
+    if(user.username == null || user.username == '' || user.password == null || user.password == '' || user.email == null || user.email == ''){
         res.json({success:false, message:'Problema con los datos, ingresar nuevamente'});
     }else{
         user.save(function(err){

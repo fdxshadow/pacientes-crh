@@ -27,8 +27,6 @@ angular.module('dashboard').controller('calendar',['$scope','uiCalendarConfig','
       console.log(data);
       angular.forEach(data,function(value,key){
         var colore = (value.estado==='registrado')?'blue':'green';
-        console.log(colore);
-
         var aux = {
           title:value.paciente_id.firstName,
           start:value.fecha_reserva+'T'+value.hora_inicio_reserva,

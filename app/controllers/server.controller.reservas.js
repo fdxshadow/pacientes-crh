@@ -38,8 +38,7 @@ exports.crear = function(req, res, next){
 
 
 exports.getHorario = function (req,res) {
-	// reserva.find({}).populate({path:'Paciente', select:'firstName'}).populate({path:'Medico',select:'nombre'}).
-		reserva.find({}).populate('paciente_id','firstName').populate('medico_id','nombre').
+		reserva.find({estado_reserva:{'$ne':'rechazado'}}).populate('paciente_id','firstName').populate('medico_id','nombre').
 	exec(function(err,hora){
 		if(err) res.send('error');
 		console.log(hora);

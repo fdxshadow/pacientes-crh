@@ -3,7 +3,7 @@ angular.module('dashboard').controller('calendar',['$scope','uiCalendarConfig','
 
   $scope.show=true;
 
-/*  $scope.confirmar = function(datos){
+  $scope.confirmar = function(datos){
 
     datos.color = "blue";
 
@@ -12,10 +12,10 @@ angular.module('dashboard').controller('calendar',['$scope','uiCalendarConfig','
   }
 
   $scope.rechazar = function(datos){
+    console.log(datos);
 
-    datos.color="red";
-    uiCalendarConfig.calendars.micalendario.fullCalendar('updateEvent',datos);
-  }*/
+    uiCalendarConfig.calendars.micalendario.fullCalendar('removeEvents',datos._id);
+  }
 
 
   $scope.eventSources=[]
@@ -26,12 +26,14 @@ angular.module('dashboard').controller('calendar',['$scope','uiCalendarConfig','
     Eventos.query(function(data){
       console.log(data);
       angular.forEach(data,function(value,key){
+        console.log(value);
         var colore = (value.estado==='registrado')?'blue':'green';
         var aux = {
           title:value.paciente_id.firstName,
           start:value.fecha_reserva+'T'+value.hora_inicio_reserva,
           end:value.fecha_reserva+'T'+value.hora_fin_reserva,
-          color:colore
+          color:colore,
+          celular:value.paciente_id.telephone
         }
         $scope.events.push(aux);
       });

@@ -1,12 +1,12 @@
     
 <section ng-controller="ReservaController">
     <div class="container">
-        <h1>Medico</h1>
-        <h1>Paciente</h1>
+        <h2>Paciente:{{paciente}}</h2>
+        <h2>Medico:{{medico}}</h2>
         <div class="row">
                 <div class="col-md-6">
                     <datepicker date-format="yyyy-MM-dd">
-                       <input ng-change="prueba()" ng-model="date">
+                       <input placeholder="Seleccione la fecha de atencion" ng-change="prueba()" ng-model="date">
                     </datepicker>
                 </div> 
 

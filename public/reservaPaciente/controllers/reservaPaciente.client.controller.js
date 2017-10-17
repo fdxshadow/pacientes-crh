@@ -2,8 +2,8 @@
 angular.module('reservaPaciente').controller('ReservaController'
 ,['$scope', 'ReservaServicio','pacienteinfo' ,function ($scope, servicio, pacienteinfo) {
 
-$scope.paciente = pacienteinfo.paciente_id;
-$scope.medico = pacienteinfo.medico_id;
+$scope.paciente = pacienteinfo.paciente_nombre;
+$scope.medico = pacienteinfo.medico_nombre;
 var validar=/^\d{4}-\d{2}-\d{2}$/;
 
 

@@ -12,7 +12,9 @@ angular.module('dashboard').controller('Hora',['$scope','$location','pacienteinf
 	
 	$scope.seleccionado = function(paciente){
 		pacienteinfo.paciente_id = paciente._id;
-		console.log(pacienteinfo.paciente_id);
+		pacienteinfo.paciente_nombre = paciente.firstName+" "+paciente.lastName
+		pacienteinfo.rut = paciente.rut
+		console.log(pacienteinfo);
 		$location.url('/tipohora'); //ruta de tu vista alfonso, la de los doctores
 
 	}

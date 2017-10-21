@@ -23,8 +23,8 @@
 	</thead>
 	<tbody>
 		<tr ng-repeat="paciente in pacientes | filter:buscarpaciente">
-			<td>{{paciente.firstName}}</td>
-			<td>{{paciente.lastName}}
+			<td><a href="/#!/pacientes/edit/{{paciente._id}}">{{paciente.firstName }}</a></td>
+			<td><a href="/#!/pacientes/edit/{{paciente._id}}">{{paciente.lastName }}</a></td>
 			<td>{{paciente.rut}}</td>
 			<td>{{paciente.telephone}}</td>
 			<td>

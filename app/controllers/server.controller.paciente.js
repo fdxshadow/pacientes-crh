@@ -1,15 +1,14 @@
-var Paciente = require('mongoose').model('Paciente');
+var Paciente = require('mongoose').model('Paciente'),
+    rut = require('../utilities/rut');
 
 exports.getPacientes = function (req, res) {
     Paciente.find({}).exec(function (err, collection) {
         if(err){
-            console.log(res);
             res.send("error getPacientes");
         }
         else{
-            console.log(collection);
             return res.send(collection);
-    }
+        }
     })
 };
 
@@ -20,22 +19,34 @@ exports.getPacientesById = function (req, res) {
     Paciente.findOne({"_id":ObjectId(req.params.id)}).exec(function (err, paciente) {
         return res.send(paciente)
     })
-    //Paciente.findOne({_id:req.params.id}).exec(function (err, paciente) {
 };
-
-
 
 exports.update = function(req, res){
-console.log(req.params.rut);
+    var pacienteData = req.body;
 
+    if(!rut.isFormatValid(pacienteData.rut)){
+        res.status(400);
+        return res.send({reason:"Error: Ingrese RUT sin puntos y con guión"})
+    } else if(!rut.isDigitValid(pacienteData.rut)){
+        res.status(400);
+        return res.send({reason:"Error: Dígito Verificador incorrecto"})
+    }
 
+    Paciente.update({"_id":pacienteData._id}, pacienteData, { runValidators: true } , function(err){
+        if(err){
+            if(err.toString().indexOf('E11000') > -1){
+                err = new Error('Paciente ya existe');
+            }
+            res.status(400);
+            return res.send({reason:err.toString()})
+        }
+        res.status(204);
+        res.end()
+    })
 };
-
-
 
 exports.create = function (req, res, next){
     var pacienteData = req.body;
-    console.log(req.body.rut);
 
     Paciente.find({"rut": req.body.rut}).exec(function(err, collection) {
         if(collection.length > 0) {
@@ -56,9 +67,6 @@ exports.create = function (req, res, next){
             })
 		}
     })
-
-
-
 };
 
 

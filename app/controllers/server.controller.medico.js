@@ -10,6 +10,23 @@ exports.getMedicos = function (req, res) {
         res.send(collection);
     })
 };
+exports.create = function(req, res) {
+	// Crear un nuevo objeto medico
+	var medico = new Medico(req.body);
+
+	// Intentar salvar el medico
+	medico.save(function(err) {
+		if (err) {
+			// Si ocurre algún error enviar el mensaje de error
+			return res.status(400).send({
+				message: getErrorMessage(err)
+			});
+		} else {
+			// Enviar una representación JSON del medico
+			res.json(medico);
+		}
+	});
+};
 
 exports.list = function(req, res) {
 	// Usar el método model 'find' para obtener una lista de medicos

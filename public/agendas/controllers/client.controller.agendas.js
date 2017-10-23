@@ -27,6 +27,12 @@ angular.module('agendas').controller('AgendasController', ['$scope','SharedDataS
             $scope.medicos = MedicosResource.query();
         };
 
+        $scope.reporte = function() {
+            $scope.$storage.fechaReporte = moment(this.momentMesDate,"YYYY-MM").format("YYYY-MM");
+            console.log('el mes es ');
+            console.log($scope.$storage.fechaReporte);
+            window.location = "#!/reportes/ver";
+        };
 
 
       }

@@ -7,6 +7,6 @@ module.exports = function (app) {
 
 	app.route('/api/medicos')
 		//  .get( paciente.list)
-		 .get( medico.list)
-
+		 .get(medico.list);
+	app.route('/api/medicos').post( medico.create);
 }

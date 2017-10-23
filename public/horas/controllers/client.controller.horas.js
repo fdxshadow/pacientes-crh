@@ -46,7 +46,9 @@ angular.module('horas').controller('HorasController', ['$scope','SharedDataServi
                 $scope.error = errorResponse.data.message;
             });
         };
-
+        moment.locale('es');
+        $scope.fecharep = $scope.$storage.fechaReporte;
+        $scope.formatted = moment($scope.fecharep, 'YYYY-MM').format('MMMM YYYY');
         // retorna lista de horas segun fecha y id_medico
 
 
@@ -54,11 +56,28 @@ angular.module('horas').controller('HorasController', ['$scope','SharedDataServi
             $scope.horasFiltro = $scope.findHoras_byFechaMedico($scope.$storage.fechaAgenda,$scope.$storage.medicoAgenda._id);
             // $scope.horaini="18:15";
             // $scope.horasFiltro = $scope.findHoras_byFechaMedico($scope.$storage.fechaAgenda,$scope.horaini);
+            console.log($scope.horasFiltro);
         };
         $scope.findHoras_byFechaMedico = function(_fecha, _id_medico) {
             return HorasResource.query({
               buscarFecha: _fecha,
               nombreMedico: _id_medico
+            });
+        };
+        // para reporte
+        $scope.findHorasbyFecha = function(){
+            console.log('va a buscar por');
+            console.log($scope.$storage.fechaReporte);
+            $scope.reservasResponse = $scope.findHoras_byFecha($scope.$storage.fechaReporte);
+            // $scope.horaini="18:15";
+            // $scope.horasFiltro = $scope.findHoras_byFechaMedico($scope.$storage.fechaAgenda,$scope.horaini);
+            console.log('encontro en by fecha');
+            console.log($scope.reservasResponse);
+        };
+
+        $scope.findHoras_byFecha = function(_fecha) {
+            return HorasResource.query({
+              buscarFecha: _fecha
             });
         };
 

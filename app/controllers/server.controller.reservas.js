@@ -46,20 +46,6 @@ exports.getHorario = function (req,res) {
 	});
 };
 
-exports.edit = function(req,res){
-	var id=req.body.evento._id;
-	var accion = req.body.evento.accion;
-	reserva.findById(id,function(err,evento){
-		if (err) return res.send(err);
-		evento.estado_reserva = accion;
-		evento.save(function(err,updateevento){
-			if (err) res.send(err);
-			console.log(updateevento);
-			return res.send(true);
-		});	
-	});
-}
-
 //########################################
 
 exports.listByFecha_Medico = function(req, res) {
@@ -78,6 +64,77 @@ exports.listByFecha_Medico = function(req, res) {
 			// usar objeto response (res) para enviar una respuesta JSON
 			console.log("encontro esto:")
 			console.log(horas);
+			res.json(horas);
+		}
+	});
+};
+
+// buscar por mes para reporte
+exports.listByFecha = function(req, res) {
+	// Usar el método model 'find' para obtener una lista de facturas
+	reserva.find({
+		// fecha_reserva: req.fecha
+		fecha_reserva: {'$regex': req.fecha}
+		//  medico_id: req.id_medico
+		  // hora_inicio_reserva: req.id_medico
+	 }).populate('paciente_id','firstName').exec(function(err, horas){
+		if(err){
+			// Si un error ocurre enviar un mensaje de error
+			return res.status(400).send({
+				message: getErrorMessage(err)
+			});
+		}else{
+			// usar objeto response (res) para enviar una respuesta JSON
+			console.log("encontro esto:")
+			console.log(horas);
+			var reservaCount = 0;
+			var consultaCount = 0;
+			var examenCount = 0;
+			var noConfirm = 0;
+			var confirm = 0;
+
+			// enum:['consulta médica', 'examen']
+			// var confCount = 0;
+			// var
+			horas.forEach(function(hora){
+
+				if(hora.estado_reserva == "confirmado"){
+					switch(hora.tipo_reserva) {
+								case "consulta médica":
+										consultaCount += 1;
+										break;
+								case "examen":
+										examenCount +=1;
+										break;
+								default:
+										//
+						};
+					confirm += 1;
+
+				}else {
+					noConfirm += 1;
+				};
+
+				reservaCount += 1;
+				    // console.log(hora.estado_reserva);
+				    // Do whatever processing you want
+				});
+				console.log('consultas: ' + consultaCount);
+				console.log('examens : ' + examenCount);
+
+				// console.log(hora.estado_reserva);
+				var counts = {
+				    reservas: reservaCount,
+				    consultas: consultaCount,
+						examenes : examenCount,
+						perdidas: noConfirm,
+						confirmadas : confirm
+				};
+				var result = [];
+				result.push(counts);
+				// var horas = JSON.stringify({datos});
+				horas = result;
+
 			res.json(horas);
 		}
 	});

@@ -8,12 +8,7 @@ angular.module('pacientes').config(['$routeProvider',
 			templateUrl: 'pacientes/views/agregar.html',   
 			controller: 'PacientesController',
 			//authenticated: true
-		}).
-        when('/pacientes/edit/:_id', {
-            templateUrl: 'pacientes/views/editar.html',
-            controller: 'PacientesControllerEdit',
-            //authenticated: true
-        })
+		})
 		
 	}
 ]);

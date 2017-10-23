@@ -43,6 +43,7 @@ module.exports = function(){
 	require('../app/routes/server.routes.reservas.js')(app);
 	require('../app/routes/server.routes.calendario.js')(app);
 	require('../app/routes/server.routes.medico.js')(app);
+	require('../app/routes/server.routes.examen.js')(app);
 
 	// configurar el servidor de archivos estáticos
 	app.use(express.static('./public'));

@@ -28,6 +28,11 @@ var ReservaSchema = new Schema({
 	},
 	fecha_reserva:{
 		type: String
+	}, 
+	tipo_reserva:{
+		type: String,
+		default: 'consulta médica',
+		enum:['consulta médica', 'examen']
 	}
 });
 

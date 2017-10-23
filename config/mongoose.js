@@ -9,11 +9,14 @@ module.exports = function(){
 	require('../app/models/server.model.user');
 	var pacienteModel = require('../app/models/server.model.paciente');
     pacienteModel.createDefaultPacientes();
+    var examenModel = require('../app/models/server.model.examenes');
+    examenModel.createDefaultExamenes();
 
     //retornar instancia de mongoose
 	require('../app/models/server.model.reserva');
 	require('../app/models/server.model.horas');
 	require('../app/models/server.model.medicos');
+	require('../app/models/server.model.examenes');
 	//retornar instancia de mongoose
 	return db;
 }

@@ -20,6 +20,9 @@ angular.module('agendas').config(['$routeProvider',
 		when('/agendas/ver', {
 			templateUrl: 'agendas/views/client.view.agenda.ver.html',
 			controller: 'HorasController'
+		}).
+		when('/agendas/general', {
+			templateUrl: 'agendas/views/client.view.agenda.general.html'
 		})
 
 	}

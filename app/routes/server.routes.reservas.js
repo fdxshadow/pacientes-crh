@@ -8,6 +8,7 @@ module.exports = function (app) {
 
 	app.route('/reservas/:fecha').get(reserva.mostrar);
 	app.route('/horario1').get(reserva.getHorario);
+	app.route('/horario1').post(reserva.edit);
 	app.route('/reservas').post(reserva.crear);
 
 	app.route('/api/horas/:buscarFecha/:nombreMedico')

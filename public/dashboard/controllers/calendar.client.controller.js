@@ -3,32 +3,50 @@ angular.module('dashboard').controller('calendar',['$scope','uiCalendarConfig','
 
   $scope.show=true;
 
-  $scope.confirmar = function(datos){
+  $scope.confirmar = function(ev){
+    even = {
+        _id:ev.id_bd,
+        accion:"confirmado"
 
-    datos.color = "blue";
+    }
+    Eventos.save({evento:even},function(resp){
+      if(resp){
+        ev.color = "blue";
+        uiCalendarConfig.calendars.micalendario.fullCalendar('updateEvent',ev);
+      }
 
-    uiCalendarConfig.calendars.micalendario.fullCalendar('updateEvent',datos);//modifica el calendario al instante , con esto podemos manejar los colores para ver los estados de cada consulta
-
+    });
   }
 
-  $scope.rechazar = function(datos){
-    console.log(datos);
 
-    uiCalendarConfig.calendars.micalendario.fullCalendar('removeEvents',datos._id);
+
+  $scope.rechazar = function(ev){
+
+    even = {
+        _id:ev.id_bd,
+        accion:"rechazado"
+
+    }
+    Eventos.save({evento:even},function(resp){
+      if(resp){
+        uiCalendarConfig.calendars.micalendario.fullCalendar('removeEvents',ev._id);
+      }
+
+    });
   }
 
 
   $scope.eventSources=[]
   $scope.events=[]
 
-  var pico = function(){
+  var cargar = function(){
 
     Eventos.query(function(data){
-      console.log(data);
       angular.forEach(data,function(value,key){
         console.log(value);
-        var colore = (value.estado==='registrado')?'blue':'green';
+        var colore = (value.estado_reserva==='registrado')?'green':'blue';
         var aux = {
+          id_bd:value._id,
           title:value.paciente_id.firstName,
           start:value.fecha_reserva+'T'+value.hora_inicio_reserva,
           end:value.fecha_reserva+'T'+value.hora_fin_reserva,
@@ -42,10 +60,10 @@ angular.module('dashboard').controller('calendar',['$scope','uiCalendarConfig','
 
   }
 
-  pico();
+  cargar();
 
 
-	$scope.uiConfig = {
+  $scope.uiConfig = {
       calendar:{
         height: 400,
         editable: true,

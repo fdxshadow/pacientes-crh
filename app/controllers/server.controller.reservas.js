@@ -46,6 +46,20 @@ exports.getHorario = function (req,res) {
 	});
 };
 
+exports.edit = function(req,res){
+	var id=req.body.evento._id;
+	var accion = req.body.evento.accion;
+	reserva.findById(id,function(err,evento){
+		if (err) return res.send(err);
+		evento.estado_reserva = accion;
+		evento.save(function(err,updateevento){
+			if (err) res.send(err);
+			console.log(updateevento);
+			return res.send(true);
+		});	
+	});
+}
+
 //########################################
 
 exports.listByFecha_Medico = function(req, res) {

@@ -10,3 +10,9 @@ exports.getHorario = function (req,res) {
 		res.json(hora);
 	});
 }
+
+exports.edit = function(req,res){
+	console.log(req.body);
+
+
+}

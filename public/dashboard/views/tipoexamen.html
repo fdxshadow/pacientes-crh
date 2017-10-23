@@ -1,5 +1,4 @@
-<section>
-<script src="tipoexamen.client.controller.js"></script>
+<section ng-controller="tipoexamen">
 <hr>
 <div class="col-md-5">
                 <div class="input-group">
@@ -18,15 +17,18 @@
 		<tr>
 			<th>Nombre</th>
 			<th>Horario</th>
+			<th>Personal requerido</th>
 			
 		</tr>
 	</thead>
-	<tbody ng-controller="tipoexamen">
+	<!--tbody ng-controller="tipoexamen"-->
 		<tr ng-repeat="examen in examenes | filter:buscarexamen">
 			<td>{{examen.nombre}}</td>
 			<td>{{examen.horario}}</td>
+			<td>{{examen.personal}}</td>
 			<td>
-				<button href="#!/reservaPaciente class="btn btn-success"  >Seleccionar</button>
+				<!--button href="#!/reservaPaciente class="btn btn-success"  >Seleccionar</button-->
+				<button class="btn btn-success" ng-click="seleccionado(examen)">Seleccionar</button>
 				<!--
 				<button style="background-color:#007da7;color:white;" class="btn btn-default">Actualizar telefono</button>
 				-->

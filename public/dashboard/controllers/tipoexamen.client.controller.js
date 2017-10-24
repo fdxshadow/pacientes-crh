@@ -9,32 +9,10 @@ angular.module('dashboard').controller('tipoexamen',['$scope','$location', 'exam
 		}
 	});
 	
-		servicemed.query(function(data){
-		$scope.medicos = data;
-
-
-	});
-
-		/*$scope.seleccionado = function (medico){
-    	console.log(medico);
-        pacienteinfo.medico_id=medico._id;
-        pacienteinfo.medico_nombre = medico.nombre;
-    }*/
-
-
 		$scope.seleccionado = function(examen){
-		exameninfo.examen_id = examen._id;
-		exameninfo.examen_nombre = examen.nombre;
-		console.log(examen);
-		//console.log(pacienteinfo);*/
-		/*if(examen.nombre == "Ecografía"){
-			$location.url('/medico');
-		}
-		else{
-			$location.url('/reservaPaciente')
-		}*/
-		if(examen.nombre == "Ecografía"){
-			console.log(examen.nombre)
+		pacienteinfo.examen_id = examen._id;
+		pacienteinfo.examen_nombre = examen.nombre;
+		if(examen.personal == "médico"){
 			$location.url('/medico');
 		}
 		else{

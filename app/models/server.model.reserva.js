@@ -30,9 +30,10 @@ var ReservaSchema = new Schema({
 		type: String
 	}, 
 	tipo_reserva:{
-		type: String,
+		tipo:{type: String,
 		default: 'consulta médica',
-		enum:['consulta médica', 'examen']
+		enum:['consulta médica', 'examen']},
+		descripcion:{type:Schema.ObjectId,ref:'Examen'}		
 	}
 });
 

@@ -4,6 +4,8 @@ angular.module('reservaPaciente').controller('ReservaController'
 
 $scope.paciente = pacienteinfo.paciente_nombre;
 $scope.medico = pacienteinfo.medico_nombre;
+console.log(pacienteinfo.examen_id);
+console.log(pacienteinfo.examen_nombre);
 if(pacienteinfo.medico_nombre==null){
     $scope.medico = " No aplica";
 }
@@ -50,13 +52,25 @@ $scope.prueba = function(){
 
 
 $scope.reservar = function(horario){
+        if(pacienteinfo.examen_id){
      var reserva = {
+        paciente_id: pacienteinfo.paciente_id,
+        medico_id: pacienteinfo.medico_id,
+        hora_inicio_reserva: horario.hora_ini,
+        hora_fin_reserva: horario.hora_term,
+        fecha_reserva: $scope.date,
+        tipo_reserva : {tipo:'examen',descripcion:pacienteinfo.examen_id}
+    };
+}else{
+    var reserva = {
         paciente_id: pacienteinfo.paciente_id,
         medico_id: pacienteinfo.medico_id,
         hora_inicio_reserva: horario.hora_ini,
         hora_fin_reserva: horario.hora_term,
         fecha_reserva: $scope.date
     };
+}
+
     servicio.create(reserva, function(data){});
     $scope.horarios.splice(horario,1);
 }

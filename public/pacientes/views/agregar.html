@@ -1,8 +1,9 @@
 <div class="container">
+<div class="page-hader"><h1><span class="fa fa-check-square-o"></span> Completar Formulario:</h1></div>
   <div class="well">
     <form name="signupForm" class="form-horizontal">
       <fieldset>
-        <legend>Informacion Paciente Nuevo</legend>
+        <legend>Información Paciente Nuevo</legend>
         <div class="form-group">
           <label for="rut" class="col-md-2 control-label">RUT *</label>
           <div class="col-md-10">
@@ -22,22 +23,22 @@
           </div>
         </div>
         <div class="form-group">
-          <label for="telephone" class="col-md-2 control-label">Telefono *</label>
+          <label for="telephone" class="col-md-2 control-label">Teléfono *</label>
           <div class="col-md-10">
-            <input name="telephone" type="text" placeholder="Telefono Ej: 987654321" ng-model="telephone" required="required" class="form-control" ng-pattern="/^[0-9]{9}$/"/>
+            <input name="telephone" type="text" placeholder="Teléfono Ej: 987654321" ng-model="telephone" required="required" class="form-control" ng-pattern="/^[0-9]{9}$/"/>
           </div>
         </div>
         <div class="form-group">
           <div class="col-md-10 col-md-offset-2">
             <div class="pull-right">
-              <button ng-click="agregar()" ng-disabled="signupForm.$invalid" class="btn btn-primary">Crear Paciente</button>&nbsp;<a href="/" class="btn btn-default">Cancel</a>
+              <button ng-click="agregar()" ng-disabled="signupForm.$invalid" class="btn btn-primary">Crear Paciente</button>&nbsp;<a href="/" class="btn btn-default">Cancelar</a>
             </div>
           </div>
         </div>
       </fieldset>
-      <small><strong>Rut:</strong> Ingresar sin puntos y con guion.</small>
+      <small><strong>Rut:</strong> Ingresar sin puntos y con guión.</small>
       <br>
-      <small><strong>Telefono:</strong> Ingresar los 9 digitos.</small>
+      <small><strong>Teléfono:</strong> Ingresar los 9 dígitos.</small>
     </form>
 
   </div>

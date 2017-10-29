@@ -2720,6 +2720,14 @@ shortcodes page css
   margin-left: 15px;
 }
 
+.destacado {
+  margin-left: 1.5em;
+}
+
+.destacadito {
+  margin-bottom: 3em;
+}
+
 
 .text-justified{
 	text-align: justify;

@@ -1,65 +1,81 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title><%= title%></title>
-	<link rel="stylesheet" type="text/css" href="/lib/bootstrap/dist/css/bootstrap.css"/>
-	<link rel="stylesheet" href="/assets/css/main.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="/lib/angular-date-picker/angular-date-picker.css" />
-	<link rel="stylesheet" type="text/css" href="/lib/toastr/toastr.css" />
-	<link href="/lib/angularjs-datepicker/src/css/angular-datepicker.css" rel="stylesheet" type="text/css" />
-	<link rel="stylesheet" type="text/css" href="/assets/css/opciones.css">
-<link href="lib/angular-moment-picker/dist/angular-moment-picker.min.css" rel="stylesheet" />
+    <title><%= title %></title>
+    <link rel="stylesheet" type="text/css" href="/lib/bootstrap/dist/css/bootstrap.css"/>
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/lib/angular-date-picker/angular-date-picker.css"/>
+    <link rel="stylesheet" type="text/css" href="/lib/toastr/toastr.css"/>
+    <link href="/lib/angularjs-datepicker/src/css/angular-datepicker.css" rel="stylesheet" type="text/css"/>
 
-	<!--css full calendar-->
+    <link href="lib/angular-moment-picker/dist/angular-moment-picker.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="/assets/css/opciones.css">
+    <!--css full calendar-->
 
-	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.5.1/fullcalendar.min.css">
+    <link rel="stylesheet" type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.5.1/fullcalendar.min.css">
 </head>
 <body ng-controller="mainCtrl as main">
 
- <header id="header">
-	        <div class="container">
-	          <div class="navbar-left">
-	            <h1 style="font-weight: 100;color: #fff;">Clínica de Reproducción Humana </br> Universidad de Valparaíso</h1>
-	          </div>
-	          <div class="navbar-right">
-	            <a href="#">
-	              <img class="pull-right" src="/assets/img/logoblanco.png" alt="" style="padding-top: 15px;">
-	            </a>
-	          </div>
-	        </div><!--/.container-->
-	    </header><!--/header-->
+<header id="header">
+    <div class="container">
+        <div class="navbar-left">
+            <h1 style="font-weight: 100;color: #fff;">Clínica de Reproducción Humana </br> Universidad de
+                Valparaíso</h1>
+        </div>
+        <div class="navbar-right">
+            <a href="#">
+                <img class="pull-right" src="/assets/img/logoblanco.png" alt="" style="padding-top: 15px;">
+            </a>
+        </div>
+    </div><!--/.container-->
+</header><!--/header-->
+<div class="row" ng-show="auth.isLoggedIn()" id="barra">
+    <div class="navbar-right" >
+        <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown ng-cloak"><a href="" data-toggle="dropdown" class="dropdown-toggle">{{userName}}<b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#!/pacientes/create">Nuevo Paciente </a></li>
+                    <li><a href="#!/hora">Pedir Hora</li>
+                    <li><a href="#!/hoy">Hoy</li>
+                    <li><a href="#!/agendas/general">Reportes</li>
+                    <li><a href="" ng-click="main.logout();">Salir</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
 
-
-<section ng-view >
+<section ng-view>
 
 </section>
 
-  <footer id="footer" class="midnight-blue">
-		    <div class="container">
-		      <div class="row center">
-		        <div class="col-sm-12">
-		          <img src="/assets/img/logoblanco.png">
-		          <ul>
-		            <li style="margin-top: 15px;"><a>Clínica de Reproducción Humana</a></li></br>
-		            <li><a>Hontaneda 2664, Valparaíso. Chile</a></li></br>
-		            <li><a>Fono: +56 (32) 250 7313</a></li></br>
-		            <li><a href="/" ng-click="main.logout();">Salir</a></li></br>
-		          </ul>
-		        </div>
-		      </div>
-		    </div>
-		    </br></br>
-		</footer>
-
-
-
-
+<footer id="footer" class="midnight-blue">
+    <div class="container">
+        <div class="row center">
+            <div class="col-sm-12">
+                <img src="/assets/img/logoblanco.png">
+                <ul>
+                    <li style="margin-top: 15px;"><a>Clínica de Reproducción Humana</a></li>
+                    </br>
+                    <li><a>Hontaneda 2664, Valparaíso. Chile</a></li>
+                    </br>
+                    <li><a>Fono: +56 (32) 250 7313</a></li>
+                    </br>
+                    <li><a href="/" ng-click="">Salir</a></li>
+                    </br>
+                </ul>
+            </div>
+        </div>
+    </div>
+    </br></br>
+</footer>
 
 
 <script type="text/javascript">
 
-	window.huaso = "hola";
+    window.huaso = "hola";
 
 
 </script>
@@ -119,7 +135,8 @@
 <script type="text/javascript" src="/dashboard/service/service-paciente.client.module.js"></script>
 <script type="text/javascript" src="/dashboard/service/service-calendario.client.module.js"></script>
 <script type="text/javascript" src="/dashboard/service/service-medico.client.module.js"></script>
-<script type="text/javascript" src="/dashboard/controllers/tipoexamen.client.controller.js"></script></s>
+<script type="text/javascript" src="/dashboard/controllers/tipoexamen.client.controller.js"></script>
+</s>
 <script type="text/javascript" src="/dashboard/controllers/calendar.client.controller.js"></script>
 <script type="text/javascript" src="/dashboard/controllers/medico.client.controller.js"></script>
 <script type="text/javascript" src="/dashboard/controllers/tipohora.client.controller.js"></script>
@@ -128,7 +145,6 @@
 <script type="text/javascript" src="/dashboard/service/service-pacientenumero.client.js"></script>
 <script type="text/javascript" src="/dashboard/service/service-examen.client.module.js"></script>
 <script type="text/javascript" src="/dashboard/service/service-getexamen.client.module.js"></script>
-
 
 
 <!-- modulo medico -->
@@ -141,31 +157,29 @@
 <!-- test de PDF -->
 
 <script src="https://cdn.rawgit.com/niklasvh/html2canvas/0.5.0-alpha2/dist/html2canvas.min.js"></script>
-   <script src="lib/jsPDF/dist/jspdf.debug.js"></script>
-   <script src="lib/angular-save-html-to-pdf/dist/saveHtmlToPdf.min.js"></script>
-	 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.22/pdfmake.min.js"></script>
-	 <script src="//kendo.cdn.telerik.com/2016.3.914/js/kendo.all.min.js"></script>
+<script src="lib/jsPDF/dist/jspdf.debug.js"></script>
+<script src="lib/angular-save-html-to-pdf/dist/saveHtmlToPdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.22/pdfmake.min.js"></script>
+<script src="//kendo.cdn.telerik.com/2016.3.914/js/kendo.all.min.js"></script>
 
 
-	 <!-- modulo HORAS -->
-	 <script type="text/javascript" src="/horas/client.module.horas.js"></script>
-	 <script type="text/javascript" src="/horas/services/client.service.horas.js"></script>
-	 <script type="text/javascript" src="/horas/controllers/client.controller.horas.js"></script>
-	 <script type="text/javascript" src="/horas/config/client.route.horas.js"></script>
-	 <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment-with-locales.js"></script>
-	 <script type="text/javascript" src="lib/angular-moment-picker/dist/angular-moment-picker.min.js"></script>
-	 <link href="lib/angular-moment-picker/dist/angular-moment-picker.min.css" rel="stylesheet" />
+<!-- modulo HORAS -->
+<script type="text/javascript" src="/horas/client.module.horas.js"></script>
+<script type="text/javascript" src="/horas/services/client.service.horas.js"></script>
+<script type="text/javascript" src="/horas/controllers/client.controller.horas.js"></script>
+<script type="text/javascript" src="/horas/config/client.route.horas.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment-with-locales.js"></script>
+<script type="text/javascript" src="lib/angular-moment-picker/dist/angular-moment-picker.min.js"></script>
+<link href="lib/angular-moment-picker/dist/angular-moment-picker.min.css" rel="stylesheet"/>
 
-	 <!-- modulo agenda -->
+<!-- modulo agenda -->
 
-	 <script type="text/javascript" src="/agendas/client.module.agendas.js"></script>
-	 <script type="text/javascript" src="/agendas/services/client.service.agendas.js"></script>
-	 <script type="text/javascript" src="/agendas/controllers/client.controller.agendas.js"></script>
-	 <script type="text/javascript" src="/agendas/config/client.route.agendas.js"></script>
+<script type="text/javascript" src="/agendas/client.module.agendas.js"></script>
+<script type="text/javascript" src="/agendas/services/client.service.agendas.js"></script>
+<script type="text/javascript" src="/agendas/controllers/client.controller.agendas.js"></script>
+<script type="text/javascript" src="/agendas/config/client.route.agendas.js"></script>
 
-	 <!--service-example-->
-
-
+<!--service-example-->
 
 
 <!--modulo calendario -->
@@ -178,24 +192,20 @@
 <script type="text/javascript" src="/reservaPaciente/config/reservaPaciente.client.routes.js"></script>
 
 <!--modulo login -->
- <script type="text/javascript" src="/login/login.client.module.js"></script>
- <script type="text/javascript" src="/login/config/login.client.routes.js"></script>
- <script type="text/javascript" src="/login/controllers/login.client.controller.js"></script>
- <script type="text/javascript" src="/login/controllers/login.client.main.js"></script>
- <script type="text/javascript" src="/login/service/login.client.service.js"></script>
- <script type="text/javascript" src="/login/service/login.client.main.js"></script>
+<script type="text/javascript" src="/login/login.client.module.js"></script>
+<script type="text/javascript" src="/login/config/login.client.routes.js"></script>
+<script type="text/javascript" src="/login/controllers/login.client.controller.js"></script>
+<script type="text/javascript" src="/login/controllers/login.client.main.js"></script>
+<script type="text/javascript" src="/login/service/login.client.service.js"></script>
+<script type="text/javascript" src="/login/service/login.client.main.js"></script>
 <script type="text/javascript" src="service-reserva/service-reserva.client.module.js"></script>
 
 
 <script type="text/javascript" src="service-reserva/service/reserva.client.service.js"></script>
 
 
-
-
-
 <!-- aplicacion que enlaza todos los modulos -->
 <script type="text/javascript" src="application.js"></script>
-
 
 
 </body>

@@ -1,39 +1,47 @@
-angular.module('mainController',['mainServices'])
+angular.module('mainController', ['mainServices'])
 
 
-.controller('mainCtrl',function(Auth,$timeout,$location){
-	var app = this;
+    .controller('mainCtrl', function (Auth, AuthToken, $scope, $timeout, $location, $window) {
+        var app = this;
 
-	if(Auth.isLoggedIn()){
-		console.log('maldito logeao');
-	}else{
-		console.log('no hay nadie');
-	}
+        $scope.auth = Auth;
 
-	this.doLogin = function(loginData){
-		app.loading = true;
-		app.errorMsg = false;
+        var parseTOKEN = function parseJwt(token) {
+            var base64Url = token.split('.')[1];
+            var base64 = base64Url.replace('-', '+').replace('_', '/');
+            return JSON.parse(window.atob(base64));
+        };
 
-		Auth.login(app.loginData).then(function(data){
+        if (Auth.isLoggedIn()) {
+            console.log('maldito logeao');
+            $scope.userName = (parseTOKEN(AuthToken.getToken()).username);
+        } else {
+            console.log('no hay nadie');
+        }
+        this.doLogin = function (loginData) {
+            app.loading = true;
+            app.errorMsg = false;
 
-			if(data.data.success){
-				app.loading = false;
-				app.successMsg = data.data.message + '...Redireccionando...';
-				$timeout(function(){
-					$location.path('/dashboard');
-				},2000);
-			}else{
-				app.loading = false;
-				app.errorMsg = data.data.message
-			}
-		});
-	};
+            Auth.login(app.loginData).then(function (data) {
 
-	this.logout = function(){
-		Auth.logout();
-		$location.path('/logout');
-		$timeout(function(){
-			$location.path('/login');
-		},2000);
-	};
-});
+                if (data.data.success) {
+                    app.loading = false;
+                    app.successMsg = data.data.message + '...Redireccionando...';
+                    $timeout(function () {
+                        $location.path('/dashboard');
+                    }, 2000);
+                } else {
+                    app.loading = false;
+                    app.errorMsg = data.data.message
+                }
+            });
+        };
+
+        this.logout = function () {
+            Auth.logout();
+            $location.path('/logout');
+            $timeout(function () {
+                $location.path('/login');
+            }, 2000);
+        };
+    });

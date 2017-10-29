@@ -2775,3 +2775,22 @@ Animation
   from {-moz-transform: rotate(0deg);}
   to {-moz-transform: rotate(360deg);}
 }
+
+
+div#barra{
+  font-size: 30px;
+  height: 50px;
+  background-color: #FFFFFF;
+  margin-bottom: -20px;
+  padding-bottom: 100px;
+}
+
+#barra > div {
+  padding-right: 200px;
+}
+
+#barra > div > ul > li > a {
+  color: #3c763d;
+}
+
+

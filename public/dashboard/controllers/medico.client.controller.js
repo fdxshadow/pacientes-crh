@@ -1,6 +1,6 @@
 angular.module('dashboard').controller('medico',['$scope','pacienteinfo','servicemed', function ($scope,pacienteinfo,servicemed) {
 
-
+	$scope.paciente = pacienteinfo.paciente_nombre;
 	servicemed.query(function(data){
 		$scope.medicos = data;
 

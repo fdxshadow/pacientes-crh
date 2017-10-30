@@ -66,6 +66,9 @@ angular.module('dashboard').controller('calendar',['$scope','uiCalendarConfig','
   $scope.uiConfig = {
       calendar:{
         height: 400,
+        allDaySlot: false,
+        minTime: '8:00',
+        maxTime: '16:00',
         editable: true,
         header:{
           left: 'agendaWeek agendaDay',

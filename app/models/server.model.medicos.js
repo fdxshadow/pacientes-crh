@@ -13,6 +13,11 @@ var MedicoSchema = new Schema({
   nombre: {
     type: String
   },
+  disponibilidad:[
+     {dia:String,
+       hora_inicio:String,
+       hora_termino:String},
+  ],
   especialidad: {
     type: String,
     trim: true,

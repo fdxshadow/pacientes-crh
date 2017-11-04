@@ -12,6 +12,8 @@ exports.getMedicos = function (req, res) {
 };
 exports.create = function(req, res) {
 	// Crear un nuevo objeto medico
+
+	console.log(req.body);
 	var medico = new Medico(req.body);
 
 	// Intentar salvar el medico
@@ -19,7 +21,7 @@ exports.create = function(req, res) {
 		if (err) {
 			// Si ocurre algún error enviar el mensaje de error
 			return res.status(400).send({
-				message: getErrorMessage(err)
+				message: err
 			});
 		} else {
 			// Enviar una representación JSON del medico

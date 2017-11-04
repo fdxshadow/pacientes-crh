@@ -25,7 +25,7 @@
 	<!--tbody ng-controller="tipoexamen"-->
 		<tr ng-repeat="examen in examenes | filter:buscarexamen">
 			<td>{{examen.nombre}}</td>
-			<td>{{examen.horario}}</td>
+			<td>{{examen.horario.hora_inicio}}-{{examen.horario.hora_termino}} hrs</td>
 			<td>{{examen.personal}}</td>
 			<td>
 				<!--button href="#!/reservaPaciente class="btn btn-success"  >Seleccionar</button-->

@@ -13,15 +13,66 @@ angular.module('medicos').controller('MedicosController', ['$scope','SharedDataS
 
         $scope.PacienteData = SharedDataService;
 
+
+        var aux = [];
+        var dia = new Array();
+
+
 //         // Crear un nuevo método controller para crear nuevos medicos
         $scope.create = function() {
-            // Usar los campos form para crear un nuevo objeto $resource medico
+            if($scope.dias.lunes){
+                 dia = {
+                    dia:"lunes",
+                    hora_inicio:$scope.hora_inicio_lunes,
+                    hora_termino:$scope.hora_termino_lunes
+                };
+                aux.push(dia);
+            }
+            if($scope.dias.martes){
+                 dia = {
+                    dia:"martes",
+                    hora_inicio:$scope.hora_inicio_martes,
+                    hora_termino:$scope.hora_termino_martes
+                };
+                aux.push(dia);
+            }
+            if($scope.dias.miercoles){
+                 dia = {
+                    dia:"miercoles",
+                    hora_inicio:$scope.hora_inicio_miercoles,
+                    hora_termino:$scope.hora_termino_miercoles
+                };
+                aux.push(dia);
+            }
+            if($scope.dias.jueves){
+                 dia = {
+                    dia:"jueves",
+                    hora_inicio:$scope.hora_inicio_jueves,
+                    hora_termino:$scope.hora_termino_jueves
+                };
+                aux.push(dia);
+            }
+            if($scope.dias.viernes){
+                 dia = {
+                    dia:"viernes",
+                    hora_inicio:$scope.hora_inicio_viernes,
+                    hora_termino:$scope.hora_termino_viernes
+                };
+                aux.push(dia);
+            }
+            
+            console.log(aux);
+            
+
             var medico = new MedicosResource({
                 run: this.run,
                 nombre: this.nombre,
                 especialidad: this.especialidad,
-                email: this.email
+                email: this.email,
+                disponibilidad:aux
             });
+
+            console.log(medico);
 
             // Usar el método '$save' de medico para enviar una petición POST apropiada
             medico.$save(function(response) {

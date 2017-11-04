@@ -10,8 +10,11 @@ angular.module('dashboard').controller('tipoexamen',['$scope','$location', 'exam
 	});
 	
 		$scope.seleccionado = function(examen){
+		console.log(examen);
 		pacienteinfo.examen_id = examen._id;
 		pacienteinfo.examen_nombre = examen.nombre;
+		pacienteinfo.examen_disponibilidad = examen.horario;
+
 		if(examen.personal == "médico"){
 			$location.url('/medico');
 		}

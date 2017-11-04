@@ -4,23 +4,62 @@ angular.module('reservaPaciente').controller('ReservaController'
 
 $scope.paciente = pacienteinfo.paciente_nombre;
 $scope.medico = pacienteinfo.medico_nombre;
-console.log(pacienteinfo.examen_id);
-console.log(pacienteinfo.examen_nombre);
+//console.log(pacienteinfo);
 if(pacienteinfo.medico_nombre==null){
     $scope.medico = " No aplica";
 }
-/*if(pacienteinfo.horario){
-    var disponibilidad 
 
 
-} */
+var disponibilidad1 = [];
+
+if(pacienteinfo.examen_id){
+    var horas = parseInt(moment(pacienteinfo.examen_disponibilidad.hora_termino,"HH:mm").hours()) - parseInt(moment(pacienteinfo.examen_disponibilidad.hora_inicio,"HH:mm").hours())
+    var resini =moment(pacienteinfo.examen_disponibilidad.hora_inicio,"HH:mm");
+    var ini = pacienteinfo.examen_disponibilidad.hora_inicio;
+    var fin = moment(resini).add(1,'hours').hours()+":"+resini.get("minute");
+    var aux = {
+        hora_ini:ini,
+        hora_term:fin
+        }
+    disponibilidad1.push(aux);
+    console.log(disponibilidad1);
+   for (var i = 1; i<horas; i++) {
+        var ino = aux.hora_term;
+        var resino = moment(ini,"HH:mm");
+        var fino = moment(resini).add(1,'hours').hours()+":"+resini.get("minute");
+
+        var aux1 = {
+            hora_ini:ino,
+            hora_term:fino
+
+        }
+        disponibilidad1.push(aux1);
+    }
+}
+
+//var ini = pacienteinfo.examen_disponibilidad.hora_inicio;
+//var res = moment("9.45","HH:mm");
+//console.log(res.add(1,'hours').hours()+":"+res.get("minute"));
+
+
+
+//console.log(disponibilidad1);
+
+
+
+
+
+
+
+
 var validar=/^\d{4}-\d{2}-\d{2}$/;
 
+console.log(pacienteinfo.medico_nombre);
 
 
 $scope.prueba = function(){
     if(validar.test($scope.date)){
-        servicio.get({fecha:$scope.date},function(response){
+        servicio.get({fecha:$scope.date,medico:pacienteinfo.medico_id,examen:pacienteinfo.examen_id},function(response){
             var disponibilidad = [{
                         hora_ini: '17:00',
                         hora_term:'18:15'}
@@ -71,7 +110,15 @@ $scope.reservar = function(horario){
     };
 }
 
-    servicio.create(reserva, function(data){});
+    servicio.create(reserva, function(data){
+        if(data=="t"){
+            console.log("hola");
+
+        }
+
+
+
+    });
     $scope.horarios.splice(horario,1);
 }
 

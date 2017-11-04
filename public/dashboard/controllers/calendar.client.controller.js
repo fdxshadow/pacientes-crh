@@ -84,10 +84,4 @@ angular.module('dashboard').controller('calendar',['$scope','uiCalendarConfig','
         eventResize: $scope.alertOnResize,
       }
     };
-
-
-
-
-
-
 }]);

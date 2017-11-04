@@ -21,10 +21,44 @@
                 <label>Especialidad</label>
                 <input type="text" name="fono" class="form-control" placeholder="Fragmentación DNA" data-ng-model="especialidad">
             </div>
-						<div class="form-group">
-			                <label>Correo electrónico</label>
-			                <input type="text" name="fono" class="form-control" placeholder="correo@gmail.com" data-ng-model="email">
-			            </div>
+			<div class="form-group">
+			     <label>Correo electrónico</label>
+			         <input type="text" name="fono" class="form-control" placeholder="correo@gmail.com" data-ng-model="email">
+			</div>
+            <div class="form-group">
+                <label>dias</label> <br>
+                    <input type="checkbox" data-toggle="collapse" data-ng-model="dias.lunes" data-target="#lunes" name="lunes"> Lunes
+                    <input type="checkbox" data-toggle="collapse" data-ng-model="dias.martes" data-target="#martes" name="martes"> Martes
+                    <input type="checkbox" data-toggle="collapse" data-ng-model="dias.miercoles" data-target="#miercoles" name="miercoles"> Miercoles
+                    <input type="checkbox" data-toggle="collapse" data-ng-model="dias.jueves" data-target="#jueves" name="jueves"> Jueves
+                    <input type="checkbox" data-toggle="collapse" data-ng-model="dias.viernes" data-target="#viernes" name="viernes"> Viernes
+            </div>
+
+            <div class="form-group collapse" id="lunes">
+                <label>Horario Lunes</label>
+                <input type="text" name="hora_inicio" class="form-control" placeholder="inicio" data-ng-model="hora_inicio_lunes">
+                <input type="text" name="hora_termino" class="form-control" placeholder="termino" data-ng-model="hora_termino_lunes">
+            </div>
+            <div class="form-group collapse" id="martes">
+                <label>Horario Martes</label>
+                <input type="text" name="hora_inicio" class="form-control" placeholder="inicio" data-ng-model="hora_inicio_martes">
+                <input type="text" name="hora_termino" class="form-control" placeholder="termino" data-ng-model="hora_termino_martes">
+            </div>
+            <div class="form-group collapse" id="miercoles">
+                <label>Horario Miercoles</label>
+                <input type="text" name="hora_inicio" class="form-control" placeholder="inicio" data-ng-model="hora_inicio_miercoles">
+                <input type="text" name="hora_termino" class="form-control" placeholder="termino" data-ng-model="hora_termino_miercoles">
+            </div>
+            <div class="form-group collapse" id="jueves">
+                <label>Horario Jueves</label>
+                <input type="text" name="hora_inicio" class="form-control" placeholder="inicio" data-ng-model="hora_inicio_jueves">
+                <input type="text" name="hora_termino" class="form-control" placeholder="termino" data-ng-model="hora_termino_jueves">
+            </div>
+            <div class="form-group collapse" id="viernes">
+                <label>Horario Viernes</label>
+                <input type="text" name="hora_inicio" class="form-control" placeholder="inicio" data-ng-model="hora_inicio_viernes">
+                <input type="text" name="hora_termino" class="form-control" placeholder="termino" data-ng-model="hora_termino_viernes">
+            </div>
 		    <div class="form-group center">
                 <button type="submit" class="btn btn-primary" ><span class="fa fa-plus"></span> Agregar </button>
                 <a class="btn btn-default" style="margin-top:20px" href="#!/tipo_paciente"><i class="fa fa-times"></i> Cancelar</a>

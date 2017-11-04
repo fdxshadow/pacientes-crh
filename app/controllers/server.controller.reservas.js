@@ -4,15 +4,25 @@
 // cargar modelo 'User' desde mongoDB
 var reserva = require('mongoose').model('Reserva');
 
-exports.mostrar = function(req, res){
-	var fecha=req.params.fecha;
-	reserva.find({fecha_reserva:fecha}).exec(function(error,reservas){
-		if(error){
-			return res.send(error);
+exports.mostrar = function(req,res){
+	console.log(req.params);
+	var fecha = req.params.fecha;
+	if(req.params.medico && req.params.examen){
+		reserva.find({fecha_reserva:fecha,medico_id:req.params.medico,tipo_reserva:{descripcion:req.params.examen}}).exec(
+			function(error,reservas){
+				if (error) return res.send(error);
+				return res.json(reservas);
+			});
+	}else 
+		if (req.params.medico && !req.params.examen) {
+			reserva.find({fecha_reserva:fecha,medico_id:req.params.medico}).exec(function(error,reservas){
+				if (error) return res.send(error);
+				return res.json(reservas);
+			})
 		}
-		return res.json(reservas);
-	});
-};
+}
+
+
 exports.crear = function(req, res, next){
 	//ojo probar sacando lo de abajo
 	var reserva = require('mongoose').model('Reserva');
@@ -27,11 +37,11 @@ exports.crear = function(req, res, next){
 			console.log(err)
 			// Si ocurre algún error enviar el mensaje de error
 			return res.next(err);
-		} else {
+		}
 			console.log(reservas)
 			// usar objeto response (res) para enviar una respuesta JSON
-			res.json(reservas);
-		}
+			return res.json(reservas);
+
 	});
 };
 

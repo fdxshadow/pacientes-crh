@@ -156,18 +156,11 @@
 
 <!-- test de PDF -->
 
-<script src="https://cdn.rawgit.com/niklasvh/html2canvas/0.5.0-alpha2/dist/html2canvas.min.js"></script>
-<script src="lib/jsPDF/dist/jspdf.debug.js"></script>
-<script src="lib/angular-save-html-to-pdf/dist/saveHtmlToPdf.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.22/pdfmake.min.js"></script>
-<script src="//kendo.cdn.telerik.com/2016.3.914/js/kendo.all.min.js"></script>
+<script src='lib/pdfmake/build/pdfmake.min.js'></script>
+<script src='lib/pdfmake/build/vfs_fonts.js'></script>
 
 
-<!-- modulo HORAS -->
-<script type="text/javascript" src="/horas/client.module.horas.js"></script>
-<script type="text/javascript" src="/horas/services/client.service.horas.js"></script>
-<script type="text/javascript" src="/horas/controllers/client.controller.horas.js"></script>
-<script type="text/javascript" src="/horas/config/client.route.horas.js"></script>
+
 <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment-with-locales.js"></script>
 <script type="text/javascript" src="lib/angular-moment-picker/dist/angular-moment-picker.min.js"></script>
 <link href="lib/angular-moment-picker/dist/angular-moment-picker.min.css" rel="stylesheet"/>
@@ -176,7 +169,10 @@
 
 <script type="text/javascript" src="/agendas/client.module.agendas.js"></script>
 <script type="text/javascript" src="/agendas/services/client.service.agendas.js"></script>
+<!-- <script type="text/javascript" src="/agendas/services/client.service.agendaToVer.js"></script> -->
 <script type="text/javascript" src="/agendas/controllers/client.controller.agendas.js"></script>
+<script type="text/javascript" src="/agendas/controllers/client.controller.agendas.pdf.js"></script>
+<script type="text/javascript" src="/agendas/controllers/client.controller.reportes.pdf.js"></script>
 <script type="text/javascript" src="/agendas/config/client.route.agendas.js"></script>
 
 <!--service-example-->

@@ -16,7 +16,6 @@ var mainApplicationModule = angular.module(mainApplicationModuleName,[
 	'reservaPaciente',
 	'720kb.datepicker',
 	'medicos',
-	'horas',
 	'agendas',
 	'moment-picker'
 ]);

@@ -10,7 +10,7 @@
             </div>
 						<fieldset>
 			<div style="padding-left: 20px;" class="form-group">
-				<legend>Mes: {{ ctrl.myInputdate }} </legend>
+				<legend>Mes: {{ ctrl.myInputdate || esteMes }} </legend>
           <!-- <label>Escoja fecha</label> -->
 					<div moment-picker="ctrl.myInputdate"
 						data-ng-model="momentMesDate"

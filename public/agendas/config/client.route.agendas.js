@@ -15,11 +15,11 @@ angular.module('agendas').config(['$routeProvider',
 		}).
 		when('/reportes/ver', {
 			templateUrl: 'agendas/views/client.view.reporte.ver.html',
-			controller: 'HorasController'
+			controller: 'ReportesControllerPdf'
 		}).
 		when('/agendas/ver', {
 			templateUrl: 'agendas/views/client.view.agenda.ver.html',
-			controller: 'HorasController'
+			controller: 'AgendasControllerPdf'
 		}).
 		when('/agendas/general', {
 			templateUrl: 'agendas/views/client.view.agenda.general.html'

@@ -64,7 +64,7 @@ angular.module('agendas').controller('AgendasController', ['$scope', 'SharedData
         // $scope.fecharep = $scope.$storage.fechaReporte;
         $scope.momentMesDate = moment().format('YYYY-MM');
         $scope.$storage.fechaReporte = $scope.momentMesDate;
-        $scope.esteMes = moment($scope.momentMesDate).format('MMMM');
+        $scope.esteMes = moment().format('MMMM');
 
           // $scope.$storage.fechaAgenda = $scope.momentDate;
           $scope.$storage.fechaReporte = $scope.momentMesDate

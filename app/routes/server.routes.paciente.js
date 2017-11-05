@@ -13,6 +13,7 @@ module.exports = function(app) {
     app.get('/api/pacientes', paciente.getPacientes);
     app.get('/api/pacientes/:id', paciente.getPacientesById);
     app.get('/api/pacientenumero/:rut/:telfone', paciente.update);
+    app.put('/api/pacientes', paciente.update);
 
 
     /*

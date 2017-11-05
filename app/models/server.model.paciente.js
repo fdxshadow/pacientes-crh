@@ -23,9 +23,9 @@ function createDefaultPacientes(){
     Paciente.find({}).exec(function(err, collection) {
 
         if(collection.length === 0) {
-            Paciente.create({rut:'1-9',firstName: 'john', lastName: 'doe', telephone:"+56 9 841 000 000"});
-            Paciente.create({rut:'15095162-3',firstName: 'claudio', lastName: 'araya', telephone:"+56 9 841 0322 000"});
-            Paciente.create({rut:'15751100-9',firstName: 'katherine', lastName: 'loayza', telephone:"+56 9 841 000 000"});
+            Paciente.create({rut:'1-9',firstName: 'john', lastName: 'doe', telephone:"987654321"});
+            Paciente.create({rut:'15095162-3',firstName: 'claudio', lastName: 'araya', telephone:"987654321"});
+            Paciente.create({rut:'15751100-9',firstName: 'katherine', lastName: 'loayza', telephone:"987654321"});
         }
     })
 }

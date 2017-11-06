@@ -1,4 +1,5 @@
-var Paciente = require('mongoose').model('Paciente');
+var Paciente = require('mongoose').model('Paciente'),
+    rut = require('../utilities/rut');
 
 exports.getPacientes = function (req, res) {
     Paciente.find({}).exec(function (err, collection) {
@@ -26,8 +27,24 @@ exports.getPacientesById = function (req, res) {
 
 
 exports.update = function(req, res){
-console.log(req.params.rut);
+    var pacienteData = req.body;
 
+    if(!rut.isFormatValid(pacienteData.rut)){
+        res.status(400);
+        return res.send({reason:"Error: Ingrese RUT sin puntos y con guión"})
+    } else if(!rut.isDigitValid(pacienteData.rut)){
+        res.status(400);
+        return res.send({reason:"Error: Dígito Verificador incorrecto"})
+    }
+
+    Paciente.update({"_id":pacienteData._id}, pacienteData, { runValidators: true } , function(err){
+        if(err){
+            res.status(400);
+            return res.send({reason:err.toString()})
+        }
+        res.status(204);
+        res.end()
+    })
 
 };
 

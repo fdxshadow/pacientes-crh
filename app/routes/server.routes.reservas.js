@@ -11,9 +11,9 @@ module.exports = function (app) {
 	app.route('/horario1').post(reserva.edit);
 	app.route('/reservas').post(reserva.crear);
 
-	app.route('/api/horas/:buscarFecha/:nombreMedico')
+	app.route('/api/agendas/:buscarFecha/:nombreMedico')
 		 .get(reserva.listByFecha_Medico);
-	 app.route('/api/horas/:buscarFecha').get(reserva.listByFecha);
+	 app.route('/api/agendas/:buscarFecha').get(reserva.listByFecha);
 	 app.param('buscarFecha', reserva.paramFecha);
 	 app.param('nombreMedico', reserva.paramMedico);
 

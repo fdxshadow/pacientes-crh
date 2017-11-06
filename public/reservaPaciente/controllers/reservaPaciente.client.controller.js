@@ -61,11 +61,12 @@ $scope.prueba = function(){
             var med = (pacienteinfo.medico_id)?pacienteinfo.medico_id:"no";
             servicio.get({fecha:$scope.date,medico:med,examen:pacienteinfo.examen_id},function(response){
                 var disponibilidad1 = [];            
-                    var horas = parseInt(moment(pacienteinfo.examen_disponibilidad.hora_termino,"HH:mm").hours()) - parseInt(moment(pacienteinfo.examen_disponibilidad.hora_inicio,"HH:mm").hours())
-                    var resini =moment(pacienteinfo.examen_disponibilidad.hora_inicio,"HH:mm");
+                    var horas = parseInt(moment(pacienteinfo.examen_disponibilidad.hora_termino,"hh:mm").hours()) - parseInt(moment(pacienteinfo.examen_disponibilidad.hora_inicio,"HH:mm").hours())
+                    var resini =moment(pacienteinfo.examen_disponibilidad.hora_inicio,"h:mm");
                     var ini = pacienteinfo.examen_disponibilidad.hora_inicio;
                     var min = ini.split(":")[1];
-                    var fin = moment(resini).add(1,'hours').hours()+":"+min;
+                    var hour= (moment(resini).add(1,'hours').hours()<10)?"0"+moment(resini).add(1,'hours').hours():moment(resini).add(1,'hours').hours()
+                    var fin = hour+":"+min;
                     var aux = {
                         hora_ini:ini,
                         hora_term:fin
@@ -73,8 +74,9 @@ $scope.prueba = function(){
                     disponibilidad1.push(aux);
                     for (var i = 1; i<horas; i++){
                         var ino = disponibilidad1[disponibilidad1.length - 1].hora_term; 
-                        var resino = moment(ino,"HH:mm");
-                        var fino = moment(resino).add(1,'hours').hours()+":"+min;
+                        var resino = moment(ino,"hh:mm");
+                        var houro = (moment(resino).add(1,'hours').hours()<10)?"0"+moment(resino).add(1,'hours').hours():moment(resino).add(1,'hours').hours()
+                        var fino = houro+":"+min;
 
                         var aux1 = {
                             hora_ini:ino,
@@ -94,7 +96,7 @@ $scope.prueba = function(){
                 $scope.horarios=disponibilidad1;
             
             });
-        }
+        }        
     }
 }    
 

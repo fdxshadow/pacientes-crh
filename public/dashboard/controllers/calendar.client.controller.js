@@ -67,7 +67,7 @@ angular.module('dashboard').controller('calendar',['$scope','uiCalendarConfig','
       calendar:{
         height: 400,
         allDaySlot: false,
-        minTime: '8:00',
+        minTime: '08:00',
         maxTime: '16:00',
         editable: true,
         header:{
@@ -76,6 +76,7 @@ angular.module('dashboard').controller('calendar',['$scope','uiCalendarConfig','
           right: 'today prev,next'
         },
         eventClick: $scope.alertEventOnClick = function(event,jsEvent,view){
+          console.log(event);
           $scope.show=false;
           $scope.datos = event;
 

@@ -7,19 +7,30 @@ var reserva = require('mongoose').model('Reserva');
 exports.mostrar = function(req,res){
 	console.log(req.params);
 	var fecha = req.params.fecha;
-	if(req.params.medico && req.params.examen){
-		reserva.find({fecha_reserva:fecha,medico_id:req.params.medico,tipo_reserva:{descripcion:req.params.examen}}).exec(
+	if(req.params.medico && req.params.examen && req.params.medico != "no"){
+		reserva.find({fecha_reserva:fecha,medico_id:req.params.medico,"tipo_reserva.descripcion":req.params.examen}).exec(
 			function(error,reservas){
 				if (error) return res.send(error);
+				console.log("ecografia")
 				return res.json(reservas);
 			});
 	}else 
-		if (req.params.medico && !req.params.examen) {
+		if (req.params.medico && req.params.medico != "no") {
 			reserva.find({fecha_reserva:fecha,medico_id:req.params.medico}).exec(function(error,reservas){
 				if (error) return res.send(error);
+				console.log("consulta medica");
 				return res.json(reservas);
 			})
 		}
+		else
+			if (req.params.examen) {
+				reserva.find({fecha_reserva:fecha,"tipo_reserva.descripcion":req.params.examen}).exec(
+					function(error,reservas){
+						if(error) return res.send(error);
+						console.log("examen");
+						return res.json(reservas);
+					});
+			}
 }
 
 

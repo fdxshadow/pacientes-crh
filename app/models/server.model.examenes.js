@@ -23,15 +23,15 @@ function createDefaultExamenes(){
 	Examen.find({}).exec(function(err,collection){ 
 	if(collection.length === 0){
 		
-		Examen.create({nombre:"Ecografía", horario:{hora_inicio:"8:00",hora_termino:"10:00"}, personal:"médico"});
-		Examen.create({nombre:"Insiminación intrauterina", horario:{hora_inicio:"8:00",hora_termino:"14:00"}, personal:"enfermero/tec.médico"});
-		Examen.create({nombre:"Fecundación in vitro",horario:{hora_inicio:"8:00",hora_termino:"14:00"}, personal:"enfermero/tec.médico"});
-		Examen.create({nombre:"Espermiograma",horario:{hora_inicio:"8:00",hora_termino:"14:00"}, personal:"enfermero/tec.médico"});
-		Examen.create({nombre:"Fragmentación del DNA",horario:{hora_inicio:"8:00",hora_termino:"14:00"}, personal:"enfermero/tec.médico"});
-		Examen.create({nombre:"Criopreservación de ovocitos",horario:{hora_inicio:"8:00",hora_termino:"14:00"}, personal:"enfermero/tec.médico"});
-		Examen.create({nombre:"Criopreservación espermática",horario:{hora_inicio:"8:00",hora_termino:"14:00"}, personal:"enfermero/tec.médico"});
-		Examen.create({nombre:"Ovodonación",horario:{hora_inicio:"8:00",hora_termino:"14:00"}, personal:"enfermero/tec.médico"});
-		Examen.create({nombre:"Donación de semen",horario:{hora_inicio:"8:00",hora_termino:"14:00"}, personal:"enfermero/tec.médico"});
+		Examen.create({nombre:"Ecografía", horario:{hora_inicio:"08:00",hora_termino:"10:00"}, personal:"médico"});
+		Examen.create({nombre:"Insiminación intrauterina", horario:{hora_inicio:"08:00",hora_termino:"14:00"}, personal:"enfermero/tec.médico"});
+		Examen.create({nombre:"Fecundación in vitro",horario:{hora_inicio:"08:00",hora_termino:"14:00"}, personal:"enfermero/tec.médico"});
+		Examen.create({nombre:"Espermiograma",horario:{hora_inicio:"08:00",hora_termino:"14:00"}, personal:"enfermero/tec.médico"});
+		Examen.create({nombre:"Fragmentación del DNA",horario:{hora_inicio:"08:00",hora_termino:"14:00"}, personal:"enfermero/tec.médico"});
+		Examen.create({nombre:"Criopreservación de ovocitos",horario:{hora_inicio:"08:00",hora_termino:"14:00"}, personal:"enfermero/tec.médico"});
+		Examen.create({nombre:"Criopreservación espermática",horario:{hora_inicio:"08:00",hora_termino:"14:00"}, personal:"enfermero/tec.médico"});
+		Examen.create({nombre:"Ovodonación",horario:{hora_inicio:"08:00",hora_termino:"14:00"}, personal:"enfermero/tec.médico"});
+		Examen.create({nombre:"Donación de semen",horario:{hora_inicio:"08:00",hora_termino:"14:00"}, personal:"enfermero/tec.médico"});
 		
 	}
 })

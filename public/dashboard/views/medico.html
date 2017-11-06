@@ -1,0 +1,23 @@
+
+<section ng-controller="medico">
+<hr>
+
+<div class="page-hader text-center destacadito">
+	<h1>
+		<span class="fa fa-user-md">
+		</span>Seleccionar Médico:
+	</h1>
+</div>
+
+<div class="row text-center">
+	<h2>Paciente seleccionado: {{paciente}}</h2>
+	<div ng-repeat="medico in medicos">
+
+	<div class="pagination-center col-md-6">
+	<a href="#!reservaPaciente" ng-click="seleccionado(medico)"><i id=opcion2 class="fa fa-user-md fa-5x" aria-hidden="true"><h3 class="text-success"><strong>{{medico.nombre}}</strong></h3></i>
+	</a>
+	</div>
+	</div>
+</div>
+<hr>
+</section>

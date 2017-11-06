@@ -1,0 +1,36 @@
+<div class="row contact-wrap">
+	<div class="center">
+		<!-- <h1> fijate quie el paciente es ES es : {{pacienteSelec._id}}</h1> -->
+		<h2><i class="fa fa-calendar" aria-hidden="true"></i> Seleccione un mes </h2>
+	</div>
+	<div  class="col-lg-6 col-lg-offset-3 col-sm-offset-6 col-sm-3 col-xs-12 contact-form ">
+            <!-- El elemento mensaje error -->
+            <div data-ng-show="error" class="alert alert-danger fade in alert-dismissable text-center">
+                <strong data-ng-bind="error"></strong>
+            </div>
+						<fieldset>
+			<div style="padding-left: 20px;" class="form-group">
+				<legend>Mes: {{ ctrl.myInputdate || esteMes }} </legend>
+          <!-- <label>Escoja fecha</label> -->
+					<div moment-picker="ctrl.myInputdate"
+						data-ng-model="momentMesDate"
+						locale="es"
+						format="MMMM"
+ 			     max-view="year"
+ 			     today="true"
+ 			     keyboard="true"
+ 			     set-on-select="true"
+					 inline="true">
+ 			    {{ ctrl.myInput }}
+					 <!-- {{ ctrl.myInputdate }} -->
+					</div>
+	    </div>
+			<fieldset>
+		    <div class="form-group center">
+						<!-- <button ng-click="reporte()">Click</button> -->
+                <button ng-click="reporte()" class="btn btn-primary"  ><span class="fa fa-plus"></span> Siguiente </button>
+                <a class="btn btn-default" style="margin-top:10px" href="#!/dashboard"><i class="fa fa-undo"></i> volver</a>
+        </div>
+
+    </div>
+</div>

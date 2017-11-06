@@ -1,0 +1,29 @@
+
+<section ng-controller="ReservaController">
+    <div class="container">
+        <div class="page-hader"><h1><span class="glyphicon glyphicon-calendar">
+            </span> Fecha Antención:</h1>
+        </div>
+        <h2>Paciente:{{paciente}}</h2>
+        <h2>Médico:{{medico}}</h2>
+        <div class="row">
+            <div class="col-md-6">
+                <datepicker date-format="yyyy-MM-dd"  
+                    date-min-limit = "{{dateMinLimit.toString()}}" 
+                    date-disabled-dates = "{{datesDisabled}}">
+                <input placeholder="Seleccione aquí la fecha de atención" 
+                    ng-change="prueba()" ng-model="date">
+                </datepicker>
+            </div>
+            <div class="col-md-6">
+                <h3>Reservas Disponibles:</h3>
+                <div ng-repeat="horario in horarios">
+                    <div>{{horario.hora_ini}}-{{horario.hora_term}}</div>
+                    <button ng-click=reservar(horario) 
+                        class="btn btn-success" type="button">Reservar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+</section>

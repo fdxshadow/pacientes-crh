@@ -1,0 +1,39 @@
+<div class="page-hader">
+	
+</div>
+
+
+<div class="row contact-wrap">
+	<div class="col-lg-6 col-lg-offset-3 col-sm-offset-6 col-sm-3 col-xs-12 contact-form">
+	<form ng-submit="main.doLogin(loginData);">
+		<div class="center"><br><h2><i class="fa fa-user-circle-o"></i> Registro de Usuario </h2></div>
+			<label>Nombre de Usuario:</label>
+			<input class="form-control" type="text" name="username" placeholder="Ingresar Usuario" ng-model="main.loginData.username">
+			<br>
+			<label>Contraseña:</label>
+			<input class="form-control" type="password" name="password" placeholder="Ingresar Contraseña" ng-model="main.loginData.password">
+			<br>
+			<button class="btn btn-primary" type="submit">Ingresar</button>
+			<br>
+		</div>
+	</form>
+    </div>
+
+</div>
+
+<br>
+<div class="jumbotron text-center" ng-show="main.loading">
+	<span class="glyphicon glyphicon-repeat spinner"></span>
+	<p>Cargando...</p>
+</div>
+<br>
+
+<div class="row show-hide-message text-center" ng-show="main.successMsg">
+	<div class="alert alert-success">{{main.successMsg}}</div>
+</div>
+
+<br>
+
+<div class="row show-hide-message text-center" ng-show="main.errorMsg">
+	<div class="alert alert-danger">{{main.errorMsg}}</div>
+</div>

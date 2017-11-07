@@ -26,6 +26,16 @@ mainApplicationModule.config(['$locationProvider',
 	}
 ]);
 
+mainApplicationModule.config(['momentPickerProvider', function (momentPickerProvider) {
+        momentPickerProvider.options({
+            /* ... */
+						minutesStep: 30,
+						hoursStart: 8,
+						hoursEnd: 18,
+						hoursFormat: "HH:[00]"
+        });
+    }]);
+
 angular.element(document).ready(function(){
 	angular.bootstrap(document,[mainApplicationModuleName]);
 });

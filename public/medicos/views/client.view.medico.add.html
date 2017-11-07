@@ -36,28 +36,193 @@
 
             <div class="form-group collapse" id="lunes">
                 <label>Horario Lunes</label>
-                <input type="text" name="hora_inicio" class="form-control" placeholder="inicio" data-ng-model="hora_inicio_lunes">
-                <input type="text" name="hora_termino" class="form-control" placeholder="termino" data-ng-model="hora_termino_lunes">
+								<div  class="input-group"
+							        data-moment-picker="ctrl.data1.dataFrom"
+							        data-locale="es"
+							        data-format="HH:mm"
+											data-ng-model="hora_inicio_lunes"
+											show-header="false">
+
+							        <span class="input-group-addon">
+							          <i class="glyphicon glyphicon-time" aria-hidden="true"></i>
+							        </span>
+							        <input  class="form-control input-sm"
+							                placeholder="Hora inicio"
+							                data-ng-model="ctrl.data1.dataFrom"
+							                data-ng-model-options="{ updateOn: 'blur' }">
+							 </div>
+
+							  <div  class="input-group"
+							        data-moment-picker="ctrl.dataFrom1"
+							        data-locale="es"
+							        data-format="HH:mm"
+											data-ng-model="hora_fin_lunes"
+											show-header="false"
+											min-date = "ctrl.data1.dataFrom">
+
+							        <span class="input-group-addon">
+							          <i class="glyphicon glyphicon-time" aria-hidden="true"></i>
+							        </span>
+							        <input  class="form-control input-sm"
+							                placeholder="Hora fin"
+							                data-ng-model="ctrl.dataFrom1"
+							                data-ng-model-options="{ updateOn: 'blur' }">
+							 </div>
+                <!-- <input type="text" name="hora_inicio" class="form-control" placeholder="inicio" data-ng-model="hora_inicio_lunes">
+                <input type="text" name="hora_termino" class="form-control" placeholder="termino" data-ng-model="hora_termino_lunes"> -->
             </div>
             <div class="form-group collapse" id="martes">
                 <label>Horario Martes</label>
-                <input type="text" name="hora_inicio" class="form-control" placeholder="inicio" data-ng-model="hora_inicio_martes">
-                <input type="text" name="hora_termino" class="form-control" placeholder="termino" data-ng-model="hora_termino_martes">
+
+								<div  class="input-group"
+							        data-moment-picker="ctrl.data2.dataFrom"
+							        data-locale="es"
+							        data-format="HH:mm"
+											data-ng-model="hora_inicio_martes"
+											show-header="false">
+
+							        <span class="input-group-addon">
+							          <i class="glyphicon glyphicon-time" aria-hidden="true"></i>
+							        </span>
+							        <input  class="form-control input-sm"
+							                placeholder="Hora inicio"
+							                data-ng-model="ctrl.data2.dataFrom"
+							                data-ng-model-options="{ updateOn: 'blur' }">
+							 </div>
+
+							  <div  class="input-group"
+							        data-moment-picker="ctrl.dataFrom2"
+							        data-locale="es"
+							        data-format="HH:mm"
+											data-ng-model="hora_fin_martes"
+											show-header="false"
+											min-date = "ctrl.data2.dataFrom">
+
+							        <span class="input-group-addon">
+							          <i class="glyphicon glyphicon-time" aria-hidden="true"></i>
+							        </span>
+							        <input  class="form-control input-sm"
+							                placeholder="Hora fin"
+							                data-ng-model="ctrl.dataFrom2"
+							                data-ng-model-options="{ updateOn: 'blur' }">
+							 </div>
+
+
+                <!-- <input type="text" name="hora_inicio" class="form-control" placeholder="inicio" data-ng-model="hora_inicio_martes"> -->
+                <!-- <input type="text" name="hora_termino" class="form-control" placeholder="termino" data-ng-model="hora_termino_martes"> -->
             </div>
             <div class="form-group collapse" id="miercoles">
                 <label>Horario Miercoles</label>
-                <input type="text" name="hora_inicio" class="form-control" placeholder="inicio" data-ng-model="hora_inicio_miercoles">
-                <input type="text" name="hora_termino" class="form-control" placeholder="termino" data-ng-model="hora_termino_miercoles">
+
+								<div  class="input-group"
+											data-moment-picker="ctrl.data3.dataFrom"
+											data-locale="es"
+											data-format="HH:mm"
+											data-ng-model="hora_inicio_miercoles"
+											show-header="false">
+
+											<span class="input-group-addon">
+												<i class="glyphicon glyphicon-time" aria-hidden="true"></i>
+											</span>
+											<input  class="form-control input-sm"
+															placeholder="Hora inicio"
+															data-ng-model="ctrl.data3.dataFrom"
+															data-ng-model-options="{ updateOn: 'blur' }">
+							 </div>
+
+								<div  class="input-group"
+											data-moment-picker="ctrl.dataFrom3"
+											data-locale="es"
+											data-format="HH:mm"
+											data-ng-model="hora_fin_miercoles"
+											show-header="false"
+											min-date = "ctrl.data3.dataFrom">
+
+											<span class="input-group-addon">
+												<i class="glyphicon glyphicon-time" aria-hidden="true"></i>
+											</span>
+											<input  class="form-control input-sm"
+															placeholder="Hora fin"
+															data-ng-model="ctrl.dataFrom3"
+															data-ng-model-options="{ updateOn: 'blur' }">
+							 </div>
+
+                <!-- <input type="text" name="hora_inicio" class="form-control" placeholder="inicio" data-ng-model="hora_inicio_miercoles">
+                <input type="text" name="hora_termino" class="form-control" placeholder="termino" data-ng-model="hora_termino_miercoles"> -->
             </div>
             <div class="form-group collapse" id="jueves">
                 <label>Horario Jueves</label>
-                <input type="text" name="hora_inicio" class="form-control" placeholder="inicio" data-ng-model="hora_inicio_jueves">
-                <input type="text" name="hora_termino" class="form-control" placeholder="termino" data-ng-model="hora_termino_jueves">
+								<div  class="input-group"
+											data-moment-picker="ctrl.data4.dataFrom"
+											data-locale="es"
+											data-format="HH:mm"
+											data-ng-model="hora_inicio_jueves"
+											show-header="false">
+
+											<span class="input-group-addon">
+												<i class="glyphicon glyphicon-time" aria-hidden="true"></i>
+											</span>
+											<input  class="form-control input-sm"
+															placeholder="Hora inicio"
+															data-ng-model="ctrl.data4.dataFrom"
+															data-ng-model-options="{ updateOn: 'blur' }">
+							 </div>
+
+								<div  class="input-group"
+											data-moment-picker="ctrl.dataFrom4"
+											data-locale="es"
+											data-format="HH:mm"
+											data-ng-model="hora_fin_jueves"
+											show-header="false"
+											min-date = "ctrl.data4.dataFrom">
+
+											<span class="input-group-addon">
+												<i class="glyphicon glyphicon-time" aria-hidden="true"></i>
+											</span>
+											<input  class="form-control input-sm"
+															placeholder="Hora fin"
+															data-ng-model="ctrl.dataFrom4"
+															data-ng-model-options="{ updateOn: 'blur' }">
+							 </div>
+                <!-- <input type="text" name="hora_inicio" class="form-control" placeholder="inicio" data-ng-model="hora_inicio_jueves">
+                <input type="text" name="hora_termino" class="form-control" placeholder="termino" data-ng-model="hora_termino_jueves"> -->
             </div>
             <div class="form-group collapse" id="viernes">
                 <label>Horario Viernes</label>
-                <input type="text" name="hora_inicio" class="form-control" placeholder="inicio" data-ng-model="hora_inicio_viernes">
-                <input type="text" name="hora_termino" class="form-control" placeholder="termino" data-ng-model="hora_termino_viernes">
+								<div  class="input-group"
+											data-moment-picker="ctrl.data5.dataFrom"
+											data-locale="es"
+											data-format="HH:mm"
+											data-ng-model="hora_inicio_viernes"
+											show-header="false">
+
+											<span class="input-group-addon">
+												<i class="glyphicon glyphicon-time" aria-hidden="true"></i>
+											</span>
+											<input  class="form-control input-sm"
+															placeholder="Hora inicio"
+															data-ng-model="ctrl.data5.dataFrom"
+															data-ng-model-options="{ updateOn: 'blur' }">
+							 </div>
+
+								<div  class="input-group"
+											data-moment-picker="ctrl.dataFrom5"
+											data-locale="es"
+											data-format="HH:mm"
+											data-ng-model="hora_fin_viernes"
+											show-header="false"
+											min-date = "ctrl.data5.dataFrom">
+
+											<span class="input-group-addon">
+												<i class="glyphicon glyphicon-time" aria-hidden="true"></i>
+											</span>
+											<input  class="form-control input-sm"
+															placeholder="Hora fin"
+															data-ng-model="ctrl.dataFrom5"
+															data-ng-model-options="{ updateOn: 'blur' }">
+							 </div>
+                <!-- <input type="text" name="hora_inicio" class="form-control" placeholder="inicio" data-ng-model="hora_inicio_viernes">
+                <input type="text" name="hora_termino" class="form-control" placeholder="termino" data-ng-model="hora_termino_viernes"> -->
             </div>
 		    <div class="form-group center">
                 <button type="submit" class="btn btn-primary" ><span class="fa fa-plus"></span> Agregar </button>

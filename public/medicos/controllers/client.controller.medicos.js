@@ -23,46 +23,48 @@ angular.module('medicos').controller('MedicosController', ['$scope','SharedDataS
             if($scope.dias.lunes){
                  dia = {
                     dia:"lunes",
-                    hora_inicio:$scope.hora_inicio_lunes,
-                    hora_termino:$scope.hora_termino_lunes
+                    hora_inicio:moment(this.hora_inicio_lunes,"HH:mm").format("HH:mm"),
+                    hora_termino:moment(this.hora_fin_lunes,"HH:mm").format("HH:mm")
                 };
                 aux.push(dia);
             }
             if($scope.dias.martes){
                  dia = {
                     dia:"martes",
-                    hora_inicio:$scope.hora_inicio_martes,
-                    hora_termino:$scope.hora_termino_martes
+                    // moment(this.momentDate,"YYYY-MM-DD").format("YYYY-MM-DD");
+                    // hora_inicio:$scope.hora_inicio_martes,
+                    hora_inicio:moment(this.hora_inicio_martes,"HH:mm").format("HH:mm"),
+                    hora_termino:moment(this.hora_fin_martes,"HH:mm").format("HH:mm")
                 };
                 aux.push(dia);
             }
             if($scope.dias.miercoles){
                  dia = {
                     dia:"miercoles",
-                    hora_inicio:$scope.hora_inicio_miercoles,
-                    hora_termino:$scope.hora_termino_miercoles
+                    hora_inicio:moment(this.hora_inicio_miercoles,"HH:mm").format("HH:mm"),
+                    hora_termino:moment(this.hora_fin_miercoles,"HH:mm").format("HH:mm")
                 };
                 aux.push(dia);
             }
             if($scope.dias.jueves){
                  dia = {
                     dia:"jueves",
-                    hora_inicio:$scope.hora_inicio_jueves,
-                    hora_termino:$scope.hora_termino_jueves
+                    hora_inicio:moment(this.hora_inicio_jueves,"HH:mm").format("HH:mm"),
+                    hora_termino:moment(this.hora_fin_jueves,"HH:mm").format("HH:mm")
                 };
                 aux.push(dia);
             }
             if($scope.dias.viernes){
                  dia = {
                     dia:"viernes",
-                    hora_inicio:$scope.hora_inicio_viernes,
-                    hora_termino:$scope.hora_termino_viernes
+                    hora_inicio:moment(this.hora_inicio_viernes,"HH:mm").format("HH:mm"),
+                    hora_termino:moment(this.hora_fin_viernes,"HH:mm").format("HH:mm")
                 };
                 aux.push(dia);
             }
-            
+
             console.log(aux);
-            
+
 
             var medico = new MedicosResource({
                 run: this.run,

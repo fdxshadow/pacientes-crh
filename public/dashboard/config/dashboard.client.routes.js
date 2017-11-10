@@ -29,6 +29,11 @@ angular.module('dashboard').config(['$routeProvider',function($routeProvider){
 			//authenticated: true
 
 		}).
+		when('/bloquear',{
+			templateUrl:'dashboard/views/bloquear.html'
+			//authenticated: true
+
+		}).
 		otherwise({
 			redirectTo:'/'
 		});

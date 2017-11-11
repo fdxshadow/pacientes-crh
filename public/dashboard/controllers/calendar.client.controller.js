@@ -12,7 +12,7 @@ angular.module('dashboard').controller('calendar',
       Eventos.save({evento:even},
         function(resp){
           if(resp){
-            ev.color = "blue";
+            ev.color = "green";
             uiCalendarConfig.calendars.micalendario.fullCalendar('updateEvent',ev);
           }
         });
@@ -38,7 +38,7 @@ angular.module('dashboard').controller('calendar',
           // Muestra reserva de bloqueo de medicos
           if(value.paciente_id==null){
             var aux = {
-              id_bd:value._id,
+              id_bd:    value._id,
               title:    'Bloqueo: '+value.medico_id.nombre,
               start:    value.fecha_reserva+'T'+value.hora_inicio_reserva,
               end:      value.fecha_reserva+'T'+value.hora_fin_reserva,
@@ -49,8 +49,11 @@ angular.module('dashboard').controller('calendar',
               //celular:value.paciente_id.telephone
             }
           }else{
-            var colore = (value.estado_reserva==='registrado')?'green':'blue';
-            var medic = (value.medico_id===null)?'No Aplica':value.medico_id.nombre;
+            var colore  = (value.estado_reserva==='registrado')?'blue':'green';
+            var medic   = (value.medico_id===null)?'No Aplica':value.medico_id.nombre;
+            var tipe    = (value.tipo_reserva.tipo==='consulta médica')?
+                                value.tipo_reserva.tipo:value.tipo_reserva.tipo +
+                                ' : '+value.tipo_reserva.descripcion.nombre;
             var aux = {
               id_bd:    value._id,
               title:    'Paciente: '+value.paciente_id.firstName,
@@ -58,7 +61,7 @@ angular.module('dashboard').controller('calendar',
               end:      value.fecha_reserva+'T'+value.hora_fin_reserva,
               color:     colore,
               celular:  'Telefono : '+value.paciente_id.telephone,
-              tipo:     value.tipo_reserva.tipo,
+              tipo:     tipe,
               horario:  value.hora_inicio_reserva+' - '+value.hora_fin_reserva,
               medico:   'Medico : '+medic
             }

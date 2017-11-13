@@ -4,12 +4,12 @@
 
 <div class="page-hader text-center destacadito"><h1><span class="fa fa-user-md"></span> Seleccionar Médico:</h1></div>
 
-<div class="row text-center">
+<div class="row text-center" data-step="1" data-intro="Elige un de los medicos disponibles" data-position="top">
 	<h2>Paciente seleccionado: {{paciente}}</h2>
 	<div ng-repeat="medico in medicos">
 
 	<div class="pagination-center col-md-6">
-	<a href="#!reservaPaciente" ng-click="seleccionado(medico)" ><i id=opcion2 class="fa fa-user-md fa-5x" aria-hidden="true" data-step="1" data-intro="Click acá para seleccionar al medico"><h3 class="text-success"><strong>{{medico.nombre}}</strong></h3></i>
+	<a href="#!reservaPaciente" ng-click="seleccionado(medico)" ><i id=opcion2 class="fa fa-user-md fa-5x" aria-hidden="true" data-step="2" data-intro="Por ejemplo si haces click aca seleccionas al medico {{medico.nombre}}"><h3 class="text-success"><strong>{{medico.nombre}}</strong></h3></i>
 	</a>
 	</div>
 	</div>

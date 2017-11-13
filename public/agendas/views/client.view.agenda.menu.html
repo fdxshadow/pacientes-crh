@@ -17,8 +17,9 @@
 				<h2>Fecha actual &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {{ hoy }} </h2>
 				<!-- <legend>Generar agenda para el dia: {{ ctrl.myInputdate || momentDate }} </legend> -->
           <!-- <label>Escoja fecha</label> -->
-					<div
-						moment-picker="ctrl.myInputdate"
+					<div>
+						<h2>Generar agenda para el dia  &nbsp;:&nbsp; {{ ctrl.myInputdate || momentDate }} &nbsp;&nbsp;</h2>
+					<div class="btn btn-primary" moment-picker="ctrl.myInputdate"
 						data-ng-model="momentDate"
 						locale="es"
 						format="YYYY-MM-DD"
@@ -26,9 +27,9 @@
 						max-view="day"
 						today= "true"
 						set-on-select="true"
-						>
-						<h2>Generar agenda para el dia  &nbsp;:&nbsp; {{ ctrl.myInputdate || momentDate }} &nbsp;&nbsp;</h2>
-						<h2> <i class="glyphicon glyphicon-calendar"></i>&nbsp;Click para escoger otra fecha</h2>
+						class="btn-primary">
+						<i class="glyphicon glyphicon-calendar"></i>&nbsp; Escoger otra fecha
+					</div>
 					 <!-- {{"Escoger otro dia"}} -->
 					</div>
 					<!-- <i class="glyphicon glyphicon-calendar"></i>&nbsp; -->

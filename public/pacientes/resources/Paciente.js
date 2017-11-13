@@ -1,3 +1,4 @@
+(function () {
 angular.module('pacientes').factory('Paciente', function ($resource) {
     var PacienteResource = $resource('/api/pacientes/:_id',
         {_id: "@id"},
@@ -5,4 +6,5 @@ angular.module('pacientes').factory('Paciente', function ($resource) {
         });
 
     return PacienteResource;
-})
+});
+})();

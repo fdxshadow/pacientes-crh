@@ -1,23 +1,18 @@
-// Invocar modo JavaScript 'strict'
+(function() {
 'use strict';
-
-
-// clAuth saque
-angular.module('pacientes').controller('PacientesController', function($scope, Paciente, Notifier, $location,  PacientesSrv, pacienteinfo) {
+angular.module('pacientes').controller('PacientesController', function($scope, Paciente, Notifier, $location, PacientesSrv, pacienteinfo) {
 
     $scope.agregar = function() {
-        var newPacienteData = {
+        var newPacienteData = new Paciente({
             rut: $scope.rut,
             firstName: $scope.fname,
             lastName: $scope.lname,
             telephone: $scope.telephone
-        };
-
-
-        PacientesSrv.createPaciente(newPacienteData).then(function() {
+        });
+        PacientesSrv.funcionPaciente(newPacienteData, newPacienteData.$save()).then(function() {
             Notifier.notify('Paciente Creado Exitosamente!');
             pacienteinfo.paciente_id = newPacienteData._id;
-            pacienteinfo.paciente_nombre = newPacienteData.firstName+" "+newPacienteData.lastName;
+            pacienteinfo.paciente_nombre = newPacienteData.firstName + " " + newPacienteData.lastName;
             pacienteinfo.rut = newPacienteData.rut;
             $location.path('/tipohora');
         }, function(reason) {
@@ -25,3 +20,4 @@ angular.module('pacientes').controller('PacientesController', function($scope, P
         });
     };
 });
+})();

@@ -6,8 +6,8 @@ angular.module('pacientes').controller('PacientesControllerEdit', function($scop
     });
 
     $scope.guardar = function() {
-        var updatedPacienteData = $scope.paciente.toJSON();
-        PacientesSrv.actualizarPaciente(updatedPacienteData).then(function() {
+        var updatedPacienteData = $scope.paciente;
+        PacientesSrv.funcionPaciente(updatedPacienteData, updatedPacienteData.$update()).then(function() {
             Notifier.notify('Paciente Editado Exitosamente!');
             $location.path('/hora');
         }, function(reason) {

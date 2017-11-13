@@ -12,7 +12,11 @@ angular.module('medicos').config(['$routeProvider',
 		when('/medicos', {
 			templateUrl: 'medicos/views/client.view.medicos.html',
 			controller: 'MedicosController'
-		})
+		}).
+		when('/medicos/edit', {
+			templateUrl: 'medicos/views/client.view.medico.edit.html',
+			controller: 'MedicosController'
+		});
 
 	}
 ]);

@@ -3,7 +3,7 @@
 
 // cargar modelo 'User' desde mongoDB
 var reserva = require('mongoose').model('Reserva');
-
+var examen = require('mongoose').model('Examen');
 exports.mostrar = function(req,res){
 	console.log(req.params);
 	var fecha = req.params.fecha;
@@ -14,7 +14,7 @@ exports.mostrar = function(req,res){
 				console.log("ecografia")
 				return res.json(reservas);
 			});
-	}else 
+	}else
 		if (req.params.medico && req.params.medico != "no") {
 			reserva.find({fecha_reserva:fecha,medico_id:req.params.medico,estado_reserva:{'$ne':'rechazado'}}).exec(function(error,reservas){
 				if (error) return res.send(error);
@@ -87,7 +87,8 @@ exports.listByFecha_Medico = function(req, res) {
 	// Usar el método model 'find' para obtener una lista de facturas
 	reserva.find({
 		fecha_reserva: req.fecha,
-		 medico_id: req.id_medico
+		 medico_id: req.id_medico,
+		 estado_reserva : 'confirmado'
 		  // hora_inicio_reserva: req.id_medico
 	 }).populate('paciente_id','firstName lastName').populate('tipo_reserva.descripcion','nombre').exec(function(err, horas){
 		if(err){
@@ -103,6 +104,10 @@ exports.listByFecha_Medico = function(req, res) {
 				//creaemo un arreglo vacio
 			var result = [];
 			horas.forEach(function(hora){
+				// if (hora.estado_reserva == 'confirmado') {
+        //
+        //
+				// }
 
 				var firstName = hora.paciente_id.firstName + ' ' + hora.paciente_id.lastName;
 				var hora_inicio_reserva = hora.hora_inicio_reserva;
@@ -148,124 +153,101 @@ exports.listByFecha = function(req, res) {
 		//  medico_id: req.id_medico
 		  // hora_inicio_reserva: req.id_medico
 	 }).populate('tipo_reserva.descripcion','nombre').exec(function(err, horas){
-		if(err){
-			// Si un error ocurre enviar un mensaje de error
-			return res.status(400).send({
-				message: getErrorMessage(err)
-			});
-		}else{
-			// usar objeto response (res) para enviar una respuesta JSON
-			console.log("encontro esto:")
-			console.log(horas);
-			var reservaCount = 0;
-			var noConfirm = 0;
-			var confirm = 0;
-			var consultaCount = 0;
-			var examenCount = 0;
-			var ecoCount = 0;
-			var insiCount =0;
-			var fecuCount =0;
-			var esperCount = 0;
-			var fragCount = 0;
-			var crioOvoCount =0;
-			var	crioEsperCount =0;
-			var ovodoCount =0;
-			var donaCount = 0;
+					if(err){
+						// Si un error ocurre enviar un mensaje de error
+						return res.status(400).send({
+					  message: getErrorMessage(err)
+						});
+					}else{
+						examen.distinct('nombre').exec(function(err, dist){
 
+						var reservaCount = 0;
+						var noConfirm = 0;
+						var confirm = 0;
+						var consultaCount = 0;
+						var examenCount = 0;
+						var examenConfSum = 0;
+						var examDimCount = new Array(dist.length);
+						examDimCount.fill(0);
 
-			// enum:['consulta médica', 'examen']
-			// var confCount = 0;
-			// var
-			horas.forEach(function(hora){
-				//cuento el numero de reservas regisstradas
-				reservaCount += 1;
+						var result = [];
+						horas.forEach(function(hora){
+							//cuento el numero de reservas regisstradas
+							reservaCount += 1;
 
-				if(hora.estado_reserva == "confirmado"){
-					//cuento las confirmadass
-					confirm += 1;
-					switch(hora.tipo_reserva.tipo) {
-								case "consulta médica":
-							 			//cantidad de consultas
-										console.log("############encontre una consulta");
-										consultaCount += 1;
-										break;
-								case "examen":
-										//cantidad de xamenes
-										examenCount +=1;
-										console.log("############encontre un examen");
-										switch (hora.tipo_reserva.descripcion.nombre) {
-											case "Ecografía":
-												ecoCount +=1;
+							if(hora.estado_reserva == "confirmado"){
+							//cuento las confirmadass
+							confirm += 1;
+							switch(hora.tipo_reserva.tipo) {
+										case "consulta médica":
+												//cantidad de consultas
+												// console.log("############encontre una consulta");
+												consultaCount += 1;
 												break;
-											case "Insiminación intrauterina":
-												insiCount +=1;
+										case "examen":
+												//cantidad de xamenes
+												examenCount +=1;
+												// console.log("############encontre un examen");
+												for(var j = 0; j < dist.length; j++){
+
+															if (hora.tipo_reserva.descripcion.nombre == dist[j]) {
+																examDimCount[j] +=1;
+																examenConfSum +=1;
+																break;
+															};
+												 };
 												break;
-											case "Fecundación in vitro":
-												fecuCount +=1;
-												break;
-											case "Espermiograma":
-												esperCount +=1;
-												break;
-											case "Fragmentación del DNA":
-												fragCount +=1
-												break;
-											case "Criopreservación de ovocitos":
-												crioOvoCount +=1;
-												break;
-											case "Criopreservación espermática":
-												crioEsperCount +=1;
-												break;
-											case "Ovodonación":
-												ovodoCount +=1;
-												break;
-											case "Donación de semen":
-												donaCount +=1;
-												break;
-											default:
+										default:
 												//
-										};
+								};
+							} else {
+								//reservas rechazadas
+								noConfirm += 1;
+							};
 
-										break;
-								default:
-										//
+						}); //foreach horas
+						console.log(dist);
+						console.log(examDimCount);
+						var first = {
+							reservas: reservaCount,
+						 confirmadas : confirm,
+						 perdidas: noConfirm,
+						 consultas: consultaCount,
+						 examenes : examenCount
+						};
+						result.push(first);
+						examenConfSum
+						function porcentaje(cant,total) {
+							if (total == 0){
+								return 0
+							};
+							var result = (cant * 100)/ total;
+							return (Math.round( result * 10 ) / 10);
 						};
 
-				}else {
-					//reservas rechazadas
-					noConfirm += 1;
-				};
+						for (var i = 0; i < dist.length; i++) {
+
+							var counts = {
+								nombre: dist[i],
+								cantidad: examDimCount[i],
+								porcentaje: porcentaje(examDimCount[i], examenConfSum)
+							};
+							result.push(counts);
+						};
 
 
-				    // console.log(hora.estado_reserva);
-				    // Do whatever processing you want
-				});
-				console.log('consultas: ' + consultaCount);
-				console.log('examens : ' + examenCount);
-
-				// console.log(hora.estado_reserva);
-				var counts = {
-				    reservas: reservaCount,
-						confirmadas : confirm,
-						perdidas: noConfirm,
-				    consultas: consultaCount,
-						examenes : examenCount,
-						ecografias: ecoCount,
-						insiminaciones: insiCount,
-						fecundaciones: fecuCount,
-						espermiogramas: esperCount,
-						fragmenntaciones: fragCount,
-						crioOvocitos : crioOvoCount,
-						crioEsperma : crioEsperCount,
-						ovodonaciones : ovodoCount,
-						donacionesSemen : donaCount
-				};
-				var result = [];
-				result.push(counts);
-				// var horas = JSON.stringify({datos});
+				// console.log(dist);
+				// console.log(examDimCount);
 				horas = result;
-				console.log(horas);
-
-			res.json(horas);
+				// result.push(counts)
+				console.log(result);
+				res.json(horas);
+				// res.json(horas);
+			}); //examen disticnt
+		  // horas = result;
+			// // result.push(counts)
+			// console.log(horas);
+			// res.json(horas);
 		}
 	});
 };

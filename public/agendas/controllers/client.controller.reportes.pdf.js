@@ -12,18 +12,53 @@ angular.module('agendas').controller('ReportesControllerPdf', ['$scope','$timeou
     // $scope.externalDataRetrievedFromServer = $scope.$storage.jsArrayReporte;
     console.log('en controlleer reporte pdf, el jsarray es');
     console.log($scope.$storage.jsArrayReporte);
-    // console.log($scope.$storage.jsArrayReporte.reservas);
-
+    console.log('y dinamic es:');
+    console.log($scope.$storage.jsDinamic);
+    console.log('ooooooooooooooooooooooooo');
     $scope.fecharep = $scope.$storage.fechaReporte;
     $scope.formatted = moment($scope.fecharep, 'YYYY-MM').format('MMMM YYYY');
     $scope.fileNameRep = "Reporte_mensual:"+$scope.formatted + ".pdf";
     $scope.datos = $scope.$storage.jsArrayReporte;
+    $scope.externalDataRetrievedFromServer = $scope.$storage.jsDinamic;
+    console.log('external from rep pdf es:');
+    console.log($scope.externalDataRetrievedFromServer);
+    // console.log('dinamic es ');
+    // console.log($scope.dinamic);
     $scope.porcentaje = function(cant,total){
       if (total == 0){
         return 0
       };
       var result = (cant * 100)/ total;
       return (Math.round( result * 10 ) / 10);
+    };
+
+    $scope.buildTableBody = function(data, columns) {
+      var body = [];
+
+      body.push(['Nombre','Cantidad','Porcentaje(%)']);
+
+      data.forEach(function(row) {
+          var dataRow = [];
+
+          columns.forEach(function(column) {
+              dataRow.push(row[column].toString());
+          });
+
+          body.push(dataRow);
+      });
+
+
+
+      return body;
+    };
+
+    $scope.table = function(data, columns) {
+        return {
+            table: {
+                headerRows: 1,
+                body: $scope.buildTableBody(data, columns)
+            }
+        };
     };
 
     $scope.docDefinition = {
@@ -82,31 +117,7 @@ angular.module('agendas').controller('ReportesControllerPdf', ['$scope','$timeou
     			margin: [0,20,0,40]
     		},
     		{text: '3) Tipo de examenes(confirmados): ', style: 'subheader'},
-    		{
-    			style: 'tableExample',
-    			color: '#444',
-    			table: {
-    				widths: [300, 100, 100],
-    				headerRows: 1,
-    				// keepWithHeaderRows: 1,
-    				body: [
-    					[{text: ' ', style: 'tableHeader', alignment: 'center'}, {text: 'Cantidad', style: 'tableHeader', alignment: 'center'}, {text: 'Porcentaje(%)', style: 'tableHeader', alignment: 'center'}],
-    					[{text: 'Ecografía: ', style: 'tableHeader', alignment: 'center'}, {text: $scope.datos.ecografias, style: 'tableHeader', alignment: 'center'}, {text: $scope.porcentaje($scope.datos.ecografias,$scope.datos.examenes), style: 'tableHeader', alignment: 'center'}],
-    					[{text: 'Insiminación intrauterina :', style: 'tableHeader', alignment: 'center'}, {text: $scope.datos.insiminaciones, style: 'tableHeader', alignment: 'center'}, {text: $scope.porcentaje($scope.datos.insiminaciones,$scope.datos.examenes), style: 'tableHeader', alignment: 'center'}],
-    				    [{text: 'Fecundación in vitro : ', style: 'tableHeader', alignment: 'center'}, {text: $scope.datos.fecundaciones, style: 'tableHeader', alignment: 'center'}, {text: $scope.porcentaje($scope.datos.fecundaciones,$scope.datos.examenes), style: 'tableHeader', alignment: 'center'}],
-    				    [{text: 'Espermiograma : ', style: 'tableHeader', alignment: 'center'}, {text: $scope.datos.espermiogramas, style: 'tableHeader', alignment: 'center'}, {text: $scope.porcentaje($scope.datos.espermiogramas,$scope.datos.examenes), style: 'tableHeader', alignment: 'center'}],
-    				    [{text: 'Fragmentación del DNA : ', style: 'tableHeader', alignment: 'center'}, {text: $scope.datos.fragmenntaciones, style: 'tableHeader', alignment: 'center'}, {text: $scope.porcentaje($scope.datos.fragmenntaciones,$scope.datos.examenes), style: 'tableHeader', alignment: 'center'}],
-    				    [{text: 'Criopreservación de ovocitos : ', style: 'tableHeader', alignment: 'center'}, {text: $scope.datos.crioOvocitos, style: 'tableHeader', alignment: 'center'}, {text: $scope.porcentaje($scope.datos.crioOvocitos,$scope.datos.examenes), style: 'tableHeader', alignment: 'center'}],
-    				    [{text: 'Criopreservación espermática : ', style: 'tableHeader', alignment: 'center'}, {text: $scope.datos.crioEsperma, style: 'tableHeader', alignment: 'center'}, {text: $scope.porcentaje($scope.datos.crioEsperma,$scope.datos.examenes), style: 'tableHeader', alignment: 'center'}],
-    				    [{text: 'Ovodonación : ', style: 'tableHeader', alignment: 'center'}, {text: $scope.datos.ovodonaciones, style: 'tableHeader', alignment: 'center'}, {text: $scope.porcentaje($scope.datos.ovodonaciones,$scope.datos.examenes), style: 'tableHeader', alignment: 'center'}],
-    				    [{text: 'Donación de semen : ', style: 'tableHeader', alignment: 'center'}, {text: $scope.datos.donacionesSemen, style: 'tableHeader', alignment: 'center'}, {text: $scope.porcentaje($scope.datos.donacionesSemen,$scope.datos.examenes), style: 'tableHeader', alignment: 'center'}],
-
-    				]
-    			},
-    			margin: [0,20,0,40]
-    		},
-
-
+        $scope.table($scope.externalDataRetrievedFromServer, ['nombre', 'cantidad','porcentaje'])
     	],
     	styles: {
     		header: {

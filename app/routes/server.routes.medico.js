@@ -9,4 +9,10 @@ module.exports = function (app) {
 		//  .get( paciente.list)
 		 .get(medico.list);
 	app.route('/api/medicos').post( medico.create);
+
+	app.route('/api/medicos/:medicoId')
+	.put(medico.update)
+	.get(medico.read);
+
+	app.param('medicoId', medico.medicoByID);
 }

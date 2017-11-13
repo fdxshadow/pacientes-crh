@@ -6,25 +6,25 @@
         <legend>Información Paciente Nuevo</legend>
         <div class="form-group">
           <label for="rut" class="col-md-2 control-label">RUT *</label>
-          <div class="col-md-10">
+          <div class="col-md-10" data-step="1" data-intro="Ingrese RUT sin puntos y con guion, ejemplo: 12345678-5" >
             <input name="rut" type="text" placeholder="RUT Ej: 12345678-5" ng-model="rut" required="required" class="form-control"/>
           </div>
         </div>
         <div class="form-group">
           <label for="fname" class="col-md-2 control-label">Nombre(s)</label>
-          <div class="col-md-10">
+          <div class="col-md-10" data-step="2" data-intro="Ingrese los nombres del pacientes">
             <input name="fname" type="text" placeholder="Nombre(s)" ng-model="fname" required="required" class="form-control"/>
           </div>
         </div>
         <div class="form-group">
           <label for="lname" class="col-md-2 control-label">Apellido(s)</label>
-          <div class="col-md-10">
+          <div class="col-md-10" data-step="3" data-intro="Ingrese los apellidos del pacientes">
             <input name="lname" type="text" placeholder="Apellido(s)" ng-model="lname" required="required" class="form-control"/>
           </div>
         </div>
         <div class="form-group">
           <label for="telephone" class="col-md-2 control-label">Teléfono *</label>
-          <div class="col-md-10">
+          <div class="col-md-10" data-step="4" data-intro="Ingrese los nueve digitos del telefono de contacto del paciente">
             <input name="telephone" type="text" placeholder="Teléfono Ej: 987654321" ng-model="telephone" required="required" class="form-control" ng-pattern="/^[0-9]{9}$/"/>
           </div>
         </div>

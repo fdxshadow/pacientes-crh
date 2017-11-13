@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="/lib/angular-date-picker/angular-date-picker.css"/>
     <link rel="stylesheet" type="text/css" href="/lib/toastr/toastr.css"/>
     <link href="/lib/angularjs-datepicker/src/css/angular-datepicker.css" rel="stylesheet" type="text/css"/>
-
+    <link rel="stylesheet" type="text/css" href="/lib/intro.js/introjs.css">
     <link href="lib/angular-moment-picker/dist/angular-moment-picker.min.css" rel="stylesheet"/>
     <link rel="stylesheet" type="text/css" href="/assets/css/opciones.css">
     <!--css full calendar-->
@@ -41,6 +41,7 @@
                     <li><a href="#!/hora">Pedir Hora</a></li>
                     <li><a href="#!/hoy">Hoy</a></li>
                     <li><a href="#!/agendas/general">Reportes</a></li>
+                    <li><a href="javascript:void(0);" onclick="startIntro();">Ayuda</a></li>
                     <li><a href="" ng-click="main.logout();">Salir</a></li>
                 </ul>
             </li>
@@ -80,8 +81,20 @@
 
 
 </script>
-
-
+<!-- Ayuda con intro.js -->
+<script type="text/javascript" src="/lib/intro.js/intro.js"></script>
+<script type="text/javascript">
+      function startIntro(){
+        var intro = introJs();
+          intro.setOptions({
+            "nextLabel": " > ",
+            "prevLabel" : " < ",
+            "skipLabel" : " Salir ",
+            "doneLabel" : " Listo "
+        });
+          intro.start();
+      }
+ </script>
 <!-- modulo dashboard , ruta, controlador y service -->
 
 <script type="text/javascript" src="/lib/jquery/dist/jquery.min.js"></script>

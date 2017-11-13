@@ -14,6 +14,7 @@
     "angular-ui-calendar": "^1.0.2",
     "angular-moment-picker": "moment-picker#^0.10.1",
     "angular-save-html-to-pdf": "*",
-    "pdfmake": "^0.1.33"
+    "pdfmake": "^0.1.33",
+    "intro.js": "^2.7.0"
   }
 }

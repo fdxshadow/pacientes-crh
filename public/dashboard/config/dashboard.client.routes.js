@@ -34,6 +34,11 @@ angular.module('dashboard').config(['$routeProvider',function($routeProvider){
 			//authenticated: true
 
 		}).
+		when('/examen/create',{
+		templateUrl:'dashboard/views/agregarexamen.html',
+		controller: 'ExamenesController'
+		//authenticated: true
+		}).
 		otherwise({
 			redirectTo:'/'
 		});

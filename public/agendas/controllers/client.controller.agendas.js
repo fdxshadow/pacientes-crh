@@ -90,6 +90,7 @@ angular.module('agendas').controller('AgendasController', ['$scope', 'SharedData
 
               // $scope.$storage.fileNameRep = "Reporte_mensual:"+$scope.formatted + ".pdf";
             $scope.$storage.jsArrayReporte = resp[0];
+            $scope.$storage.jsDinamic = resp.slice(1);
           }).then(function(){
             $scope.$storage.fileNameRep = "Reporte_mensual:"+$scope.formatted + ".pdf";
             $location.url('/reportes/ver');

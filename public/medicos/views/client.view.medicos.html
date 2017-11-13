@@ -16,7 +16,8 @@
 			</div>
 		</div>
 	</div>
-    <form class="contact-form col-lg-6 col-lg-offset-3 col-sm-offset-6 col-sm-3 col-xs-12">
+	<div class="col-lg-6 col-lg-offset-3  single-profile-top" >
+    <form class="contact-form">
 		<table class="table table-striped" style='border: 1px solid #DDD' >
 			<thead>
 				<tr>
@@ -24,7 +25,8 @@
 					<th>Nombre</th>
 					<th>Especialidad</th>
 					<th>Correo electrónico</th>
-					<th>Seleccionado</th>
+					<th>Seleccionar</th>
+
 				</tr>
 			</thead>
 			<tbody>
@@ -36,15 +38,18 @@
 					<td class="center">
 						<input class="form-control" type="radio" name="medicoSeleccionado" style="height: 17px; margin:0px;" data-ng-model="medico" data-ng-value="$index" data-ng-change="setMedico($index)" />
 					</td>
+
 				</tr>
 			<tbody>
 		</table>
 		<!-- <h1> fijate quie el DOCTOR ES es : {{test1}}</h1> -->
-		<div data-ng-init="findOne()">
-<h2>tetsing: {{mediconocreo}} </h2>
 
-		</div>
 <!-- <h2>tetsing: {{medico}} </h2> -->
-		<a class="btn btn-primary pull-right" href="#!/tipoPagos"  ng-show="buttonVisibility"><span class="fa fa-user"></span> Seleccionar Medico </a>
+		<a class="btn btn-primary pull-right" href="#!/medicos/edit"  ng-show="buttonVisibility"><span class="fa fa-user"></span> Editar Medico </a>
     </form>
+	</div>
+		<div class="col-lg-12 col-sm-12 col-xs-12 center">
+			<a class="btn btn-default" style="margin-top:20px" href="#!/procedimientos"><i class="fa fa-undo"></i> Atrás</a>
+			<a class="btn btn-danger " style="margin-top:20px" href="#!/home_administrativo"><i class="fa fa-times"></i> Cancelar</a>
+		</div>
 </div><!--/.row-->

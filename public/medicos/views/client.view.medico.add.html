@@ -19,19 +19,19 @@
             </div>
 			<div class="form-group">
                 <label>Especialidad</label>
-                <input type="text" name="fono" class="form-control" placeholder="Fragmentación DNA" data-ng-model="especialidad">
+                <input type="text" name="fono" class="form-control" placeholder="No aplica" data-ng-model="especialidad">
             </div>
 			<div class="form-group">
 			     <label>Correo electrónico</label>
 			         <input type="text" name="fono" class="form-control" placeholder="correo@gmail.com" data-ng-model="email">
 			</div>
             <div class="form-group">
-                <label>dias</label> <br>
-                    <input type="checkbox" data-toggle="collapse" data-ng-model="dias.lunes" data-target="#lunes" name="lunes"> Lunes
-                    <input type="checkbox" data-toggle="collapse" data-ng-model="dias.martes" data-target="#martes" name="martes"> Martes
-                    <input type="checkbox" data-toggle="collapse" data-ng-model="dias.miercoles" data-target="#miercoles" name="miercoles"> Miercoles
-                    <input type="checkbox" data-toggle="collapse" data-ng-model="dias.jueves" data-target="#jueves" name="jueves"> Jueves
-                    <input type="checkbox" data-toggle="collapse" data-ng-model="dias.viernes" data-target="#viernes" name="viernes"> Viernes
+                <label>Horarioss de consulta médica</label> <br>
+                    <input type="checkbox" data-toggle="collapse" data-ng-model="lunes" data-target="#lunes" name="lunes"> Lunes
+                    <input type="checkbox" data-toggle="collapse" data-ng-model="martes" data-target="#martes" name="martes"> Martes
+                    <input type="checkbox" data-toggle="collapse" data-ng-model="miercoles" data-target="#miercoles" name="miercoles"> Miercoles
+                    <input type="checkbox" data-toggle="collapse" data-ng-model="jueves" data-target="#jueves" name="jueves"> Jueves
+                    <input type="checkbox" data-toggle="collapse" data-ng-model="viernes" data-target="#viernes" name="viernes"> Viernes
             </div>
 
             <div class="form-group collapse" id="lunes">
@@ -49,7 +49,8 @@
 							        <input  class="form-control input-sm"
 							                placeholder="Hora inicio"
 							                data-ng-model="ctrl.data1.dataFrom"
-							                data-ng-model-options="{ updateOn: 'blur' }">
+							                data-ng-model-options="{ updateOn: 'blur' }"
+															onkeydown="return false">
 							 </div>
 
 							  <div  class="input-group"
@@ -66,7 +67,8 @@
 							        <input  class="form-control input-sm"
 							                placeholder="Hora fin"
 							                data-ng-model="ctrl.dataFrom1"
-							                data-ng-model-options="{ updateOn: 'blur' }">
+							                data-ng-model-options="{ updateOn: 'blur' }"
+															onkeydown="return false">
 							 </div>
                 <!-- <input type="text" name="hora_inicio" class="form-control" placeholder="inicio" data-ng-model="hora_inicio_lunes">
                 <input type="text" name="hora_termino" class="form-control" placeholder="termino" data-ng-model="hora_termino_lunes"> -->
@@ -87,7 +89,8 @@
 							        <input  class="form-control input-sm"
 							                placeholder="Hora inicio"
 							                data-ng-model="ctrl.data2.dataFrom"
-							                data-ng-model-options="{ updateOn: 'blur' }">
+							                data-ng-model-options="{ updateOn: 'blur' }"
+															onkeydown="return false">
 							 </div>
 
 							  <div  class="input-group"
@@ -104,7 +107,8 @@
 							        <input  class="form-control input-sm"
 							                placeholder="Hora fin"
 							                data-ng-model="ctrl.dataFrom2"
-							                data-ng-model-options="{ updateOn: 'blur' }">
+							                data-ng-model-options="{ updateOn: 'blur' }"
+															onkeydown="return false">
 							 </div>
 
 
@@ -127,7 +131,8 @@
 											<input  class="form-control input-sm"
 															placeholder="Hora inicio"
 															data-ng-model="ctrl.data3.dataFrom"
-															data-ng-model-options="{ updateOn: 'blur' }">
+															data-ng-model-options="{ updateOn: 'blur' }"
+															onkeydown="return false">
 							 </div>
 
 								<div  class="input-group"
@@ -144,7 +149,8 @@
 											<input  class="form-control input-sm"
 															placeholder="Hora fin"
 															data-ng-model="ctrl.dataFrom3"
-															data-ng-model-options="{ updateOn: 'blur' }">
+															data-ng-model-options="{ updateOn: 'blur' }"
+															onkeydown="return false">
 							 </div>
 
                 <!-- <input type="text" name="hora_inicio" class="form-control" placeholder="inicio" data-ng-model="hora_inicio_miercoles">
@@ -165,7 +171,8 @@
 											<input  class="form-control input-sm"
 															placeholder="Hora inicio"
 															data-ng-model="ctrl.data4.dataFrom"
-															data-ng-model-options="{ updateOn: 'blur' }">
+															data-ng-model-options="{ updateOn: 'blur' }"
+															onkeydown="return false">
 							 </div>
 
 								<div  class="input-group"
@@ -182,7 +189,8 @@
 											<input  class="form-control input-sm"
 															placeholder="Hora fin"
 															data-ng-model="ctrl.dataFrom4"
-															data-ng-model-options="{ updateOn: 'blur' }">
+															data-ng-model-options="{ updateOn: 'blur' }"
+															onkeydown="return false">
 							 </div>
                 <!-- <input type="text" name="hora_inicio" class="form-control" placeholder="inicio" data-ng-model="hora_inicio_jueves">
                 <input type="text" name="hora_termino" class="form-control" placeholder="termino" data-ng-model="hora_termino_jueves"> -->
@@ -202,7 +210,8 @@
 											<input  class="form-control input-sm"
 															placeholder="Hora inicio"
 															data-ng-model="ctrl.data5.dataFrom"
-															data-ng-model-options="{ updateOn: 'blur' }">
+															data-ng-model-options="{ updateOn: 'blur' }"
+															onkeydown="return false">
 							 </div>
 
 								<div  class="input-group"
@@ -219,7 +228,8 @@
 											<input  class="form-control input-sm"
 															placeholder="Hora fin"
 															data-ng-model="ctrl.dataFrom5"
-															data-ng-model-options="{ updateOn: 'blur' }">
+															data-ng-model-options="{ updateOn: 'blur' }"
+															onkeydown="return false">
 							 </div>
                 <!-- <input type="text" name="hora_inicio" class="form-control" placeholder="inicio" data-ng-model="hora_inicio_viernes">
                 <input type="text" name="hora_termino" class="form-control" placeholder="termino" data-ng-model="hora_termino_viernes"> -->

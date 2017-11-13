@@ -1,6 +1,6 @@
 
 angular.module('reservaPaciente').controller('ReservaController'
-,['$scope', 'ReservaServicio','pacienteinfo', function ($scope, servicio, pacienteinfo) {
+,['$scope','$location', 'ReservaServicio','Notifier','pacienteinfo', function ($scope,$location,servicio,Notifier, pacienteinfo) {
 
 $scope.horarios = [];
 $scope.paciente = pacienteinfo.paciente_nombre;
@@ -193,13 +193,31 @@ $scope.reservar = function(horario){
         fecha_reserva: $scope.date
     };
 }
+    var c = new servicio(reserva);
 
-    servicio.create(reserva, function(data){
+    c.$save().then(function(){
+        var i = $scope.horarios.indexOf(horario);
+        $scope.horarios.splice(i,1);
+        pacienteinfo = [];
+        Notifier.notify("Reserva Realizada");
+        $location.url('/dashboard');
+
+
+    },function(response){
+        Notifier.error("Reserva no logro realizarse")
+    }
+
+    )
+}
+
+
+    /*servicio.create(reserva, function(data){
     });
 
     var i = $scope.horarios.indexOf(horario);
     $scope.horarios.splice(i,1);
-}
+}*/
+
 
 
 

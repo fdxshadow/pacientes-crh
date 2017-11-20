@@ -1,7 +1,7 @@
 // Invocar modo JavaScript 'strict'
 'use strict';
 
-angular.module('dashboard').controller('ExamenesController', ['$scope','SharedDataService', '$routeParams', '$location', 'ExamenesResource', '$localStorage', function($scope,SharedDataService, $routeParams, $location, ExamenesResource, $localStorage) {
+angular.module('dashboard').controller('ExamenesController', ['$scope','SharedDataService', '$routeParams', '$location', 'ExamenesResource', '$localStorage', 'Notifier', function($scope,SharedDataService, $routeParams, $location, ExamenesResource, $localStorage, Notifier) {
 
 
         $scope.$storage = $localStorage;
@@ -27,28 +27,17 @@ angular.module('dashboard').controller('ExamenesController', ['$scope','SharedDa
             //                NuevoIngresoService.medico = response;
             $scope.$storage.examen = response;
             // Si un medico fue creado de modo correcto, redireccionar al usuario a la página del medico
+            Notifier.notify('Examen Creado Exitosamente!');
             $location.path('/dashboard');
             }, function(errorResponse) {
             // En otro caso, presentar al usuario el mensaje de error
             $scope.error = errorResponse.data.message;
+            Notifier.error('Error al crear el examen, favor revisar que no exista');
             });
-
-
-/*
-      ExamenesSrv.createExamen(newExamenData).then(function() {
-            Notifier.notify('Examen Creado Exitosamente!');
-            exameninfo.examen_nombre = newExamenData.nombre;
-            exameninfo.examen_id = newExamenData._id;
-            //exameninfo.paciente_horario = {newExamenData.horario_inicio},{newExamenData.horario_termino};
-            exameninfo.personal = newExamenData.personal;
-            $location.path('/dashboard');
-            //$location.path('/secretaria/pacientes/crear');
-        }, function(reason) {
-            Notifier.error(reason);
-        });
-*/
-
-
-
     }
+
+
+
+
+
 }]);

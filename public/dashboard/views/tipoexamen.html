@@ -24,7 +24,7 @@
 	</thead>
 	<!--tbody ng-controller="tipoexamen"-->
 		<tr ng-repeat="examen in examenes | filter:buscarexamen">
-			<td>{{examen.nombre}}</td>
+			<td data-step="2" data-intro="Haz Click acá para editar el examen" ><a href="/#!/examen/edit/{{examen._id}}">{{examen.nombre}}</a></td>
 			<td>{{examen.horario.hora_inicio}}-{{examen.horario.hora_termino}} hrs</td>
 			<td>{{examen.personal}}</td>
 			<td>

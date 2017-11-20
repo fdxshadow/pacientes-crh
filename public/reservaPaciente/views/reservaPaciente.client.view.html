@@ -16,7 +16,7 @@
                     <h2>Reservas Disponibles:</h2>
                     <h3>Horas:</h3>
                     <div ng-repeat="horario in horarios">
-                        <p>{{horario.hora_ini}} - {{horario.hora_term}}   <button ng-click=reservar(horario) class="btn btn-success" type="button">Reservar</button></p>
+                        <p>{{horario.hora_ini}} - {{horario.hora_term}}   <button ng-click=reservar(horario) class="btn btn-success" type="button">{{boton}}</button></p>
                     </div>
                 </div>
 

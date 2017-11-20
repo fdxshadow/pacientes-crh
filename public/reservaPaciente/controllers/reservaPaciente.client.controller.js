@@ -5,9 +5,13 @@ angular.module('reservaPaciente').controller('ReservaController'
 $scope.horarios = [];
 $scope.paciente = pacienteinfo.paciente_nombre;
 $scope.medico = pacienteinfo.medico_nombre;
+$scope.boton = "reserver";
 //console.log(pacienteinfo);
 if(pacienteinfo.medico_nombre==null){
     $scope.medico = " No aplica";
+}
+if(pacienteinfo.paciente_nombre==null){
+    $scope.boton = " Bloquear Horario ";
 }
 
 

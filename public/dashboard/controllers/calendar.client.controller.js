@@ -46,6 +46,7 @@ angular.module('dashboard').controller('calendar',
               tipo:     'Bloqueo de Horario',
               fecha:    value.fecha_reserva,
               horario:  value.hora_inicio_reserva+' - '+value.hora_fin_reserva,
+              botonA:    "Cancelar Bloqueo"
               //celular:value.paciente_id.telephone
             }
           }else{
@@ -53,7 +54,7 @@ angular.module('dashboard').controller('calendar',
             var medic   = (value.medico_id===null)?'No Aplica':value.medico_id.nombre;
             var tipe    = (value.tipo_reserva.tipo==='consulta médica')?
                                 value.tipo_reserva.tipo:value.tipo_reserva.tipo +
-                                ' : '+value.tipo_reserva.descripcion.nombre;
+                                ' : '+value.tipo_reserva.descripcion;
             var aux = {
               id_bd:    value._id,
               title:    'Paciente: '+value.paciente_id.firstName,
@@ -63,7 +64,9 @@ angular.module('dashboard').controller('calendar',
               celular:  'Telefono : '+value.paciente_id.telephone,
               tipo:     tipe,
               horario:  value.hora_inicio_reserva+' - '+value.hora_fin_reserva,
-              medico:   'Medico : '+medic
+              medico:   'Medico : '+medic,
+              botonA:    "Rechazar",
+              botonB:    "Confirmar"
             }
           }
           $scope.events.push(aux);

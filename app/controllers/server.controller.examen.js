@@ -36,7 +36,25 @@ exports.create = function (req, res, next){
             })
         }
     })
+};
 
+exports.getExamenById = function (req, res) {
+    Examen.findOne({"_id":ObjectId(req.params.id)}).exec(function (err, examen) {
+        return res.send(examen);
+    })
+};
 
+exports.update = function(req, res){
+    var examenData = req.body;
+
+    Examen.update({"_id":examenData._id}, examenData,  function(err){
+        if(err){
+            res.status(400);
+            return res.send({reason:err.toString()})
+        }
+        res.status(204);
+        res.end()
+    })
 
 };
+

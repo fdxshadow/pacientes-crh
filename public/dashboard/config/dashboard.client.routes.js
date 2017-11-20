@@ -34,13 +34,18 @@ angular.module('dashboard').config(['$routeProvider',function($routeProvider){
 			//authenticated: true
 
 		}).
+		when('/examen/edit/:_id',{
+      	templateUrl: 'dashboard/views/editarexamen.html',
+      	controller: 'ExamenesControllerEdit',
+      	//authenticated: true
+    	}).
 		when('/examen/create',{
 		templateUrl:'dashboard/views/agregarexamen.html',
 		controller: 'ExamenesController'
 		//authenticated: true
 		}).
-		otherwise({
-			redirectTo:'/'
+    	otherwise({
+    	redirectTo:'/'
 		});
 	}
 ]);

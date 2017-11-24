@@ -31,10 +31,12 @@
         </div>
     </div><!--/.container-->
 </header><!--/header-->
+
+
 <div class="row" ng-show="auth.isLoggedIn()" id="barra">
     <div class="navbar-right" >
         <ul class="nav navbar-nav navbar-right">
-            <li class="dropdown ng-cloak"><a href="" data-toggle="dropdown" class="dropdown-toggle">{{userName}}<b class="caret"></b></a>
+            <li class="dropdown ng-cloak"><a href="" data-toggle="dropdown" class="dropdown-toggle navbar-toggle">{{userName}} <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span><b class="caret"></b></a>
                 <ul class="dropdown-menu">
                     <li><a href="#!/dashboard">Principal</a></li>
                     <li><a href="#!/pacientes/create">Nuevo Paciente </a></li>

@@ -54,7 +54,7 @@ angular.module('dashboard').controller('calendar',
             var medic   = (value.medico_id===null)?'No Aplica':value.medico_id.nombre;
             var tipe    = (value.tipo_reserva.tipo==='consulta médica')?
                                 value.tipo_reserva.tipo:value.tipo_reserva.tipo +
-                                ' : '+value.tipo_reserva.descripcion;
+                                ' : '+value.tipo_reserva.descripcion.nombre;
             var aux = {
               id_bd:    value._id,
               title:    'Paciente: '+value.paciente_id.firstName,

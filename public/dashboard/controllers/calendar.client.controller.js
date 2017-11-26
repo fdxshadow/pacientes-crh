@@ -46,7 +46,8 @@ angular.module('dashboard').controller('calendar',
               tipo:     'Bloqueo de Horario',
               fecha:    value.fecha_reserva,
               horario:  value.hora_inicio_reserva+' - '+value.hora_fin_reserva,
-              botonA:    "Cancelar Bloqueo"
+              botonA:    "Cancelar Bloqueo",
+              view:      "display: none;"
               //celular:value.paciente_id.telephone
             }
           }else{
@@ -66,7 +67,7 @@ angular.module('dashboard').controller('calendar',
               horario:  value.hora_inicio_reserva+' - '+value.hora_fin_reserva,
               medico:   'Medico : '+medic,
               botonA:    "Rechazar",
-              botonB:    "Confirmar"
+              botonB:    "Confirmar",
             }
           }
           $scope.events.push(aux);

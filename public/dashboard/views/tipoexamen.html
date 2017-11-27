@@ -1,0 +1,47 @@
+<section ng-controller="tipoexamen">
+<hr>
+<div class="page-hader destacado" ><h1><span class="glyphicon glyphicon-list-alt"></span> Seleccionar Examen:</h1></div>
+<div class="col-md-5">
+                <div class="input-group">
+                    <!-- USE TWITTER TYPEAHEAD JSON WITH API TO SEARCH -->
+                    <input class="form-control" ng-model="buscarexamen.nombre" placeholder="Buscar por nombre">
+                    <span class="input-group-btn">
+                     <button class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
+                    </span>
+             </div>
+</div>
+<hr>
+
+<table border=10 class="table table-bordered table-responsive table-striped">
+
+	<thead>
+		<tr>
+			<th>Nombre</th>
+			<th>Horario</th>
+			<th>Personal requerido</th>
+			
+		</tr>
+	</thead>
+	<!--tbody ng-controller="tipoexamen"-->
+		<tr ng-repeat="examen in examenes | filter:buscarexamen">
+			<td data-step="2" data-intro="Haz Click acá para editar el examen" ><a href="/#!/examen/edit/{{examen._id}}">{{examen.nombre}}</a></td>
+			<td>{{examen.horario.hora_inicio}}-{{examen.horario.hora_termino}} hrs</td>
+			<td>{{examen.personal}}</td>
+			<td>
+				<!--button href="#!/reservaPaciente class="btn btn-success"  >Seleccionar</button-->
+				<button class="btn btn-success" ng-click="seleccionado(examen)">Seleccionar</button>
+				<!--
+				<button style="background-color:#007da7;color:white;" class="btn btn-default">Actualizar telefono</button>
+				-->
+				<!--
+				button class="btn btn-primary">Actualizar telefono</button>
+				-->
+			</td>
+		</tr>
+	</tbody>
+
+
+</table>
+
+<hr>
+</section>

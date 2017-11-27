@@ -1,6 +1,8 @@
 'use strict';
 
-angular.module('pacientes').controller('PacientesControllerEdit', function($scope, Paciente, Notifier, $location, PacientesSrv, pacienteinfo, $routeParams) {
+angular.module('pacientes').controller('PacientesControllerEdit',
+function($scope, Paciente, Notifier, $location, PacientesSrv, $routeParams, $localStorage) {
+  $scope.$storage = $localStorage;
     $scope.paciente = Paciente.get({
         _id: $routeParams._id
     });

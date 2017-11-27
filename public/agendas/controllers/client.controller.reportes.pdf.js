@@ -20,10 +20,12 @@ angular.module('agendas').controller('ReportesControllerPdf', ['$scope','$timeou
     $scope.fileNameRep = "Reporte_mensual:"+$scope.formatted + ".pdf";
     $scope.datos = $scope.$storage.jsArrayReporte;
     $scope.externalDataRetrievedFromServer = $scope.$storage.jsDinamic;
+    $scope.externalDataRetrievedFromServer2 = $scope.$storage.dimInfoCons;
+    $scope.externalDataRetrievedFromServer3 = $scope.$storage.dimInfoExam;
     console.log('external from rep pdf es:');
     console.log($scope.externalDataRetrievedFromServer);
-    // console.log('dinamic es ');
-    // console.log($scope.dinamic);
+    console.log('dinamic es ');
+    console.log($scope.externalDataRetrievedFromServer2);
     $scope.porcentaje = function(cant,total){
       if (total == 0){
         return 0
@@ -51,12 +53,41 @@ angular.module('agendas').controller('ReportesControllerPdf', ['$scope','$timeou
 
       return body;
     };
+    $scope.buildTableBodyCustom = function(data, columns) {
+      var body = [];
+
+      body.push(['n°','Nombre','Rut']);
+
+      data.forEach(function(row) {
+          var dataRow = [];
+
+          columns.forEach(function(column) {
+              dataRow.push(row[column].toString());
+          });
+
+          body.push(dataRow);
+      });
+
+
+
+      return body;
+    };
+
 
     $scope.table = function(data, columns) {
         return {
             table: {
                 headerRows: 1,
                 body: $scope.buildTableBody(data, columns)
+            }
+        };
+    };
+
+    $scope.tableCustom = function(data, columns) {
+        return {
+            table: {
+                headerRows: 1,
+                body: $scope.buildTableBodyCustom(data, columns)
             }
         };
     };
@@ -117,7 +148,11 @@ angular.module('agendas').controller('ReportesControllerPdf', ['$scope','$timeou
     			margin: [0,20,0,40]
     		},
     		{text: '3) Tipo de examenes(confirmados): ', style: 'subheader'},
-        $scope.table($scope.externalDataRetrievedFromServer, ['nombre', 'cantidad','porcentaje'])
+        $scope.table($scope.externalDataRetrievedFromServer, ['nombre', 'cantidad','porcentaje']),
+        {text: '4) Informacion de pacientes (Consulta)  ', style: 'subheader'},
+          $scope.tableCustom($scope.externalDataRetrievedFromServer2, ['numero','nombre', 'rut']),
+          {text: '4) Informacion de pacientes (Examen)  ', style: 'subheader'},
+            $scope.tableCustom($scope.externalDataRetrievedFromServer3, ['numero','nombre', 'rut'])
     	],
     	styles: {
     		header: {

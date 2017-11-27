@@ -1,12 +1,12 @@
-angular.module('dashboard').controller('fono',['$scope','pacienteinfo', 'pacientenumero', function ($scope, pacienteinfo, pacientenumero) {
-
+angular.module('dashboard').controller('fono',['$scope', 'pacientenumero','$localStorage', function ($scope, $localStorage, pacientenumero) {
+  $scope.$storage = $localStorage;
 $scope.actualizar = function(){
     var paciente = {
-        rut:pacienteinfo.paciente,
+        rut:$scope.$storage.paciente,
         telephone:$scope.numero
     }
 
-    pacientenumero.get({rut:pacienteinfo.paciente,telfone:$scope.numero},function(data){
+    pacientenumero.get({rut:$scope.$storage.paciente,telfone:$scope.numero},function(data){
         $location.url('/hora');
 
     });

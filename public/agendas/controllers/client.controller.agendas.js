@@ -90,8 +90,21 @@ angular.module('agendas').controller('AgendasController', ['$scope', 'SharedData
 
               // $scope.$storage.fileNameRep = "Reporte_mensual:"+$scope.formatted + ".pdf";
             $scope.$storage.jsArrayReporte = resp[0];
-            $scope.$storage.jsDinamic = resp.slice(1);
+            $scope.$storage.jsDinamic = resp.slice(1,resp[0].examDistCount +1);
+            $scope.$storage.dimInfoCons = resp.slice(resp[0].examDistCount +1, resp[0].examDistCount +1 +resp[0].consultas );
+            $scope.$storage.dimInfoExam = resp.slice(resp[0].examDistCount +1 +resp[0].consultas, resp[0].examDistCount +1 +resp[0].consultas + resp[0].examenes  );
+            // $scope.$storage.dimInfoExam = resp.slice(resp[0].examDistCount +1);
+
+
           }).then(function(){
+
+            // $timeout(function() {
+            // // $location.path('/newValue');
+            // $localStorage.$reset();
+            // $location.url('/agendas');
+            //
+            // }, 2000);
+
             $scope.$storage.fileNameRep = "Reporte_mensual:"+$scope.formatted + ".pdf";
             $location.url('/reportes/ver');
           });

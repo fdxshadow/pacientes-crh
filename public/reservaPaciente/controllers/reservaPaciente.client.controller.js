@@ -1,16 +1,16 @@
 
 angular.module('reservaPaciente').controller('ReservaController'
-,['$scope','$location', 'ReservaServicio','Notifier','pacienteinfo', function ($scope,$location,servicio,Notifier, pacienteinfo) {
-
+,['$scope','$location', 'ReservaServicio','Notifier','$timeout','$localStorage', function ($scope,$location,servicio,Notifier,$timeout, $localStorage) {
+$scope.$storage = $localStorage;
 $scope.horarios = [];
-$scope.paciente = pacienteinfo.paciente_nombre;
-$scope.medico = pacienteinfo.medico_nombre;
-$scope.boton = "reserver";
-//console.log(pacienteinfo);
-if(pacienteinfo.medico_nombre==null){
+$scope.paciente = $scope.$storage.paciente_nombre;
+$scope.medico = $scope.$storage.medico_nombre;
+$scope.boton = "reservar";
+//console.log($scope.$storage);
+if($scope.$storage.medico_nombre==null){
     $scope.medico = " No aplica";
 }
-if(pacienteinfo.paciente_nombre==null){
+if($scope.$storage.paciente_nombre==null){
     $scope.boton = " Bloquear Horario ";
 }
 
@@ -27,12 +27,12 @@ var maxDate = new Date();
 maxDate.setMonth(maxDate.getMonth() + monthsAhead);
 $scope.dateMaxLimit = maxDate;
 // ###############
-if(!pacienteinfo.examen_id){
-          // $scope.what = pacienteinfo
+if(!$scope.$storage.examen_id){
+          // $scope.what = $scope.$storage
           moment.locale("es");
           // $scope.test = moment().day('domingo');
           // var dow = $scope.test.day();
-          var medicoDisp = pacienteinfo.medico_disponibilidad;
+          var medicoDisp = $scope.$storage.medico_disponibilidad;
           var dias = [];
           console.log(medicoDisp);
 
@@ -64,7 +64,7 @@ var disableWeekends = function(minDate, maxDate) {
         for (var iDate = new Date(startDate); iDate < endDate; iDate.setDate(iDate.getDate() + 1)) {
             // if ((iDate.getDay() == 0) || (iDate.getDay() == 6)) {
             //solo domingos
-            if(pacienteinfo.examen_id){//si es examen se puede pedir los sabados
+            if($scope.$storage.examen_id){//si es examen se puede pedir los sabados
               if ((iDate.getDay() == 0) ) {
                   // months are zero indexed so + 1
                   days.push(new Date(iDate.getMonth() + 1 + '/' + iDate.getDate() + '/' + iDate.getFullYear()).getTime());
@@ -90,12 +90,12 @@ var validar=/^\d{4}-\d{2}-\d{2}$/;
 
 $scope.prueba = function(){
     if(validar.test($scope.date)){
-        if(pacienteinfo.examen_id){
-            var med = (pacienteinfo.medico_id)?pacienteinfo.medico_id:"no";
+        if($scope.$storage.examen_id){
+            var med = ($scope.$storage.medico_id)?$scope.$storage.medico_id:"no";
             var disponibilidad1 = [];
-            var horas = parseInt(moment(pacienteinfo.examen_disponibilidad.hora_termino,"hh:mm").hours()) - parseInt(moment(pacienteinfo.examen_disponibilidad.hora_inicio,"hh:mm").hours());
-            var resini =moment(pacienteinfo.examen_disponibilidad.hora_inicio,"hh:mm");
-            var ini = pacienteinfo.examen_disponibilidad.hora_inicio;
+            var horas = parseInt(moment($scope.$storage.examen_disponibilidad.hora_termino,"hh:mm").hours()) - parseInt(moment($scope.$storage.examen_disponibilidad.hora_inicio,"hh:mm").hours());
+            var resini =moment($scope.$storage.examen_disponibilidad.hora_inicio,"hh:mm");
+            var ini = $scope.$storage.examen_disponibilidad.hora_inicio;
             var min = ini.split(":")[1];
             var hour= (moment(resini).add(1,'hours').hours()<10)?"0"+moment(resini).add(1,'hours').hours():moment(resini).add(1,'hours').hours()
             var fin = hour+":"+min;
@@ -116,7 +116,7 @@ $scope.prueba = function(){
                     }
                     disponibilidad1.push(aux1);
             }
-            servicio.get({fecha:$scope.date,medico:med,examen:pacienteinfo.examen_id},function(response){
+            servicio.get({fecha:$scope.date,medico:med,examen:$scope.$storage.examen_id},function(response){
 
                     angular.forEach(response,function(reserva,key){
                         angular.forEach(disponibilidad1,function(horario,key){
@@ -130,11 +130,11 @@ $scope.prueba = function(){
             });
         }
         else{
-            if (pacienteinfo.medico_id) {
+            if ($scope.$storage.medico_id) {
                 moment.locale("es");
                 var day = moment($scope.date,"YYYY-MM-DD");
                 var selectday=day.format("dddd").toLowerCase();
-                angular.forEach(pacienteinfo.medico_disponibilidad,function(disp,key){
+                angular.forEach($scope.$storage.medico_disponibilidad,function(disp,key){
                     if (disp.dia == selectday) {
                         var disponibilidad1=[];
                         var horas = parseInt(moment(disp.hora_termino,"hh:mm").hours()) - parseInt(moment(disp.hora_inicio,"hh:mm").hours());
@@ -159,7 +159,7 @@ $scope.prueba = function(){
                             }
                         disponibilidad1.push(aux1);
                         }
-                        servicio.get({fecha:$scope.date,medico:pacienteinfo.medico_id,examen:pacienteinfo.examen_id},function(response){
+                        servicio.get({fecha:$scope.date,medico:$scope.$storage.medico_id,examen:$scope.$storage.examen_id},function(response){
                             angular.forEach(response,function(reserva,key){
                                 angular.forEach(disponibilidad1,function(horario,key){
                                     if(reserva.hora_inicio_reserva==horario.hora_ini){
@@ -179,19 +179,19 @@ $scope.prueba = function(){
 
 
 $scope.reservar = function(horario){
-        if(pacienteinfo.examen_id){
+        if($scope.$storage.examen_id){
      var reserva = {
-        paciente_id: pacienteinfo.paciente_id,
-        medico_id: pacienteinfo.medico_id,
+        paciente_id: $scope.$storage.paciente_id,
+        medico_id: $scope.$storage.medico_id,
         hora_inicio_reserva: horario.hora_ini,
         hora_fin_reserva: horario.hora_term,
         fecha_reserva: $scope.date,
-        tipo_reserva : {tipo:'examen',descripcion:pacienteinfo.examen_id}
+        tipo_reserva : {tipo:'examen',descripcion:$scope.$storage.examen_id}
     };
 }else{
     var reserva = {
-        paciente_id: pacienteinfo.paciente_id,
-        medico_id: pacienteinfo.medico_id,
+        paciente_id: $scope.$storage.paciente_id,
+        medico_id: $scope.$storage.medico_id,
         hora_inicio_reserva: horario.hora_ini,
         hora_fin_reserva: horario.hora_term,
         fecha_reserva: $scope.date
@@ -202,9 +202,16 @@ $scope.reservar = function(horario){
     c.$save().then(function(){
         var i = $scope.horarios.indexOf(horario);
         $scope.horarios.splice(i,1);
-        pacienteinfo = [];
+        $scope.$storage = [];
         Notifier.notify("Reserva Realizada");
+
+        $timeout(function() {
+        // $location.path('/newValue');
+        $localStorage.$reset();
         $location.url('/dashboard');
+
+        }, 2000);
+        // $location.url('/dashboard');
 
 
     },function(response){

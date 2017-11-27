@@ -59,7 +59,7 @@ exports.crear = function(req, res, next){
 
 
 exports.getHorario = function (req,res) {
-		reserva.find({estado_reserva:{'$ne':'rechazado'}}).populate('paciente_id','firstName telephone').populate('medico_id','nombre').populate('tipo_reserva.descripcion','nombre').
+		reserva.find({estado_reserva:{'$ne':'rechazado'}}).populate('paciente_id','firstName telephone').populate('medico_id','nombre').
 	exec(function(err,hora){
 		if(err) res.send('error');
 		console.log(hora);
@@ -152,7 +152,7 @@ exports.listByFecha = function(req, res) {
 		fecha_reserva: {'$regex': req.fecha}
 		//  medico_id: req.id_medico
 		  // hora_inicio_reserva: req.id_medico
-	 }).populate('tipo_reserva.descripcion','nombre').exec(function(err, horas){
+	 }).populate('paciente_id','firstName lastName rut').populate('tipo_reserva.descripcion','nombre').exec(function(err, horas){
 					if(err){
 						// Si un error ocurre enviar un mensaje de error
 						return res.status(400).send({
@@ -168,9 +168,13 @@ exports.listByFecha = function(req, res) {
 						var examenCount = 0;
 						var examenConfSum = 0;
 						var examDimCount = new Array(dist.length);
+						// var examDistCount = 0;
 						examDimCount.fill(0);
 
 						var result = [];
+						var pacientes_consulta = [];
+						var pacientes_examen = [];
+
 						horas.forEach(function(hora){
 							//cuento el numero de reservas regisstradas
 							reservaCount += 1;
@@ -183,10 +187,25 @@ exports.listByFecha = function(req, res) {
 												//cantidad de consultas
 												// console.log("############encontre una consulta");
 												consultaCount += 1;
+												var objeto = {
+													numero: consultaCount,
+													nombre: hora.paciente_id.firstName + ' ' + hora.paciente_id.lastName,
+													rut: hora.paciente_id.rut
+												};
+												pacientes_consulta.push(objeto);
 												break;
 										case "examen":
 												//cantidad de xamenes
 												examenCount +=1;
+
+												var objeto = {
+													numero: examenCount,
+													nombre: hora.paciente_id.firstName + ' ' + hora.paciente_id.lastName,
+													rut: hora.paciente_id.rut
+												};
+
+
+												pacientes_examen.push(objeto);
 												// console.log("############encontre un examen");
 												for(var j = 0; j < dist.length; j++){
 
@@ -213,10 +232,11 @@ exports.listByFecha = function(req, res) {
 						 confirmadas : confirm,
 						 perdidas: noConfirm,
 						 consultas: consultaCount,
-						 examenes : examenCount
+						 examenes : examenCount,
+						 examDistCount: dist.length
 						};
 						result.push(first);
-						examenConfSum
+
 						function porcentaje(cant,total) {
 							if (total == 0){
 								return 0
@@ -232,9 +252,20 @@ exports.listByFecha = function(req, res) {
 								cantidad: examDimCount[i],
 								porcentaje: porcentaje(examDimCount[i], examenConfSum)
 							};
+							// examDistCount += 1;
 							result.push(counts);
 						};
+						for (var i = 0; i < pacientes_consulta.length; i++) {
+							result.push(pacientes_consulta[i]);
 
+						}
+
+						for (var i = 0; i < pacientes_examen.length; i++) {
+							result.push(pacientes_examen[i]);
+
+						}
+						// result.push(pacientes_consulta);
+						// result.push(pacientes_examen);
 
 				// console.log(dist);
 				// console.log(examDimCount);

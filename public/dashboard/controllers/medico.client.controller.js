@@ -1,6 +1,6 @@
-angular.module('dashboard').controller('medico',['$scope','pacienteinfo','servicemed', function ($scope,pacienteinfo,servicemed) {
-
-	$scope.paciente = pacienteinfo.paciente_nombre;
+angular.module('dashboard').controller('medico',['$scope','servicemed','$localStorage', function ($scope,servicemed, $localStorage) {
+	$scope.$storage = $localStorage;
+	$scope.paciente = $scope.$storage.paciente_nombre;
 	servicemed.query(function(data){
 		$scope.medicos = data;
 
@@ -12,11 +12,11 @@ angular.module('dashboard').controller('medico',['$scope','pacienteinfo','servic
 
     $scope.seleccionado = function (medico){
     	console.log(medico);
-        pacienteinfo.medico_id=medico._id;
-        pacienteinfo.medico_nombre = medico.nombre;
-        pacienteinfo.medico_disponibilidad = medico.disponibilidad;
+        $scope.$storage.medico_id=medico._id;
+        $scope.$storage.medico_nombre = medico.nombre;
+        $scope.$storage.medico_disponibilidad = medico.disponibilidad;
     }
- 
+
 
 }
 ]

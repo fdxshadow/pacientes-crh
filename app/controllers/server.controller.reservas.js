@@ -59,7 +59,7 @@ exports.crear = function(req, res, next){
 
 
 exports.getHorario = function (req,res) {
-		reserva.find({estado_reserva:{'$ne':'rechazado'}}).populate('paciente_id','firstName telephone').populate('medico_id','nombre').
+		reserva.find({estado_reserva:{'$ne':'rechazado'}}).populate('paciente_id','firstName telephone').populate('medico_id','nombre').populate('tipo_reserva.descripcion','nombre').
 	exec(function(err,hora){
 		if(err) res.send('error');
 		console.log(hora);

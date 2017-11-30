@@ -62,7 +62,7 @@ $ sudo docker run -p 3000:3000 -e dbhost=<host donde corre la bd>  --name mean -
 * [Node 6.x](https://nodejs.org/en/download/)
 * npm 3.x ( or yarn)
 
-> MEAN <sup> 2 </ sup> solo es compatible con Node 6.xo versiones superiores.
+> MEAN <sup>2</sup> solo es compatible con Node 6.xo versiones superiores.
 
 
 ## Autores

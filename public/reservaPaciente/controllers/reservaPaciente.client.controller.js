@@ -5,7 +5,7 @@ $scope.$storage = $localStorage;
 $scope.horarios = [];
 $scope.paciente = $scope.$storage.paciente_nombre;
 $scope.medico = $scope.$storage.medico_nombre;
-$scope.boton = "reservar";
+$scope.boton = "Reservar";
 //console.log($scope.$storage);
 if($scope.$storage.medico_nombre==null){
     $scope.medico = " No aplica";

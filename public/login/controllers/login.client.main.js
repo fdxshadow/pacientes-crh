@@ -13,7 +13,7 @@ angular.module('mainController', ['mainServices'])
         };
 
         if (Auth.isLoggedIn()) {
-            console.log('maldito logeao');
+            
             $scope.userName = (parseTOKEN(AuthToken.getToken()).username);
         } else {
             console.log('no hay nadie');

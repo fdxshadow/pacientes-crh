@@ -11,13 +11,13 @@
           </div>
         </div>
         <div class="form-group">
-          <label for="fname" class="col-md-2 control-label">Nombre(s)</label>
+          <label for="fname" class="col-md-2 control-label">Nombre(s) *</label>
           <div class="col-md-10" data-step="2" data-intro="Ingrese los nombres del pacientes">
             <input name="fname" type="text" placeholder="Nombre(s)" ng-model="fname" required="required" class="form-control"/>
           </div>
         </div>
         <div class="form-group">
-          <label for="lname" class="col-md-2 control-label">Apellido(s)</label>
+          <label for="lname" class="col-md-2 control-label">Apellido(s) *</label>
           <div class="col-md-10" data-step="3" data-intro="Ingrese los apellidos del pacientes">
             <input name="lname" type="text" placeholder="Apellido(s)" ng-model="lname" required="required" class="form-control"/>
           </div>
@@ -31,7 +31,7 @@
         <div class="form-group">
           <div class="col-md-10 col-md-offset-2">
             <div class="pull-right">
-              <button ng-click="agregar()" ng-disabled="signupForm.$invalid" class="btn btn-primary">Crear Paciente</button>&nbsp;<a href="/" class="btn btn-default">Cancelar</a>
+              <button ng-click="agregar()" ng-disabled="signupForm.$invalid" class="btn btn-primary" disabled="disabled">Crear Paciente</button>&nbsp;<a href="/" class="btn btn-default">Cancelar</a>
             </div>
           </div>
         </div>
@@ -43,4 +43,5 @@
 
   </div>
 </div>
+
 

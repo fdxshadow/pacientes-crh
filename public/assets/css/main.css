@@ -186,12 +186,14 @@ hr {
   outline: none;
   box-shadow: none;
 }
-
-.btn-primary:active{
+*/
+.btn-primary:enable{
   background: #0a6d4d;
-  outline: none;
-  box-shadow: none;
-} */
+}
+
+.btn-primary:disabled{
+  background: #7F8C8D;
+} 
 
 .btn-transparent {
   border: 3px solid #fff;

@@ -10,19 +10,19 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="fname" class="col-md-2 control-label">Nombre(s)</label>
+                    <label for="fname" class="col-md-2 control-label">Nombre(s) *</label>
                     <div class="col-md-10" data-step="2" data-intro="Edite nombre(s) del paciente si es necesario">
                         <input name="fname" type="text" placeholder="Nombre(s)" ng-model="paciente.firstName" required="required" class="form-control"/>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="lname" class="col-md-2 control-label">Apellido(s)</label>
+                    <label for="lname" class="col-md-2 control-label">Apellido(s) *</label>
                     <div class="col-md-10" data-step="3" data-intro="Edite apellido(s) del paciente si es necesario">
                         <input name="lname" type="text" placeholder="Apellido(s)" ng-model="paciente.lastName" required="required" class="form-control"/>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="telephone" class="col-md-2 control-label">Telefono *</label>
+                    <label for="telephone" class="col-md-2 control-label">Teléfono *</label>
                     <div class="col-md-10" data-step="4" data-intro="Edite el numero de contacto del paciente">
                         <input name="telephone" type="text" placeholder="Telefono Ej: 987654321" ng-model="paciente.telephone" required="required" class="form-control" ng-pattern="/^[0-9]{9}$/"/>
                     </div>
@@ -35,9 +35,9 @@
                     </div>
                 </div>
             </fieldset>
-            <small><strong>Rut:</strong> Ingresar sin puntos y con guion.</small>
+            <small><strong>Rut:</strong> Ingresar sin puntos y con guión.</small>
             <br>
-            <small><strong>Telefono:</strong> Ingresar los 9 digitos.</small>
+            <small><strong>Teléfono:</strong> Ingresar los 9 dígitos.</small>
         </form>
 
     </div>

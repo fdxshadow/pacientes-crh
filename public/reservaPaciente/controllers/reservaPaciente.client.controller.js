@@ -125,8 +125,14 @@ $scope.prueba = function(){
                             }
                         });
                     });
-                $scope.horarios=disponibilidad1;
-
+                   $scope.horarios=disponibilidad1;
+                        if ($scope.horarios.length == 0) {
+                              $scope.buttonVisibility = false;
+                              $scope.buttonVisibility2 = true;
+                        }else{
+                          $scope.buttonVisibility = true;
+                          $scope.buttonVisibility2 = false;
+                        };
             });
         }
         else{
@@ -168,6 +174,13 @@ $scope.prueba = function(){
                                 });
                             });
                         $scope.horarios=disponibilidad1;
+                         if ($scope.horarios.length == 0) {
+                              $scope.buttonVisibility = false;
+                              $scope.buttonVisibility2 = true;
+                        }else{
+                          $scope.buttonVisibility = true;
+                          $scope.buttonVisibility2 = false;
+                        };
                         });
                     }
                 });

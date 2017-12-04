@@ -14,10 +14,15 @@
 
                 <div class="col-md-6" data-step="3" data-intro="Elige una hora para la fecha seleccionada (Si no aparece ninguna hora, no quedan horas disponibles para ese dia)" data-position="top">
                     <h2>Reservas Disponibles:</h2>
-                    <h3>Horas:</h3>
-                    <div ng-repeat="horario in horarios">
-                        <p>{{horario.hora_ini}} - {{horario.hora_term}}   <button ng-click=reservar(horario) class="btn btn-success" type="button">{{boton}}</button></p>
+                    <h3 >Horas:</h3>
+                    <div ng-repeat="horario in horarios" ng-show="buttonVisibility">
+                      <!-- {{ ctrl.myInputdate || momentDate }} -->
+                        <p>{{horario.hora_ini}} - {{horario.hora_term}}    <button ng-click=reservar(horario) class="btn btn-success" type="button">{{boton}}</button></p>
                     </div>
+                    <div class="alert alert-info" ng-show="buttonVisibility2">
+                     <strong>No hay horas disponibles!</strong>
+                   </div>
+
                 </div>
 
                 </div>

@@ -1,0 +1,240 @@
+<div class="row contact-wrap" data-ng-init="findOne()">
+	<div class="center">
+		<h2>Datos del Médico </h2>
+		<!-- es: {{medicoEdit}} -->
+		<!-- es: {{$storage.medicoTest}} -->
+
+		<!-- {{medicoEdit.disponibilidad[0].dia}} -->
+	</div>
+	<div class="col-lg-6 col-lg-offset-3 col-sm-offset-6 col-sm-3 col-xs-12">
+		<form ng-submit="update()" >
+            <!-- El elemento mensaje error -->
+            <div data-ng-show="error" class="alert alert-danger fade in alert-dismissable text-center">
+                <strong data-ng-bind="error"></strong>
+            </div>
+			<p class="lead">Actualizar información de Médico</p>
+			<div class="form-group">
+                <label>Nombre</label>
+                <input type="text" name="nombre" class="form-control" placeholder="{{medicoEdit.nombre}}" data-ng-model="medicoEdit.nombre">
+            </div>
+			<div class="form-group">
+                <label>R.U.N.</label>
+                <input type="text" name="run" class="form-control" placeholder="{{medicoEdit.run}}" ng-model="medicoEdit.run">
+            </div>
+			<div class="form-group">
+                <label>Especialidad</label>
+                <input type="text" name="run" class="form-control" placeholder="{{medicoEdit.especialidad}}" ng-model="medicoEdit.especialidad">
+            </div>
+			<div class="form-group">
+                <label>Correo electrónico</label>
+                <input type="text" name="run" class="form-control" placeholder="{{medicoEdit.email}}" ng-model="medicoEdit.email">
+            </div>
+			<div class="form-group">
+					<label>Horarios de consulta médica</label> <br>
+
+
+
+							<input type="checkbox"  data-toggle="collapse" data-ng-model="lunes" data-target="#lunes" name="lunes" > Lunes
+							<input type="checkbox" data-toggle="collapse" data-ng-model="martes" data-target="#martes" name="martes"> Martes
+							<input type="checkbox" data-toggle="collapse" data-ng-model="miercoles" data-target="#miercoles" name="miercoles"> Miércoles
+							<input type="checkbox" data-toggle="collapse" data-ng-model="jueves" data-target="#jueves" name="jueves"> Jueves
+							<input type="checkbox" data-toggle="collapse" data-ng-model="viernes" data-target="#viernes" name="viernes"> Viernes
+			</div>
+			<div class="form-group collapse" id="lunes">
+					<label>Horario Lunes </label>
+					<div  class="input-group"
+								data-moment-picker="ctrl.data1.dataFrom"
+								data-locale="es"
+								data-format="HH:mm"
+								data-ng-model="hora_inicio_lunes"
+								show-header="false">
+
+								<span class="input-group-addon">
+									<i class="glyphicon glyphicon-time" aria-hidden="true"></i>
+								</span>
+								<input  class="form-control input-sm"
+												placeholder="{{diasHolder[0]}}"
+												data-ng-model="ctrl.data1.dataFrom"
+												data-ng-model-options="{ updateOn: 'blur' }">
+				 </div>
+				 <div  class="input-group"
+ 							data-moment-picker="ctrl.dataFrom1"
+ 							data-locale="es"
+ 							data-format="HH:mm"
+ 							data-ng-model="hora_fin_lunes"
+ 							show-header="false"
+ 							min-date = "ctrl.data1.dataFrom">
+
+ 							<span class="input-group-addon">
+ 								<i class="glyphicon glyphicon-time" aria-hidden="true"></i>
+ 							</span>
+ 							<input  class="form-control input-sm"
+ 											placeholder="{{diasHolder[1]}}"
+ 											data-ng-model="ctrl.dataFrom1"
+ 											data-ng-model-options="{ updateOn: 'blur' }">
+ 			 </div>
+			   </div>
+			 <div class="form-group collapse" id="martes">
+					 <label>Horario Martes</label>
+
+					 <div  class="input-group"
+								 data-moment-picker="ctrl.data2.dataFrom"
+								 data-locale="es"
+								 data-format="HH:mm"
+								 data-ng-model="hora_inicio_martes"
+								 show-header="false">
+
+								 <span class="input-group-addon">
+									 <i class="glyphicon glyphicon-time" aria-hidden="true"></i>
+								 </span>
+								 <input  class="form-control input-sm"
+												 placeholder="{{diasHolder[2]}}"
+												 data-ng-model="ctrl.data2.dataFrom"
+												 data-ng-model-options="{ updateOn: 'blur' }">
+					</div>
+
+					 <div  class="input-group"
+								 data-moment-picker="ctrl.dataFrom2"
+								 data-locale="es"
+								 data-format="HH:mm"
+								 data-ng-model="hora_fin_martes"
+								 show-header="false"
+								 min-date = "ctrl.data2.dataFrom">
+
+								 <span class="input-group-addon">
+									 <i class="glyphicon glyphicon-time" aria-hidden="true"></i>
+								 </span>
+								 <input  class="form-control input-sm"
+												 placeholder="{{diasHolder[3]}}"
+												 data-ng-model="ctrl.dataFrom2"
+												 data-ng-model-options="{ updateOn: 'blur' }">
+					</div>
+					  </div>
+						<div class="form-group collapse" id="miercoles">
+								<label>Horario Miercoles</label>
+
+								<div  class="input-group"
+											data-moment-picker="ctrl.data3.dataFrom"
+											data-locale="es"
+											data-format="HH:mm"
+											data-ng-model="hora_inicio_miercoles"
+											show-header="false">
+
+											<span class="input-group-addon">
+												<i class="glyphicon glyphicon-time" aria-hidden="true"></i>
+											</span>
+											<input  class="form-control input-sm"
+															placeholder="{{diasHolder[4]}}"
+															data-ng-model="ctrl.data3.dataFrom"
+															data-ng-model-options="{ updateOn: 'blur' }">
+							 </div>
+
+								<div  class="input-group"
+											data-moment-picker="ctrl.dataFrom3"
+											data-locale="es"
+											data-format="HH:mm"
+											data-ng-model="hora_fin_miercoles"
+											show-header="false"
+											min-date = "ctrl.data3.dataFrom">
+
+											<span class="input-group-addon">
+												<i class="glyphicon glyphicon-time" aria-hidden="true"></i>
+											</span>
+											<input  class="form-control input-sm"
+															placeholder="{{diasHolder[5]}}"
+															data-ng-model="ctrl.dataFrom3"
+															data-ng-model-options="{ updateOn: 'blur' }">
+							 </div>
+
+								<!-- <input type="text" name="hora_inicio" class="form-control" placeholder="inicio" data-ng-model="hora_inicio_miercoles">
+								<input type="text" name="hora_termino" class="form-control" placeholder="termino" data-ng-model="hora_termino_miercoles"> -->
+						</div>
+						<div class="form-group collapse" id="jueves">
+								<label>Horario Jueves</label>
+								<div  class="input-group"
+											data-moment-picker="ctrl.data4.dataFrom"
+											data-locale="es"
+											data-format="HH:mm"
+											data-ng-model="hora_inicio_jueves"
+											show-header="false">
+
+											<span class="input-group-addon">
+												<i class="glyphicon glyphicon-time" aria-hidden="true"></i>
+											</span>
+											<input  class="form-control input-sm"
+															placeholder="{{diasHolder[6]}}"
+															data-ng-model="ctrl.data4.dataFrom"
+															data-ng-model-options="{ updateOn: 'blur' }">
+							 </div>
+
+								<div  class="input-group"
+											data-moment-picker="ctrl.dataFrom4"
+											data-locale="es"
+											data-format="HH:mm"
+											data-ng-model="hora_fin_jueves"
+											show-header="false"
+											min-date = "ctrl.data4.dataFrom">
+
+											<span class="input-group-addon">
+												<i class="glyphicon glyphicon-time" aria-hidden="true"></i>
+											</span>
+											<input  class="form-control input-sm"
+															placeholder="{{diasHolder[7]}}"
+															data-ng-model="ctrl.dataFrom4"
+															data-ng-model-options="{ updateOn: 'blur' }">
+							 </div>
+								<!-- <input type="text" name="hora_inicio" class="form-control" placeholder="inicio" data-ng-model="hora_inicio_jueves">
+								<input type="text" name="hora_termino" class="form-control" placeholder="termino" data-ng-model="hora_termino_jueves"> -->
+						</div>
+						<div class="form-group collapse" id="viernes">
+								<label>Horario Viernes</label>
+								<div  class="input-group"
+											data-moment-picker="ctrl.data5.dataFrom"
+											data-locale="es"
+											data-format="HH:mm"
+											data-ng-model="hora_inicio_viernes"
+											show-header="false">
+
+											<span class="input-group-addon">
+												<i class="glyphicon glyphicon-time" aria-hidden="true"></i>
+											</span>
+											<input  class="form-control input-sm"
+															placeholder="{{diasHolder[8]}}"
+															data-ng-model="ctrl.data5.dataFrom"
+															data-ng-model-options="{ updateOn: 'blur' }">
+							 </div>
+
+								<div  class="input-group"
+											data-moment-picker="ctrl.dataFrom5"
+											data-locale="es"
+											data-format="HH:mm"
+											data-ng-model="hora_fin_viernes"
+											show-header="false"
+											min-date = "ctrl.data5.dataFrom">
+
+											<span class="input-group-addon">
+												<i class="glyphicon glyphicon-time" aria-hidden="true"></i>
+											</span>
+											<input  class="form-control input-sm"
+															placeholder="{{diasHolder[9]}}"
+															data-ng-model="ctrl.dataFrom5"
+															data-ng-model-options="{ updateOn: 'blur' }">
+							 </div>
+								<!-- <input type="text" name="hora_inicio" class="form-control" placeholder="inicio" data-ng-model="hora_inicio_viernes">
+								<input type="text" name="hora_termino" class="form-control" placeholder="termino" data-ng-model="hora_termino_viernes"> -->
+						</div>
+
+
+			<!-- <div class="form-group">
+                <label>Fono</label>
+                <input type="text" name="fono" class="form-control" placeholder="Teléfono fijo o móvil" ng-model="paciente.fono">
+            </div> -->
+		    <div class="form-group center">
+                <button type="submit" class="btn btn-primary" ><span class="fa fa-plus"></span> Actualizar </button>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="col-lg-12 col-sm-12 col-xs-12 center">
+	<a class="btn btn-default" style="margin-top:20px" href="#!/tipo_paciente"><i class="fa fa-times"></i> Cancelar</a>
+</div>

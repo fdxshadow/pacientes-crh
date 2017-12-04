@@ -1,0 +1,51 @@
+<div class="row contact-wrap" data-ng-init="find()">
+	<div class="center">
+		<h2><i class="fa fa-user-md"></i> Seleccionar Médico </h2>
+	</div>
+	<div class="col-lg-6 col-lg-offset-3 col-sm-offset-6 col-sm-3 col-xs-12 single-profile-top" >
+		<div class="row">
+			<label class="pull-left" style="padding-left: 20px;"><span class="fa fa-filter"></span> Filtros</label>
+			<div class="col-lg-3 col-md-3 col-sm-3" style="padding: 10px;">
+				<input name="nombre" class="form-control" type="text" placeholder="Ingrese un nombre" ng-model="search.nombre"></input>
+			</div>
+			<div class="col-lg-3 col-md-3 col-sm-3" style="padding: 10px;">
+				<input name="rut" class="form-control" type="text" placeholder="Ingrese un R.U.N." ng-model="search.run"></input>
+			</div>
+			<div class="col-lg-3 col-md-3 col-sm-3" style="padding: 10px;">
+				<input name="especialidad" class="form-control" type="text" placeholder="Ingrese especialidad" ng-model="search.especialidad"></input>
+			</div>
+		</div>
+	</div>
+    <form class="contact-form col-lg-6 col-lg-offset-3 col-sm-offset-6 col-sm-3 col-xs-12">
+		<table class="table table-striped" style='border: 1px solid #DDD' >
+			<thead>
+				<tr>
+					<th>R.U.N.</th>
+					<th>Nombre</th>
+					<th>Especialidad</th>
+					<th>Correo electrónico</th>
+					<th>Seleccionado</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="p in medicos | filter:search:strict">
+					<td style="text-align: left;" >{{p.run}}</td>
+					<td style="text-align: left;" >{{p.nombre}}</td>
+					<td style="text-align: left;" >{{p.especialidad}}</td>
+					<td style="text-align: left;" >{{p.email}}</td>
+					<td class="center">
+						<input class="form-control" type="radio" name="medicoSeleccionado" style="height: 17px; margin:0px;" data-ng-model="medico" data-ng-value="$index" data-ng-change="setMedico($index)" />
+					</td>
+				</tr>
+			<tbody>
+		</table>
+		<!-- <h1> fijate quie el DOCTOR ES es : {{test1}}</h1> -->
+
+<!-- <h2>tetsing: {{medico}} </h2> -->
+		<a class="btn btn-primary pull-right" href="#!/tipoPagos"  ng-show="buttonVisibility"><span class="fa fa-user"></span> Editar Médico </a>
+    </form>
+		<div class="col-lg-12 col-sm-12 col-xs-12 center">
+			<a class="btn btn-default" style="margin-top:20px" href="#!/procedimientos"><i class="fa fa-undo"></i> Atrás</a>
+			<a class="btn btn-danger " style="margin-top:20px" href="#!/home_administrativo"><i class="fa fa-times"></i> Cancelar</a>
+		</div>
+</div><!--/.row-->

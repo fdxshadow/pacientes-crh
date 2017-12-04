@@ -1,0 +1,31 @@
+
+<section ng-controller="ReservaController">
+    <div class="container" data-step="1" data-intro="Acá seleccionas la fecha de la consulta" data-position="top">
+        <div class="page-hader"><h1><span class="glyphicon glyphicon-calendar"></span> Fecha Antención:</h1></div>
+        <h2>Paciente:{{paciente}}</h2>
+        <h2>Médico:{{medico}}</h2>
+        <h2>Seleccionar Fecha:</h2>
+        <div class="row">
+                <div class="col-md-6">
+                    <datepicker date-format="yyyy-MM-dd"  date-min-limit = "{{dateMinLimit.toString()}}" date-disabled-dates = "{{datesDisabled}}" data-step="2" data-intro="Elige una fecha desde hoy en adelante" data-position="top">
+                       <input placeholder="Seleccione aquí la fecha de atención" ng-change="prueba()" ng-model="date">
+                    </datepicker>
+                </div>
+
+                <div class="col-md-6" data-step="3" data-intro="Elige una hora para la fecha seleccionada (Si no aparece ninguna hora, no quedan horas disponibles para ese dia)" data-position="top">
+                    <h2>Reservas Disponibles:</h2>
+                    <h3 >Horas:</h3>
+                    <div ng-repeat="horario in horarios" ng-show="buttonVisibility">
+                      <!-- {{ ctrl.myInputdate || momentDate }} -->
+                        <p>{{horario.hora_ini}} - {{horario.hora_term}}    <button ng-click=reservar(horario) class="btn btn-success" type="button">{{boton}}</button></p>
+                    </div>
+                    <div class="alert alert-info" ng-show="buttonVisibility2">
+                     <strong>No hay horas disponibles!</strong>
+                   </div>
+
+                </div>
+
+                </div>
+    </div>
+    <br>
+</section>

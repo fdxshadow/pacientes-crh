@@ -1,0 +1,39 @@
+<section ng-controller="Hora">
+<hr>
+<div class="page-hader destacado" ><h1><span class="glyphicon glyphicon-user"></span> Seleccionar Paciente:</h1></div>
+<div class="col-md-5">
+                <div class="input-group">
+                    <!-- USE TWITTER TYPEAHEAD JSON WITH API TO SEARCH -->
+                    <input  class="form-control" ng-model="buscarpaciente.rut" data-step="1" data-intro="Busca los pacientes por su rut." placeholder="Buscar aquí por Rut">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
+                    </span>
+             </div>
+</div>
+<div ng-model=buscarpaciente.rut><strong>Buscando a: </strong>{{buscarpaciente.rut}}</div>
+<hr>
+<table  class="table table-bordered table-responsive">
+	<thead>
+		<tr>
+			<th>Nombre</th>
+			<th>Apellido
+			<th>Rut</th>
+			<th>Teléfono</th>
+			<th>Acción</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="paciente in pacientes | filter:buscarpaciente">
+			<td data-step="2" data-intro="Haz Click aca para editar al paciente" ><a href="/#!/pacientes/edit/{{paciente._id}}">{{paciente.firstName }}</a></td>
+			<td data-step="3" data-intro="O acá"><a href="/#!/pacientes/edit/{{paciente._id}}">{{paciente.lastName }}</a></td>
+			<td >{{paciente.rut}}</td>
+			<td >{{paciente.telephone}}</td>
+			<td>
+				<button class="btn btn-success" ng-click="seleccionado(paciente)" data-step="5" data-intro="Haz click acá para agendar un examen o una consulta">Seleccionar</button>
+				<!--button class="btn btn-primary" ng-click="cambiofono(paciente)" >Editar teléfono</button-->
+			</td>
+		</tr>
+	</tbody>
+</table>
+<hr>
+</section>

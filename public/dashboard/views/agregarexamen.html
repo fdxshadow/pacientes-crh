@@ -1,0 +1,84 @@
+
+<div class="row contact-wrap">
+
+	<div class="center">
+		<h2>Nuevo Examen</h2>
+	</div>
+	<div class="col-lg-6 col-lg-offset-3 col-sm-offset-6 col-sm-3 col-xs-12 contact-form">
+		<!--form ng-submit="agregar()" -->
+            <!-- El elemento mensaje error -->
+        <form>
+            <div data-ng-show="error" class="alert alert-danger fade in alert-dismissable text-center">
+                <strong data-ng-bind="error"></strong>
+            </div>
+			<p class="lead">Ingrese la información del examen</p>
+			<div class="form-group">
+                <label>Nombre</label>
+                <input type="text" name="nombre" class="form-control" placeholder="Nombre del examen" data-ng-model="nombre">
+            </div>
+     
+
+				<div class="form-group">
+				<label>Personal requerido</label>
+				<br>
+				<div class="radio">
+				<label>  
+
+				<input type="radio" name="personal" value="médico" checked data-ng-model="personal">
+				Médico
+				</label>
+				</div>
+				<div class="radio">
+				<label>
+				<input type="radio" name="personal" value="tec/enfermero" data-ng-model="personal">
+				Tecnólogo / Enfermero
+				</label>
+				</div>
+
+
+
+			<div class="form-group" >
+                <label>Horario Examen</label>
+								<div  class="input-group"
+							        data-moment-picker="ctrl.data1.dataFrom"
+							        data-locale="es"
+							        data-format="HH:mm"
+											data-ng-model="hora_inicio"
+											show-header="false">
+
+							        <span class="input-group-addon">
+							          <i class="glyphicon glyphicon-time" aria-hidden="true"></i>
+							        </span>
+							        <input  class="form-control input-sm"
+							                placeholder="Hora inicio"
+							                data-ng-model="ctrl.data1.dataFrom"
+							                data-ng-model-options="{ updateOn: 'blur' }">
+							 </div>
+
+							  <div  class="input-group"
+							        data-moment-picker="ctrl.dataFrom1"
+							        data-locale="es"
+							        data-format="HH:mm"
+											data-ng-model="hora_termino"
+											show-header="false"
+											min-date = "ctrl.data1.dataFrom">
+
+							        <span class="input-group-addon">
+							          <i class="glyphicon glyphicon-time" aria-hidden="true"></i>
+							        </span>
+							        <input  class="form-control input-sm"
+							                placeholder="Hora fin"
+							                data-ng-model="ctrl.dataFrom1"
+							                data-ng-model-options="{ updateOn: 'blur' }">
+							 </div>
+
+            </div>
+
+    </form>
+		    <div class="form-group center">
+                <button type="submit" ng-click="create()" class="btn btn-primary" ><span class="fa fa-plus"></span> Agregar </button>
+                <a class="btn btn-default"  href="#!/dashboard"><i class="fa fa-times"></i> Cancelar</a>
+            </div>
+        </form>
+    </div>
+</div>

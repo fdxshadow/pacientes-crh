@@ -1,0 +1,76 @@
+<div class="container">
+    <div class="well">
+        <form name="signupForm" class="form-horizontal">
+            <fieldset>
+                <legend>Editar Examen</legend>
+                <div class="form-group">
+                    <label for="nombre" class="col-md-2 control-label">Nombre Examen</label>
+                    <div class="col-md-10" data-step="1">
+                        <input name="rut" type="text" placeholder="Ej: Ecografía" ng-model="examen.nombre" required="required" class="form-control"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                <label for="personal" class="col-md-2 control-label">Personal requerido</label>
+                <br>
+                <div class="radio col-md-2 control-div">
+                <label>  
+                <input type="radio" name="personal" value="médico" data-ng-model="examen.personal">
+                Médico
+                </label>
+                <label>
+                <input type="radio" name="personal" value="tec/enfermero" data-ng-model="examen.personal">
+                Tecnólogo / Enfermero
+                </label>
+                </div>
+                </div>
+
+                
+                <label for="rut" class="col-md-2 control-label">Horario Examen</label><br>
+                <div class="col-md-2 control-div">
+                                <div  class="input-group"
+                                    data-moment-picker="ctrl.data1.dataFrom"
+                                    data-locale="es"
+                                    data-format="HH:mm"
+                                            data-ng-model="hora_inicio"
+                                            show-header="false">
+
+                                    <span class="input-group-addon">
+                                      <i class="glyphicon glyphicon-time" aria-hidden="true"></i>
+                                    </span>
+                                    <input  class="form-control input-sm"
+                                            placeholder="{{examen.horario.hora_inicio}}"
+                                            data-ng-model="ctrl.data1.dataFrom"
+                                            data-ng-model-options="{ updateOn: 'blur' }">
+                                    </div>
+
+                                <div  class="input-group"
+                                    data-moment-picker="ctrl.dataFrom1"
+                                    data-locale="es"
+                                    data-format="HH:mm"
+                                            data-ng-model="hora_termino"
+                                            show-header="false"
+                                            min-date = "ctrl.data1.dataFrom">
+
+                                    <span class="input-group-addon">
+                                      <i class="glyphicon glyphicon-time" aria-hidden="true"></i>
+                                    </span>
+                                    <input  class="form-control input-sm"
+                                            placeholder={{examen.horario.hora_termino}}
+                                            data-ng-model="ctrl.dataFrom1"
+                                            data-ng-model-options="{ updateOn: 'blur' }">
+                                </div>
+                    </div>
+            
+                <div class="form-group">
+                    <div class="col-md-10 col-md-offset-2">
+                        <div class="pull-right" >
+                            <button ng-click="guardar()" ng-disabled="signupForm.$invalid" class="btn btn-primary" data-step="5" data-intro="Para finalizar haga click en el boton guardar">Guardar</button>&nbsp;<a href="/examen" class="btn btn-default" data-step="6" data-intro="O haga click en cancelar para descartar los cambios">Cancel</a>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+
+    </div>
+</div>

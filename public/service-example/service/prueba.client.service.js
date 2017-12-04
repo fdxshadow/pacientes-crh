@@ -1,8 +1,6 @@
-angular.module('service-example').factory('prueba',[
-	function(){
-		this.mensaje = window.huaso;
-
-		return {
-			mensaje:this.mensaje
-		};
-	}]);
+angular.module('service-example').service('SharedDataService', function () {
+     var PacienteData = {
+        rut: ''
+    };
+    return PacienteData;
+});

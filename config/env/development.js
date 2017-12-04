@@ -1,4 +1,6 @@
+var host=process.argv[2];
 module.exports = {
 	sessionSecret: 'developmentSessionSecret',
-	DBuri: 'mongodb://localhost/pacientes-crh'
+	DBuri: 'mongodb://'+host+'/pacientes-crh'
+
 };

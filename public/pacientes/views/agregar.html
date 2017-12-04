@@ -1,0 +1,47 @@
+<div class="container">
+<div class="page-hader"><h1><span class="fa fa-check-square-o"></span> Completar Formulario:</h1></div>
+  <div class="well">
+    <form name="signupForm" class="form-horizontal">
+      <fieldset>
+        <legend>Información Paciente Nuevo</legend>
+        <div class="form-group">
+          <label for="rut" class="col-md-2 control-label">RUT *</label>
+          <div class="col-md-10" data-step="1" data-intro="Ingrese RUT sin puntos y con guion, ejemplo: 12345678-5" >
+            <input name="rut" type="text" placeholder="RUT Ej: 12345678-5" ng-model="rut" required="required" class="form-control"/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="fname" class="col-md-2 control-label">Nombre(s) *</label>
+          <div class="col-md-10" data-step="2" data-intro="Ingrese los nombres del pacientes">
+            <input name="fname" type="text" placeholder="Nombre(s)" ng-model="fname" required="required" class="form-control"/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="lname" class="col-md-2 control-label">Apellido(s) *</label>
+          <div class="col-md-10" data-step="3" data-intro="Ingrese los apellidos del pacientes">
+            <input name="lname" type="text" placeholder="Apellido(s)" ng-model="lname" required="required" class="form-control"/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="telephone" class="col-md-2 control-label">Teléfono *</label>
+          <div class="col-md-10" data-step="4" data-intro="Ingrese los nueve digitos del telefono de contacto del paciente">
+            <input name="telephone" type="text" placeholder="Teléfono Ej: 987654321" ng-model="telephone" required="required" class="form-control" ng-pattern="/^[0-9]{9}$/"/>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-md-10 col-md-offset-2">
+            <div class="pull-right">
+              <button ng-click="agregar()" ng-disabled="signupForm.$invalid" class="btn btn-primary" disabled="disabled">Crear Paciente</button>&nbsp;<a href="/" class="btn btn-default">Cancelar</a>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+      <small><strong>Rut:</strong> Ingresar sin puntos y con guión.</small>
+      <br>
+      <small><strong>Teléfono:</strong> Ingresar los 9 dígitos.</small>
+    </form>
+
+  </div>
+</div>
+
+
